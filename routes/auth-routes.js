@@ -14,19 +14,19 @@ authRoutes.post('/signup', (req, res, next) => {
   const avatar = req.body.avatar;
   
   if (!username || !email || !password) {
-    res.status(400).json({ message: 'Provide username, email and password' });
+    res.status(400).json({ message: 'Vous devez remplir les champs Nom, Email et Mot de passe' });
     return;
   }
 
   if (password.length < 7) {
-    res.status(400).json({ message: 'Please make your password at least 8 characters long for security purposes.' });
+    res.status(400).json({ message: 'Votre mot de passe doit contenir au minimum 7 caractères' });
     return;
   }
   
   User.findOne({ username, email })
     .then(foundUser => {
       if (foundUser) {
-        res.status(400).json({ message: 'Username taken. Choose another one.' });
+        res.status(400).json({ message: 'Le Nom est déjà pris. Tu dois en choisir un autre' });
         return;
       }
     
@@ -35,6 +35,8 @@ authRoutes.post('/signup', (req, res, next) => {
     
       const aNewUser = new User({
         username:username,
+        email:email,
+        avatar:avatar,
         password: hashPass
       });
     
@@ -46,24 +48,26 @@ authRoutes.post('/signup', (req, res, next) => {
          res.status(200).json(aNewUser);
         })
         .catch(err => {
-          res.status(400).json({ message: 'Saving user to database went wrong.' });
+          res.status(400).json({ message: 'L’enregistrement de l’utilisateur dans la base de données s’est mal déroulé.' });
         })
       ;
     })
     .catch(err => {
-      res.status(500).json({message: "Username check went bad."});
+      res.status(500).json({message: "La vérification du nom d’utilisateur a mal tourné."});
     })
   ;
 });
 
 authRoutes.post('/login', (req, res, next) => {
-  const {username, password} = req.body
+  const {username,email, avatar, password} = req.body
 
   User.findOne({username}).then(user => {
     if (!user) {
-      return next(new Error('No user with that username'))
+      return next(new Error("Il n'y a pas d'utilisateur avec ce nom là"))
     }
     
+
+    //reprendre là demain !!
     // compareSync
     if (bcrypt.compareSync(password, user.password) !== true) {
       return next(new Error('Wrong credentials'))

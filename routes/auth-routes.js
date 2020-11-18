@@ -1,13 +1,13 @@
 const express    = require('express');
 const authRoutes = express.Router();
-
 const bcrypt     = require('bcryptjs');
+const uploader = require('../configs/cloudinary-setup.config');
 
 // require the user model !!!!
 const User       = require('../models/user-model');
 
 
-authRoutes.post('/signup', (req, res, next) => {
+authRoutes.post('/signup', uploader.single('avatar'), (req, res, next) => {
   const username = req.body.username;
   const email = req.body.email;
   const password = req.body.passwordHash;
@@ -23,7 +23,7 @@ authRoutes.post('/signup', (req, res, next) => {
     return;
   }
   
-  User.findOne({ username, email })
+  User.findOne({ username })
     .then(foundUser => {
       if (foundUser) {
         res.status(400).json({ message: 'Le Nom est déjà pris. Tu dois en choisir un autre' });
@@ -67,10 +67,9 @@ authRoutes.post('/login', (req, res, next) => {
     }
     
 
-    //reprendre là demain !!
     // compareSync
     if (bcrypt.compareSync(password, user.password) !== true) {
-      return next(new Error('Wrong credentials'))
+      return next(new Error("Le mot de passe n'est pas correcte"))
     } else {
       req.session.currentUser = user
       res.json(user)
@@ -80,7 +79,7 @@ authRoutes.post('/login', (req, res, next) => {
 
 authRoutes.post('/logout', (req, res, next) => {
   req.session.destroy()
-  res.json({message: 'Your are now logged out.'})
+  res.json({message: "Tu n'es plus loggé"})
 });
 
 authRoutes.get('/loggedin', (req, res, next) => {

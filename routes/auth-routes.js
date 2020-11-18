@@ -8,9 +8,10 @@ const User       = require('../models/user-model');
 
 
 authRoutes.post('/signup', uploader.single('avatar'), (req, res, next) => {
+  console.log(req.body)
   const username = req.body.username;
   const email = req.body.email;
-  const password = req.body.passwordHash;
+  const password = req.body.password;
   const avatar = req.body.avatar;
   
   if (!username || !email || !password) {
@@ -37,9 +38,10 @@ authRoutes.post('/signup', uploader.single('avatar'), (req, res, next) => {
         username:username,
         email:email,
         avatar:avatar,
-        password: hashPass
+        passwordHash: hashPass
       });
     
+      console.log('newUser', aNewUser)
       aNewUser.save()
         .then(() => {
           // Persist our new user into session
@@ -59,7 +61,9 @@ authRoutes.post('/signup', uploader.single('avatar'), (req, res, next) => {
 });
 
 authRoutes.post('/login', (req, res, next) => {
-  const {username,email, avatar, password} = req.body
+
+  //login by username
+  const {username, password} = req.body
 
   User.findOne({username}).then(user => {
     if (!user) {
@@ -68,7 +72,7 @@ authRoutes.post('/login', (req, res, next) => {
     
 
     // compareSync
-    if (bcrypt.compareSync(password, user.password) !== true) {
+    if (bcrypt.compareSync(password, user.passwordHash) !== true) {
       return next(new Error("Le mot de passe n'est pas correcte"))
     } else {
       req.session.currentUser = user

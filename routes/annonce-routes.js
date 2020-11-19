@@ -9,12 +9,12 @@ const Annonce = require ('../models/annonce-model')
 /* POST créer une nouvel annonce */
 router.post('/',uploader.single('picture'), (req, res, next) => {
 
-    console.log('file is: ', req.file)
+    console.log('currentUser', req.session.currentUser)
 
     // vérifier si logged-in
     if (!req.session.currentUser) {
       res.status(401).json({
-        message: "Connectez-vous pour postuler une annonce!"
+        message: "Connectez-vous pour poster une annonce!"
       });
       return;
     }
@@ -29,7 +29,7 @@ router.post('/',uploader.single('picture'), (req, res, next) => {
       moving,
       content,
       adress,
-      // author: req.session.currentUser._id,
+      author: req.session.currentUser._id,
       picture: pictureURL,
     })
       .then(response => {

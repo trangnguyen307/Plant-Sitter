@@ -19,12 +19,18 @@ const navbar = (props) => {
       ) : (
         <ul className="nav">
           <li className="nav-elements">
-            <Link to='/' style={{textDecoration: 'none'}}>Plant-Sitter</Link>
-            <Link to='/' style={{textDecoration: 'none'}}>A propos</Link>
-            <Link to='/' style={{textDecoration: 'none'}}>Articles & Evènements</Link> 
-            <Link to='/' style={{textDecoration: 'none'}}>Contact</Link>   
-            <Link to='/signup' style={{textDecoration: 'none'}}>Créer un compte </Link>
-            <Link to='/login' style={{textDecoration: 'none'}}>Me connecter</Link>
+            <div className="nav-title">
+              <Link to='/' style={{textDecoration: 'none'}}>PLANT-SITTER</Link>
+            </div>
+            <div className="nav-el">
+              <Link to='/' style={{textDecoration: 'none'}}>A propos</Link>
+              <Link to='/' style={{textDecoration: 'none'}}>Articles & Evènements</Link> 
+              <Link to='/' style={{textDecoration: 'none'}}>Contact</Link>
+            </div>
+            <div className="compte">
+              <Link to='/signup' style={{textDecoration: 'none'}}>Créer un compte </Link>
+              <Link to='/login' style={{textDecoration: 'none'}}>Me connecter</Link>
+            </div>   
           </li>
         </ul>
       )}

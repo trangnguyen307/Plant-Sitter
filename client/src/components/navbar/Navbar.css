@@ -4,8 +4,34 @@
     font-size: 16px;
     list-style: none;
     height: 5em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    margin-bottom: auto;
 }
+
+.nav-elements {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+.nav-el {
+    margin-left: 40em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
 
 .nav li a {
     color: black;
+    margin-left: 2em;
 }
+

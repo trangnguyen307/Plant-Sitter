@@ -50,22 +50,22 @@ class Signup extends Component {
       <div>
         {/* HERE */}
         <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
+          <label>Nom:</label>
           <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
 
           <label>Email:</label>
           <input type="text" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
           
-          <label>Password:</label>
+          <label>Mot de passe:</label>
           <input type="text" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
 
-          <label>Avatar :</label>  
+          <label>Avatar:</label>  
           <input type="file" name="avatar" value={this.state.avatar} onChange={e => this.handleChangeFile(e)}/>
           
-          <button>I Signup</button>
+          <button>Envoyer</button>
         </form>
   
-        <p>Already have account? 
+        <p>Tu as déjà un compte? 
           <Link to={"/"}>Login</Link>
         </p>
   

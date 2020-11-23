@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {logout} from '../auth/auth-service'
+import {logout} from '../auth/auth-service';
+import './Navbar.css';
 
 const navbar = (props) => {
   return (
@@ -8,9 +9,6 @@ const navbar = (props) => {
       {props.userInSession ? (
         <ul>
           <li>Welcome, {props.userInSession.username}</li>
-          <li>
-            <Link to='/projects' style={{textDecoration: 'none'}}>Projects</Link>
-          </li>
           {/* HERE */}
           <li>
             <button onClick={(e) => {
@@ -19,10 +17,14 @@ const navbar = (props) => {
           </li>
         </ul>
       ) : (
-        <ul>
-          <li>
-            <Link to='/signup' style={{textDecoration: 'none'}}>Signup</Link>
-            <Link to='/login' style={{textDecoration: 'none'}}>Login</Link>
+        <ul className="nav">
+          <li className="nav-elements">
+            <Link to='/' style={{textDecoration: 'none'}}>Plant-Sitter</Link>
+            <Link to='/' style={{textDecoration: 'none'}}>A propos</Link>
+            <Link to='/' style={{textDecoration: 'none'}}>Articles & Evènements</Link> 
+            <Link to='/' style={{textDecoration: 'none'}}>Contact</Link>   
+            <Link to='/signup' style={{textDecoration: 'none'}}>Créer un compte </Link>
+            <Link to='/login' style={{textDecoration: 'none'}}>Me connecter</Link>
           </li>
         </ul>
       )}

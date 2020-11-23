@@ -3,6 +3,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from './components/homepage';
 import Navbar from './components/navbar/Navbar';
+import Footer from './components/footer/Footer';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import {loggedin} from './components/auth/auth-service';
@@ -46,6 +47,7 @@ class App extends React.Component {
           <Route exact path='/' render={() => <Home />}/>
           <AnnonceList />
         </Switch>
+        <Footer />
         </div>
     )
 

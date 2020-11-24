@@ -1,13 +1,13 @@
-
+import React from 'react'
 import './App.css';
-import Home from './components/homepage'
+import Home from './components/Home'
 
-import AnnonceList from './components/annonces/AnnoncesList'
+
 
 function App() {
   return (
     <div>
-      <AnnonceList />
+      <Home />
     </div>
   );
 }

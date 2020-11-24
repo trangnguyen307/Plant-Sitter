@@ -4,7 +4,7 @@ const Schema   = mongoose.Schema;
 const annonceSchema = new Schema({
   type: String,
   moving: Boolean,
-  content: String,
+  description: String,
   adress: String,
   author: [{ type : Schema.Types.ObjectId, ref: 'User' }],
   picture: {

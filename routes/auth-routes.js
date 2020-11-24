@@ -8,7 +8,7 @@ const User       = require('../models/user-model');
 
 
 authRoutes.post('/signup', uploader.single('avatar'), (req, res, next) => {
-  console.log(req.body)
+  console.log(req.body, req.file)
   const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;

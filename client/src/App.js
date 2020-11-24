@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import './App.css';
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
@@ -53,20 +52,6 @@ class App extends React.Component {
     )
 
   }
-=======
-import React from 'react'
-import './App.css';
-import Home from './components/Home'
-
-
-
-function App() {
-  return (
-    <div>
-      <Home />
-    </div>
-  );
->>>>>>> fc8de08b80518a5cd62581a1570c6073be3945d3
 }
 
 

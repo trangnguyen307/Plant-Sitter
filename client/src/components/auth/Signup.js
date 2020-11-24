@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {signup} from './auth-service'
 import { Link } from 'react-router-dom'; // HERE
+import axios from 'axios';
 
 class Signup extends Component {
 
@@ -8,8 +9,10 @@ class Signup extends Component {
       username: '' ,
       email: '',
       password: '',
-      avatar: null // par défaut
+      avatar: null 
     }
+
+   
 
   // HERE
   handleFormSubmit = (e) => {
@@ -39,9 +42,22 @@ class Signup extends Component {
   }
 
   handleChangeFile = (e) => {  
-    const {name, value} = e.target.files[0];
-    this.setState({[name]: value});
+    this.setState({
+      avatar: e.target.files[0],
+      loaded: 0,
+    });
   }
+
+  onClickHandler = () => {
+    const data = new FormData()
+    data.append('file', this.state.avatar)
+    axios.post("http://localhost:5000/auth", data, { 
+       // receive two    parameter endpoint url ,form data
+   })
+   .then(res => { // then print response status
+    console.log(res.statusText)
+ })
+}
 
   // handleChange() and handleSubmit() will be added here
 
@@ -61,6 +77,7 @@ class Signup extends Component {
 
           <label>Avatar:</label>  
           <input type="file" name="avatar" value={this.state.avatar} onChange={e => this.handleChangeFile(e)}/>
+          <button type="button" class="button" onClick={this.onClickHandler}>Upload</button> 
           
           <button>Envoyer</button>
         </form>

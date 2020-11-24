@@ -3,13 +3,23 @@ import {signup} from './auth-service'
 import { Link } from 'react-router-dom'; // HERE
 
 class Signup extends Component {
-
-  state = { 
+  constructor(props) {
+    super(props);
+    this.state = { 
       username: '' ,
       email: '',
       password: '',
-      avatar: null // par défaut
-    }
+      avatar: '' // par défaut
+    };
+    this.fileInput = React.createRef();
+  }
+
+  // state = { 
+  //     username: '' ,
+  //     email: '',
+  //     password: '',
+  //     avatar: '' // par défaut
+  //   }
 
   // HERE
   handleFormSubmit = (e) => {
@@ -40,6 +50,7 @@ class Signup extends Component {
 
   handleChangeFile = (e) => {  
     const {name, value} = e.target.files[0];
+    console.log('files', e.target.files)
     this.setState({[name]: value});
   }
 
@@ -57,10 +68,10 @@ class Signup extends Component {
           <input type="text" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
           
           <label>Mot de passe:</label>
-          <input type="text" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
+          <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
 
           <label>Avatar:</label>  
-          <input type="file" name="avatar" value={this.state.avatar} onChange={e => this.handleChangeFile(e)}/>
+          <input type="file" name="avatar"  ref={this.fileInput} onChange={e => this.handleChangeFile(e)}/>
           
           <button>Envoyer</button>
         </form>

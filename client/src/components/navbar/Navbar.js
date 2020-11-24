@@ -18,6 +18,7 @@ const navbar = (props) => {
             </div>
             <div className="nav-el">
               <Link to='/' style={{textDecoration: 'none'}}>A propos</Link>
+              <Link to='/annonce' style={{textDecoration: 'none'}}>Annonce</Link>
               <Link to='/' style={{textDecoration: 'none'}}>Articles & Evènements</Link> 
               <Link to='/' style={{textDecoration: 'none'}}>Contact</Link>
             </div>

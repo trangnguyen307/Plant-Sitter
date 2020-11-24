@@ -25,3 +25,17 @@ function logout() {
   return service.post('/logout', {}).then(response => response.data)
 }
 export {logout}
+
+function edit() {
+  return service.post('/edit', {
+    username,
+    email,
+    password
+  }).then(response => response.data)
+}
+export {edit}
+
+function upload(formdata) {
+  return service.post('/upload', formdata).then(response => response.data)
+}
+export {upload}

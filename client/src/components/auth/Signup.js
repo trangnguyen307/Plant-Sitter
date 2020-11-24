@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import {signup} from './auth-service'
 import { Link } from 'react-router-dom'; // HERE
-import axios from 'axios';
+
 
 class Signup extends Component {
-
-  state = { 
+  
+    state = { 
       username: '' ,
       email: '',
       password: '',
-      avatar: null 
     }
 
    
@@ -20,15 +19,13 @@ class Signup extends Component {
     const username = this.state.username;
     const email = this.state.email;
     const password = this.state.password;
-    const avatar = this.state.avatar;
 
-    signup(username, email, password, avatar)
+    signup(username, email, password)
       .then(response => {
         this.setState({
             username: "",
             email: "", 
             password: "",
-            avatar: null
         });
         this.props.updateUser(response)
       })
@@ -41,23 +38,6 @@ class Signup extends Component {
     this.setState({[name]: value});
   }
 
-  handleChangeFile = (e) => {  
-    this.setState({
-      avatar: e.target.files[0],
-      loaded: 0,
-    });
-  }
-
-  onClickHandler = () => {
-    const data = new FormData()
-    data.append('file', this.state.avatar)
-    axios.post("http://localhost:5000/auth", data, { 
-       // receive two    parameter endpoint url ,form data
-   })
-   .then(res => { // then print response status
-    console.log(res.statusText)
- })
-}
 
   // handleChange() and handleSubmit() will be added here
 
@@ -73,11 +53,7 @@ class Signup extends Component {
           <input type="text" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
           
           <label>Mot de passe:</label>
-          <input type="text" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
-
-          <label>Avatar:</label>  
-          <input type="file" name="avatar" value={this.state.avatar} onChange={e => this.handleChangeFile(e)}/>
-          <button type="button" class="button" onClick={this.onClickHandler}>Upload</button> 
+          <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
           
           <button>Envoyer</button>
         </form>

@@ -27,9 +27,9 @@ class AnnonceList extends Component {
           { this.state.listOfAnnonces.map( annonce => {
             return (
               <div key={annonce._id}>
-                {/* <Link to={`/annonce/${annonce._id}`}> */}
+                <Link to={`/annonce/${annonce._id}`}>
                   <img  src={annonce.picture} alt="" / >
-                {/* </Link> */}
+                </Link>
             
                 <p>{annonce.content}</p>
                 <p>Auteur: {annonce.author.username}</p>

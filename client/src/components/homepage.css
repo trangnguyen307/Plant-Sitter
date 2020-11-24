@@ -1,0 +1,41 @@
+.search-barre-pres {
+    background-color: #FAF3DD;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;    
+}
+
+form {
+    margin-top: 2em;
+}
+
+.presentation {
+    background-color: #FAF3DD;
+    height: 20em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+h3 {
+    margin-left: 3em;
+}
+
+.consignes {
+    background-color: #4A7C59;
+    height: 20em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+article {
+    background-color: #68B0AB;
+    border-radius:50%;
+    width:160px;
+    height:160px;
+}
+

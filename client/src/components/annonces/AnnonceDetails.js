@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import service from '../auth/auth-service'
 import { Link } from 'react-router-dom';
 
 class AnnonceDetails extends Component {
@@ -11,7 +11,7 @@ class AnnonceDetails extends Component {
     getSingleAnnonce = () => {
       const { params } = this.props.match;
       console.log('params ', params)
-      axios.get(`http://localhost:5000/annonce/${params.id}`)
+      service.get(`/annonce/${params.id}`)
         .then( responseFromApi =>{
           const theAnnonce = responseFromApi.data;
           this.setState({annonce:theAnnonce});

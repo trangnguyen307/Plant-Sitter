@@ -8,6 +8,7 @@ import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import {loggedin} from './components/auth/auth-service';
 import AnnonceList from './components/annonces/AnnoncesList'
+import AddAnnonce from './components/annonces/AddAnnonce'
 
 class App extends React.Component {
   state = { loggedInUser: null }
@@ -42,10 +43,11 @@ class App extends React.Component {
       <div className="App">
           <Navbar userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser} />
           <Switch>
+          <Route exact path="/" component = {Home} />
           <Route exact path="/signup" render={() => <Signup updateUser={this.updateLoggedInUser}/>} />
           <Route exact path='/login' render={() => <Login updateUser={this.updateLoggedInUser}/>}/>
-          <Route exact path='/' render={() => <Home />}/>
-          <AnnonceList />
+          <Route exact path="/annonce" component = {AnnonceList} />
+          <Route exact path="/annonce/new" render={() => <AddAnnonce userInSession={this.state.loggedInUser}/>} />
         </Switch>
         <Footer />
         </div>

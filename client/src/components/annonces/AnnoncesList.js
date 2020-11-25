@@ -38,6 +38,9 @@ class AnnonceList extends Component {
             )})
           }
         </div>
+        <div>
+          <Link to="/annonce/new">Ajouter votre annonce</Link>
+        </div>
     
       </div>
     )

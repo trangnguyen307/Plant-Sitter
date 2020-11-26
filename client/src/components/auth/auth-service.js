@@ -26,14 +26,14 @@ function logout() {
 }
 export {logout}
 
-function edit() {
-  return service.post('/edit', {
-    username,
-    email,
-    password
-  }).then(response => response.data)
-}
-export {edit}
+// function edit() {
+//   return service.post('/edit', {
+//     username,
+//     email,
+//     password
+//   }).then(response => response.data)
+// }
+// export {edit}
 
 function upload(formdata) {
   return service.post('/upload', formdata).then(response => response.data)

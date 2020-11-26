@@ -12,9 +12,10 @@ import AnnonceDetails from './components/annonces/AnnonceDetails'
 import AddAnnonce from './components/annonces/AddAnnonce'
 import Search from './components/annonces/Search'
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-import profileUser from './components/profileUser/profileUser';
 import ArticlesList from './components/articles/ArticlesList';
 import ProtectedRoute from './components/auth/protected-routes'
+import AddArticle from './components/articles/AddArticle';
+import profileUser from './components/profileUser/profileUser';
 
 class App extends React.Component {
   state = { 
@@ -76,12 +77,13 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component = {Home} />
             <Route exact path="/signup" render={() => <Signup updateUser={this.updateLoggedInUser}/>} />
-            <Route exact path='/login' render={() => <Login updateUser={this.updateLoggedInUser}/>}/>
+            <Route exact path='/login' render={() => <Login updateUser={this.updateLoggedInUser} user={this.state.loggedInUser}/>}/>
             <Route exact path="/annonce" render = {() => <AnnonceList queryAddress = {this.state.query.queryAddress} queryMoving = {this.state.query.queryMoving}/>} />
             <Route exact path="/annonce/:id" component = {AnnonceDetails} />
             <Route exact path="/annonce/new" render={() => <AddAnnonce />} />
-            <Route exact path="/profile/:id" component = {profileUser} />
             <ProtectedRoute exact path="/article" user={this.state.loggedInUser} component={ArticlesList} />
+            <ProtectedRoute exact path="/annonce/new" component={AddArticle} />
+            <Route exact path="/profile/:id" component = {profileUser} />
           </Switch>
         <Footer />
         </div>

@@ -77,7 +77,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component = {Home} />
             <Route exact path="/signup" render={() => <Signup updateUser={this.updateLoggedInUser}/>} />
-            <Route exact path='/login' render={() => <Login updateUser={this.updateLoggedInUser}/>}/>
+            <Route exact path='/login' render={() => <Login updateUser={this.updateLoggedInUser} user={this.state.loggedInUser}/>}/>
             <Route exact path="/annonce" render = {() => <AnnonceList queryAddress = {this.state.query.queryAddress} queryMoving = {this.state.query.queryMoving}/>} />
             <Route exact path="/annonce/:id" component = {AnnonceDetails} />
             <Route exact path="/annonce/new" render={() => <AddAnnonce />} />

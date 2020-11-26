@@ -24,6 +24,7 @@ class profileUser extends React.Component {
         this.getUserProfile();
       }
     render(){
+      console.log('this.state.user profileuser:  ', this.state.user)
         return(
             <div>
                 <img  src={this.state.user.avatar} alt="avatar"/ >

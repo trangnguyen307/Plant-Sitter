@@ -24,17 +24,34 @@ class AnnonceDetails extends Component {
       this.getSingleArticle();
     }
 
+    deleteArticle = () => {
+        const { params } = this.props.match;
+        service.delete(`/article/${params.id}`)
+          .then(() =>{
+              this.props.history.push('/article'); // !!!         
+          })
+          .catch((err) => {
+              console.log('Error while deleting article', err)
+          })
+      }
+
     render () {
-      console.log(this.state)
+      console.log('user articledetail:', this.props.user)
       return (
         <div>
-          <img  src={this.state.article.picture} alt="photo" / >
+          <img  src={this.state.article.photo} alt="" / >
 
-          <div>
+          <div>    
+            <h1>{this.state.article.title}</h1>
+            <p>{this.state.article.content}</p>
             
-        
-              <Link to="/">Messages</Link>
-              <Link to="/">Modifier</Link>
+            {this.props.user.username === "admin" && (
+                <div>
+                    {/* <Link to="/">Modifier</Link> */}
+                    <button onClick={() => this.deleteArticle()}>Supprimer</button>
+                </div>
+            )}
+            
             
            
           </div>

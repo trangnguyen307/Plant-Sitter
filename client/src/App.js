@@ -16,6 +16,7 @@ import ArticlesList from './components/articles/ArticlesList';
 import ProtectedRoute from './components/auth/protected-routes'
 import AddArticle from './components/articles/AddArticle';
 import profileUser from './components/profileUser/profileUser';
+import ArticleDetails from './components/articles/ArticleDetails'
 
 class App extends React.Component {
   state = { 
@@ -83,6 +84,7 @@ class App extends React.Component {
             <Route exact path="/annonce/new" render={() => <AddAnnonce />} />
             <ProtectedRoute exact path="/article" user={this.state.loggedInUser} component={ArticlesList} />
             <Route exact path="/article/new" component={AddArticle} />
+            <Route exact path="/article/:id" render= {(props) => <ArticleDetails {...props}  user={this.state.loggedInUser}/>} />
             <Route exact path="/profile/:id" component = {profileUser} />
           </Switch>
         <Footer />

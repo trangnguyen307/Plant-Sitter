@@ -8,9 +8,9 @@ class profileUser extends React.Component {
       }
   
       getUserProfile = () => {
-        const params  = this.props.match;
+        const params  = this.props.match.params;
         console.log('params ', params)
-        service.get(`/profile/${params.id}`)
+        service.get(`/auth/profile/${params.id}`)
           .then( responseFromApi =>{
             const theUser = responseFromApi.data;
             this.setState({user:theUser});

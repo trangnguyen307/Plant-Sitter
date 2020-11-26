@@ -30,7 +30,7 @@ class Login extends Component {
   render(){
     console.log('this.props.user: ', this.props.user)
     const { redirect } = this.state;
-    if (redirect) {
+    if (this.props.user._id) {
       return <Redirect to= {`/profile/${this.props.user._id}`}/>;
     }
     return(

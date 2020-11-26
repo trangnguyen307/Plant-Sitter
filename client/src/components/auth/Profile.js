@@ -2,6 +2,7 @@ import React from 'react';
 import {logout} from './auth-service';
 import {upload} from './auth-service';
 import Popin from './popin';
+import profileUser from '../profileUser/profileUser';
 import { Redirect } from 'react-router-dom';
 
 
@@ -30,7 +31,7 @@ class Profile extends React.Component {
     return (
       <>
         {!this.props.user._id ? (
-          <Redirect to="/" />
+          <Redirect to="/profileUser" />
         ) : (
           <Popin one={(
             <>

@@ -2,24 +2,16 @@ import React, { Component } from 'react';
 import {signup} from './auth-service'
 import { Link } from 'react-router-dom'; // HERE
 
+
 class Signup extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
+  
+    state = { 
       username: '' ,
       email: '',
       password: '',
-      avatar: '' // par défaut
-    };
-    this.fileInput = React.createRef();
-  }
+    }
 
-  // state = { 
-  //     username: '' ,
-  //     email: '',
-  //     password: '',
-  //     avatar: '' // par défaut
-  //   }
+   
 
   // HERE
   handleFormSubmit = (e) => {
@@ -27,15 +19,13 @@ class Signup extends Component {
     const username = this.state.username;
     const email = this.state.email;
     const password = this.state.password;
-    const avatar = this.state.avatar;
 
-    signup(username, email, password, avatar)
+    signup(username, email, password)
       .then(response => {
         this.setState({
             username: "",
             email: "", 
             password: "",
-            avatar: null
         });
         this.props.updateUser(response)
       })
@@ -48,11 +38,6 @@ class Signup extends Component {
     this.setState({[name]: value});
   }
 
-  handleChangeFile = (e) => {  
-    const {name, value} = e.target.files[0];
-    console.log('files', e.target.files)
-    this.setState({[name]: value});
-  }
 
   // handleChange() and handleSubmit() will be added here
 
@@ -69,9 +54,6 @@ class Signup extends Component {
           
           <label>Mot de passe:</label>
           <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
-
-          <label>Avatar:</label>  
-          <input type="file" name="avatar"  ref={this.fileInput} onChange={e => this.handleChangeFile(e)}/>
           
           <button>Envoyer</button>
         </form>

@@ -2,6 +2,7 @@ const express    = require('express');
 const authRoutes = express.Router();
 const bcrypt     = require('bcryptjs');
 const uploader = require('../configs/cloudinary-setup.config');
+const mongoose = require('mongoose');
 
 // require the user model !!!!
 const User       = require('../models/user-model');
@@ -94,5 +95,26 @@ authRoutes.get('/loggedin', (req, res, next) => {
   }
   res.status(403).json({ message: 'Unauthorized' });
 });
+
+/* GET /profile/:id afficher le detail d'un profile */
+
+authRoutes.get('/profile/:id', (req,res,next) => {
+
+  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: "L'identifiant spécifié n'est pas valide"});
+    return;
+  }
+
+  const id = req.params.id;
+
+  User.findOne({_id: id})
+    .then (user => {
+      console.log(user)
+      res.json(user)
+    })
+    .catch(err => {
+      res.json(err);
+    })
+})
 
 module.exports = authRoutes;

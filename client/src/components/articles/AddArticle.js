@@ -28,7 +28,7 @@ class AddArticle extends Component {
 
 //     authService.upload(formData)
 //       .then(response => {
-//         this.props.updateUser(response);
+        
 //       })
 //     ;
 //   }
@@ -55,7 +55,7 @@ class AddArticle extends Component {
             {/* <p>
             <label>
                 Photo:
-                <input type="file" name="picture" onChange={this.handleUpload} />
+                <input type="file" name="photo" onChange={this.handleUpload} />
             </label>
             </p> */}
          

@@ -36,6 +36,6 @@ export {logout}
 // export {edit}
 
 function upload(formdata) {
-  return service.post('/upload', formdata).then(response => response.data)
+  return service.post('/auth/upload', formdata).then(response => response.data)
 }
 export {upload}

@@ -13,6 +13,8 @@ import AddAnnonce from './components/annonces/AddAnnonce'
 import Search from './components/annonces/Search'
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import profileUser from './components/profileUser/profileUser';
+import ArticlesList from './components/articles/ArticlesList';
+import ProtectedRoute from './components/auth/protected-routes'
 
 class App extends React.Component {
   state = { 
@@ -66,6 +68,7 @@ class App extends React.Component {
     if (redirectToAnnonceList) {
       return <Redirect to="/annonce" />
     }
+    console.log('userinsession:', this.state.loggedInUser)
     return(
       <div className="App">
           <Navbar userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser} />
@@ -78,6 +81,7 @@ class App extends React.Component {
             <Route exact path="/annonce/:id" component = {AnnonceDetails} />
             <Route exact path="/annonce/new" render={() => <AddAnnonce />} />
             <Route exact path="/profile/:id" component = {profileUser} />
+            <ProtectedRoute exact path="/article" user={this.state.loggedInUser} component={ArticlesList} />
           </Switch>
         <Footer />
         </div>

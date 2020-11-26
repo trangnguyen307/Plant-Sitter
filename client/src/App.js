@@ -82,7 +82,7 @@ class App extends React.Component {
             <Route exact path="/annonce/:id" component = {AnnonceDetails} />
             <Route exact path="/annonce/new" render={() => <AddAnnonce />} />
             <ProtectedRoute exact path="/article" user={this.state.loggedInUser} component={ArticlesList} />
-            <ProtectedRoute exact path="/annonce/new" component={AddArticle} />
+            <Route exact path="/article/new" component={AddArticle} />
             <Route exact path="/profile/:id" component = {profileUser} />
           </Switch>
         <Footer />

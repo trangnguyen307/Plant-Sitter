@@ -5,16 +5,15 @@ import { Link } from 'react-router-dom';
 class AnnonceDetails extends Component {
 
     state = {
-      annonce: {}
+      article: {}
     }
 
-    getSingleAnnonce = () => {
+    getSingleArticle = () => {
       const { params } = this.props.match;
-      console.log('params ', params)
-      service.get(`/annonce/${params.id}`)
+      service.get(`/article/${params.id}`)
         .then( responseFromApi =>{
-          const theAnnonce = responseFromApi.data;
-          this.setState({annonce:theAnnonce});
+          const theArticle = responseFromApi.data;
+          this.setState({article:theArticle});
         })
         .catch((err)=>{
           console.log('Error while fetching project', err)
@@ -22,27 +21,22 @@ class AnnonceDetails extends Component {
     }
 
     componentDidMount(){
-      this.getSingleAnnonce();
+      this.getSingleArticle();
     }
 
     render () {
       console.log(this.state)
       return (
         <div>
-          <img  src={this.state.annonce.picture} alt="" / >
+          <img  src={this.state.article.picture} alt="photo" / >
 
           <div>
-            <p>Type: {this.state.annonce.type}</p>
-            <p>Description: {this.state.annonce.content}</p>
-            <p>Adresse: {this.state.annonce.adress}</p>
-            <p>Période: </p>
-            <p>Déplacement: {this.state.annonce.moving ? "Oui" : "Non"}</p>
-            <div>
-              <p>Créé par: {this.state.annonce.author}</p>
+            
+        
               <Link to="/">Messages</Link>
               <Link to="/">Modifier</Link>
             
-            </div>
+           
           </div>
 
           <Link to='/annonce'>Retourner</Link>

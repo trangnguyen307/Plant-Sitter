@@ -31,7 +31,7 @@ class Profile extends React.Component {
     return (
       <>
         {!this.props.user._id ? (
-          <Redirect to="/profileUser" />
+          <Redirect to="/" />
         ) : (
           <Popin one={(
             <>

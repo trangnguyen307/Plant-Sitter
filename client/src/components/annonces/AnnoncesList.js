@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 
 
 class AnnonceList extends Component {
-    state = { listOfAnnonces: [] }
+    state = { 
+      listOfAnnonces: []
+     }
 
     getAllAnnonces = () =>{
         axios.get(`http://localhost:5000/annonce`)
@@ -16,15 +18,26 @@ class AnnonceList extends Component {
         .catch(err => console.log('Error while fetching projects', err))
     }
 
-  componentDidMount() {
-    this.getAllAnnonces();
-  }
+    componentDidMount() {
+      this.getAllAnnonces();
+    }
 
   render(){
+    const listOfAnnonncesFilter = this.state.listOfAnnonces.filter(annonce =>{
+      const matchAddress = annonce.adress.toLowerCase().includes(this.props.queryAddress);
+      let matchMoving;
+      // if (this.state.queryMoving === "true" || this.state.queryMoving === "false" ) {
+      //   matchMoving = annonce.moving === this.state.queryMoving
+      // }
+
+      return matchAddress
+    } )
+                                                           
+    console.log('query:  ', this.state.queryAddress)
     return(
       <div>
         <div style={{width: '60%', float:"left"}}>
-          { this.state.listOfAnnonces.map( annonce => {
+          { listOfAnnonncesFilter.map( annonce => {
             return (
               <div key={annonce._id}>
                 <Link to={`/annonce/${annonce._id}`}>

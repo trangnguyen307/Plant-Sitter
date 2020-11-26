@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import service from '../auth/auth-service'
 
@@ -13,8 +12,7 @@ class AddAnnonce extends Component {
     const description = this.state.description;
     const moving = this.state.moving;
     const adress = this.state.adress;
-    const author = this.props.userInSession;
-    service.post("/annonce", { type, description, moving, adress,author })
+    service.post("/annonce", { type, description, moving, adress })
       .then( () => {
         this.setState({type: "", description: "",moving: "", adress: "",redirect: true});
       })
@@ -62,7 +60,7 @@ class AddAnnonce extends Component {
             <p>
                 <label>Déplacement:</label>
                 <select name="moving" value={this.state.moving} onChange={this.handleChange}>
-                  <option value="">Chosir une réponse</option>
+                  <option value="">Chosissez une réponse</option>
                   <option value= "true">Oui</option>
                   <option value="false">Non</option>
                 </select>

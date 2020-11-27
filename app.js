@@ -84,5 +84,7 @@ app.use('/message', messagesRoutes );
 const articleRoutes = require('./routes/article-routes');
 app.use('/article', articleRoutes );
 
+const fileUploadRoutes = require ('./routes/file-upload-routes');
+app.use('/', fileUploadRoutes)
 
 module.exports = app;

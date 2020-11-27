@@ -9,7 +9,7 @@ const Article = require ('../models/article-model')
 const User = require ('../models/user-model')
 
 /* POST /article créer d'une article */
-articleRouter.post('/',uploader.single('photo'), (req, res, next) => {
+articleRouter.post('/', (req, res, next) => {
    
   console.log('currentUser', req.session.currentUser)
   // vérifier si logged-in
@@ -31,16 +31,12 @@ articleRouter.post('/',uploader.single('photo'), (req, res, next) => {
         return;
       }
 
-      const {title,content,photo} = req.body;
-      let pictureURL = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM-VfnDe5n-tVS6ZpnKfMekZoX0o_V2_o7gw&usqp=CAU';
-      if (req.file) {
-        pictureURL = req.file.path
-      }
+      const {title,content,imageUrl} = req.body;
 
       Article.create({
         title,
         content,
-        photo : pictureURL
+        imageUrl
       })
         .then(response => {
           res.json(response)

@@ -4,13 +4,13 @@ import service from '../auth/auth-service'
 
 
 class AddArticle extends Component {
-  state = { title: "", content: "", redirect: false }
+  state = { title: "", content: "",photo:{}, redirect: false }
    
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const {title, content} = this.state
+    const {title, content,photo} = this.state
 
-    service.post("/article", { title, content })
+    service.post("/article", { title, content,photo })
       .then( () => {
         this.setState({title: "", content: "",redirect: true});
       })
@@ -18,20 +18,17 @@ class AddArticle extends Component {
   }
 
   handleChange = (event) => {  
+    console.log('file',event.target.files[0])
     const {name, value} = event.target;
     this.setState({[name]: value});
   }
 
-//   handleUpload = (event) => {
-//     let formData = new FormData();
-//     formData.append('picture', event.target.files[0]);
+  handleUpload = (event) => {
+    let formData = new FormData();
+    formData.append('picture', event.target.files[0]);
 
-//     authService.upload(formData)
-//       .then(response => {
-        
-//       })
-//     ;
-//   }
+    this.setState({photo: formData})
+  }
 
   render(){
     const { redirect } = this.state;
@@ -44,7 +41,7 @@ class AddArticle extends Component {
         <form onSubmit={this.handleFormSubmit}>
             <p>
                 <label>Titre:</label>
-                <textarea name="title" value={this.state.title} onChange={ e => this.handleChange(e)} />  
+                <textarea name="title" value={this.state.title} onChange={ e => this.handleUpload(e)} />  
             </p>
          
             <p>
@@ -52,12 +49,12 @@ class AddArticle extends Component {
                 <textarea name="content" value={this.state.content} onChange={ e => this.handleChange(e)} />  
             </p>
           
-            {/* <p>
+            <p>
             <label>
                 Photo:
-                <input type="file" name="photo" onChange={this.handleUpload} />
+                <input type="file" name="photo" onChange={e => this.handleUpload(e)} />
             </label>
-            </p> */}
+            </p>
          
           
           <input type="submit" value="Submit" />

@@ -6,6 +6,15 @@ class profileUser extends React.Component {
     state = {
         user: {}
       }
+
+      
+  logout = (event) => {
+    service.logout()
+      .then(response => {
+        this.props.updateUser(false);
+      })
+    ;
+  }
   
       getUserProfile = () => {
         const params  = this.props.match.params;
@@ -29,6 +38,9 @@ class profileUser extends React.Component {
             <div>
                 <img  src={this.state.user.avatar} alt="avatar"/ >
             <div className="my-profile">
+                <div className="cta">
+                    <button className="btn logout" onClick={this.logout}>Logout</button>
+                </div>
                 <h3>Mon profil</h3>
                 <p>Salut {this.state.user.username} !</p>
                 <p>Je consulte mes messages</p> {/*en attendant que les messages soient créées*/}

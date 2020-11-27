@@ -38,7 +38,7 @@ class ArticlesList extends Component {
             return (
               <div key={article._id}>
                 <Link to={`/article/${article._id}`}>
-                  <img  src={article.photo} alt="" / >
+                  <img  src={article.imageUrl} alt="" / >
                 </Link>
             
                 <h1>{article.title}</h1>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import {logout} from '../auth/auth-service';
 import './Navbar.css';
 
@@ -32,8 +33,9 @@ const navbar = (props) => {
               </div>
             ) : (
               <div className="compte">
-              <Link to='/signup' style={{textDecoration: 'none'}}>Créer un compte </Link>
-              <Link to='/login' style={{textDecoration: 'none'}}>Me connecter</Link>
+                <Redirect to="/" />
+                <Link to='/signup' style={{textDecoration: 'none'}}>Créer un compte </Link>
+                <Link to='/login' style={{textDecoration: 'none'}}>Me connecter</Link>
             </div> 
             )}
              

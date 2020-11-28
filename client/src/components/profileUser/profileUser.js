@@ -1,22 +1,11 @@
 import React from 'react'; 
 import service from '../auth/auth-service';
-import {logout} from '../auth/auth-service';
-import { Link, Redirect } from 'react-router-dom';
 
 class profileUser extends React.Component {
 
     state = {
         user: {}
       }
-
-      
-  logout = (event) => {
-   logout()
-      .then(response => {
-        this.setState({user:null});
-      })
-    ;
-  }
   
       getUserProfile = () => {
         const params  = this.props.match.params;
@@ -36,9 +25,6 @@ class profileUser extends React.Component {
       }
     render(){
       console.log('this.state.user profileuser:  ', this.state.user)
-      if (this.state.user === null) {
-        return <Redirect to= {'/'}/>;
-      }
         return(
             <div>
                 <img  src={this.state.user.avatar} alt="avatar"/ >

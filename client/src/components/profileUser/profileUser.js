@@ -27,7 +27,7 @@ class profileUser extends React.Component {
       console.log('this.state.user profileuser:  ', this.state.user)
         return(
             <div>
-                <img  src={this.state.user.avatar} alt="avatar"/ >
+                <img  src={this.state.user.imageUrl} alt="avatar"/ >
             <div className="my-profile">
                 <div className="cta">
                     <button className="btn logout" onClick={this.logout}>Logout</button>

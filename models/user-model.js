@@ -21,7 +21,7 @@ const userSchema = new Schema({
 		required: [true, "Password is required"],
   },
 
-  avatar: {
+  imageUrl: {
     type: String,
     default : 'https://cityofvinton.org/wp-content/uploads/2020/08/emptyphoto.jpg'
 

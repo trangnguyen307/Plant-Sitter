@@ -8,12 +8,12 @@ const mongoose = require('mongoose');
 const User       = require('../models/user-model');
 
 
-authRoutes.post('/signup', uploader.single('avatar'), (req, res, next) => {
+authRoutes.post('/signup', (req, res, next) => {
   console.log(req.body, req.file)
   const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
-  const avatar = req.body.avatar;
+  const imageUrl = req.body.imageUrl;
   
   if (!username || !email || !password) {
     res.status(400).json({ message: 'Vous devez remplir les champs Nom, Email et Mot de passe' });
@@ -38,7 +38,7 @@ authRoutes.post('/signup', uploader.single('avatar'), (req, res, next) => {
       const aNewUser = new User({
         username:username,
         email:email,
-        avatar:avatar,
+        imageUrl:imageUrl,
         passwordHash: hashPass
       });
     

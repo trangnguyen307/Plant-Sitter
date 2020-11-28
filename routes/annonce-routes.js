@@ -7,7 +7,7 @@ const uploader = require('../configs/cloudinary-setup.config');
 const Annonce = require ('../models/annonce-model')
 
 /* POST créer une nouvel annonce */
-router.post('/',uploader.single('picture'), (req, res, next) => {
+router.post('/', (req, res, next) => {
 
     console.log('currentUser', req.session.currentUser)
 
@@ -18,11 +18,8 @@ router.post('/',uploader.single('picture'), (req, res, next) => {
       });
       return;
     }
-    const {type,moving,description,adress} = req.body;
-    let pictureURL = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM-VfnDe5n-tVS6ZpnKfMekZoX0o_V2_o7gw&usqp=CAU';
-    if (req.file) {
-      pictureURL = req.file.path
-    }
+    const {type,moving,description,adress,imageUrl} = req.body;
+    
 
     Annonce.create({
       type,
@@ -30,7 +27,7 @@ router.post('/',uploader.single('picture'), (req, res, next) => {
       description,
       adress,
       author: req.session.currentUser._id,
-      picture: pictureURL,
+      imageUrl
     })
       .then(response => {
         res.json(response)

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 // import {Link, Redirect} from 'react-router-dom'
 
 
@@ -24,6 +25,9 @@ class Search extends React.Component {
     }
 
     render () {
+        if(this.state.redirect) {
+            return <Redirect to={{ pathname:"/annonce", query:this.state.queryAddress  }} />
+        }
         return (
             <div>
                 <form onSubmit = {this.handleFormSubmit}>

@@ -27,7 +27,7 @@ class AnnonceDetails extends Component {
     }
 
     render () {
-      console.log('annonceDetails',this.state.annonce.author["username"])
+      console.log('annonceDetails',this.state.annonce.author)
       return (
         <div>
           <img  src={this.state.annonce.picture} alt="" / >

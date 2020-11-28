@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Search from './Search';
 
 
 class AnnonceList extends Component {
     state = { 
-      listOfAnnonces: []
+      listOfAnnonces: [],
+      queryAddress:'',
+      queryMoving: ''
+
      }
 
     getAllAnnonces = () =>{
@@ -22,21 +26,35 @@ class AnnonceList extends Component {
       this.getAllAnnonces();
     }
 
-  render(){
-    const listOfAnnonncesFilter = this.state.listOfAnnonces.filter(annonce =>{
-      const matchAddress = annonce.adress.toLowerCase().includes(this.props.queryAddress);
-      // let matchMoving;
-      // if (this.state.queryMoving === "true" || this.state.queryMoving === "false" ) {
-      //   matchMoving = annonce.moving === this.state.queryMoving
-      // }
+    updateQueryAddress = (newValue) => {
+      this.setState({queryAddress:newValue})
+    }
+  
+    updateQueryMoving = (newValue) => {
+      this.setState({queryMoving:newValue})
+    }
 
-      return matchAddress
-    } )
+  render(){
+    let listOfAnnonncesFilter;
+    if (this.props.location.query) {
+      listOfAnnonncesFilter = this.state.listOfAnnonces.filter(annonce =>{
+        const matchAddress = annonce.adress.toLowerCase().includes(this.props.location.query);
+        return matchAddress
+      } )
+    } else {
+      listOfAnnonncesFilter = this.state.listOfAnnonces.filter(annonce =>{
+        const matchAddress = annonce.adress.toLowerCase().includes(this.state.queryAddress);
+        return matchAddress
+      } )
+    }
+    
+    
                                                            
     console.log('query:  ', this.state.queryAddress)
    
     return(
       <div>
+        <Search updateQueryAddress={this.updateQueryAddress} updateQueryMoving={this.updateQueryMoving} redirectToAnnonceList={this.redirectToAnnonceList}/>
         <div style={{width: '60%', float:"left"}}>
           { listOfAnnonncesFilter.map( annonce => {
              console.log('author', annonce.author)

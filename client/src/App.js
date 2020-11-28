@@ -10,8 +10,6 @@ import {loggedin} from './components/auth/auth-service';
 import AnnonceList from './components/annonces/AnnoncesList'
 import AnnonceDetails from './components/annonces/AnnonceDetails'
 import AddAnnonce from './components/annonces/AddAnnonce'
-import Search from './components/annonces/Search'
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import ArticlesList from './components/articles/ArticlesList';
 import ProtectedRoute from './components/auth/protected-routes'
 import AddArticle from './components/articles/AddArticle';
@@ -20,12 +18,7 @@ import ArticleDetails from './components/articles/ArticleDetails'
 
 class App extends React.Component {
   state = { 
-    loggedInUser: null,
-    query : {
-      queryAddress:'',
-      queryMoving: ''
-    },
-    redirectToAnnonceList: false
+    loggedInUser: null
   }
 
   // HERE
@@ -51,35 +44,17 @@ class App extends React.Component {
       loggedInUser: userObj
     })
   }
-  
-  updateQueryAddress = (newValue) => {
-    this.setState({queryAddress:newValue})
-  }
 
-  updateQueryMoving = (newValue) => {
-    this.setState({queryMoving:newValue})
-  }
-
-  redirectToAnnonceList = (value) => {
-    if (value === true) {
-      this.setState({redirectToAnnonceList: true})
-    }
-  }
   render () {
-    const { redirectToAnnonceList } = this.state;
-    if (redirectToAnnonceList) {
-      return <Redirect to="/annonce" />
-    }
     console.log('userinsession:', this.state.loggedInUser)
     return(
       <div className="App">
           <Navbar userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser} />
-          <Search updateQueryAddress={this.updateQueryAddress} updateQueryMoving={this.updateQueryMoving} redirectToAnnonceList={this.redirectToAnnonceList}/>
           <Switch>
             <Route exact path="/" component = {Home} />
             <Route exact path="/signup" render={() => <Signup updateUser={this.updateLoggedInUser}/>} />
             <Route exact path='/login' render={() => <Login updateUser={this.updateLoggedInUser} user={this.state.loggedInUser}/>}/>
-            <Route exact path="/annonce" render = {() => <AnnonceList queryAddress = {this.state.query.queryAddress} queryMoving = {this.state.query.queryMoving}/>} />
+            <Route exact path="/annonce" component={AnnonceList} />
             <Route exact path="/annonce/new" component={AddAnnonce} />
             <Route exact path="/annonce/:id" component = {AnnonceDetails} />
             <ProtectedRoute exact path="/article" user={this.state.loggedInUser} component={ArticlesList} />

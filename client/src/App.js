@@ -15,7 +15,7 @@ import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import ArticlesList from './components/articles/ArticlesList';
 import ProtectedRoute from './components/auth/protected-routes'
 import AddArticle from './components/articles/AddArticle';
-import profileUser from './components/profileUser/profileUser';
+import ProfileUser from './components/profileUser/ProfileUser';
 import ArticleDetails from './components/articles/ArticleDetails'
 
 class App extends React.Component {
@@ -85,7 +85,7 @@ class App extends React.Component {
             <ProtectedRoute exact path="/article" user={this.state.loggedInUser} component={ArticlesList} />
             <Route exact path="/article/new" component={AddArticle} />
             <Route exact path="/article/:id" render= {(props) => <ArticleDetails {...props}  user={this.state.loggedInUser}/>} />
-            <Route exact path="/profile/:id" render={() => <profileUser updateUser={this.updateLoggedInUser}/>} />
+            <Route exact path="/profile/:id" render={(props) => <ProfileUser {...props} updateUser={this.updateLoggedInUser}/>} />
           </Switch>
         <Footer />
         </div>

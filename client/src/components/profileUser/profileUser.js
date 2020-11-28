@@ -2,20 +2,22 @@ import React from 'react';
 import service from '../auth/auth-service';
 import {upload} from '../auth/auth-service';
 
-class profileUser extends React.Component {
+class ProfileUser extends React.Component {
 
     state = {
         user: {},
+        updateAvatar: ''
       }
 
       handleFormSubmit = (event) => {
         event.preventDefault();
-        const imageUrl = this.state.user.imageUrl;
-        service.post("/profile", { imageUrl })
-          .then( () => {
-            this.setState({imageUrl: ""});
-          })
-          .catch( error => console.log(error) )
+        // const imageUrl = this.state.user.imageUrl;
+        // service.post("/profile", { imageUrl })
+        //   .then( () => {
+        //     this.setState({imageUrl: ""});
+        //   })
+        //   .catch( error => console.log(error) )
+        this.props.updateUser(this.state.updateAvatar)
       }
   
       getUserProfile = () => {
@@ -40,7 +42,7 @@ class profileUser extends React.Component {
         formData.append('imageUrl', event.target.files[0]);
     
         upload(formData)
-               .then(response => this.props.updateUser(response))
+               .then(response => this.setState({updateAvatar: response}))
                .catch(err => {
                 console.log('Error while uploading the file: ', err);
               });
@@ -72,4 +74,4 @@ class profileUser extends React.Component {
     }
 }
 
-export default profileUser;
+export default ProfileUser;

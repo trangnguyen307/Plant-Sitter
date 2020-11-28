@@ -1,10 +1,21 @@
 import React from 'react'; 
 import service from '../auth/auth-service';
+import {upload} from '../auth/auth-service';
 
 class profileUser extends React.Component {
 
     state = {
-        user: {}
+        user: {},
+      }
+
+      handleFormSubmit = (event) => {
+        event.preventDefault();
+        const imageUrl = this.state.user.imageUrl;
+        service.post("/profile", { imageUrl })
+          .then( () => {
+            this.setState({imageUrl: ""});
+          })
+          .catch( error => console.log(error) )
       }
   
       getUserProfile = () => {
@@ -23,14 +34,33 @@ class profileUser extends React.Component {
       componentDidMount(){
         this.getUserProfile();
       }
+
+      handleUpload = (event) => {
+        let formData = new FormData();
+        formData.append('imageUrl', event.target.files[0]);
+    
+        upload(formData)
+               .then(response => this.props.updateUser(response))
+               .catch(err => {
+                console.log('Error while uploading the file: ', err);
+              });
+        
+      }
+
     render(){
       console.log('this.state.user profileuser:  ', this.state.user)
         return(
             <div>
-                <img  src={this.state.user.imageUrl} alt="avatar"/ >
             <div className="my-profile">
-                <div className="cta">
-                    <button className="btn logout" onClick={this.logout}>Logout</button>
+                <div className="upload-photo">
+                    <form onSubmit={this.handleFormSubmit}>
+                      <label>
+                        Avatar :
+                        <img className="avatar" src={this.state.user.imageUrl || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />
+                        <input type="file" name="image" onChange={this.handleUpload} />
+                      </label>
+                      <input type="submit" value="Submit"/>
+                    </form>
                 </div>
                 <h3>Mon profil</h3>
                 <p>Salut {this.state.user.username} !</p>

@@ -117,4 +117,47 @@ authRoutes.get('/profile/:id', (req,res,next) => {
     })
 })
 
+/*PUT /profile/:id modifier un élément du profil */
+
+authRoutes.put('/profile/:id', (req,res,next) => {
+
+  if (!req.session.currentUser) {
+    res.status(401).json({
+      message: "Connectez-vous pour modifier ce profile!"
+    });
+    return;
+  }
+
+  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: "L'identifiant spécifié n'est pas valide"});
+    return;
+  }
+
+  const id = req.params.id;
+
+  //vérifier si admin ou pas
+  User.findById(req.session.currentUser._id)
+    .then (reponse => {
+
+      if (reponse.username !== 'admin') {
+        res.status(403).json({
+          message: "Connectez-vous pour modifier ce profile!"
+        });
+        return;
+      }
+
+  User.findByIdAndUpdate(id,req.body)
+    .then (reponse => {
+      res.json({ message: `Le user ${req.params.id} a été modifié` })
+    })
+    .catch(err => {
+      res.json(err);
+    }) 
+
+    })
+    .catch(err => {
+      res.json(err);
+    })
+})
+
 module.exports = authRoutes;

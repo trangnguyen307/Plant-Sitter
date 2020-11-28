@@ -14,6 +14,7 @@ class AnnonceDetails extends Component {
       service.get(`/annonce/${params.id}`)
         .then( responseFromApi =>{
           const theAnnonce = responseFromApi.data;
+          console.log('theAnnonce', theAnnonce)
           this.setState({annonce:theAnnonce});
         })
         .catch((err)=>{
@@ -26,7 +27,7 @@ class AnnonceDetails extends Component {
     }
 
     render () {
-      console.log(this.state)
+      console.log('annonceDetails',this.state.annonce.author["username"])
       return (
         <div>
           <img  src={this.state.annonce.picture} alt="" / >
@@ -38,7 +39,7 @@ class AnnonceDetails extends Component {
             <p>Période: </p>
             <p>Déplacement: {this.state.annonce.moving ? "Oui" : "Non"}</p>
             <div>
-              <p>Créé par: {this.state.annonce.author}</p>
+              {/* <p>Créé par: {this.state.annonce.author.username}</p> */}
               <Link to="/">Messages</Link>
               <Link to="/">Modifier</Link>
             

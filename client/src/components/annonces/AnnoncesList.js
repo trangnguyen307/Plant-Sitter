@@ -25,7 +25,7 @@ class AnnonceList extends Component {
   render(){
     const listOfAnnonncesFilter = this.state.listOfAnnonces.filter(annonce =>{
       const matchAddress = annonce.adress.toLowerCase().includes(this.props.queryAddress);
-      let matchMoving;
+      // let matchMoving;
       // if (this.state.queryMoving === "true" || this.state.queryMoving === "false" ) {
       //   matchMoving = annonce.moving === this.state.queryMoving
       // }
@@ -34,14 +34,16 @@ class AnnonceList extends Component {
     } )
                                                            
     console.log('query:  ', this.state.queryAddress)
+   
     return(
       <div>
         <div style={{width: '60%', float:"left"}}>
           { listOfAnnonncesFilter.map( annonce => {
+             console.log('author', annonce.author)
             return (
               <div key={annonce._id}>
                 <Link to={`/annonce/${annonce._id}`}>
-                  <img  src={annonce.picture} alt="" / >
+                  <img  src={annonce.imageUrl} alt="" / >
                 </Link>
             
                 <p>{annonce.content}</p>

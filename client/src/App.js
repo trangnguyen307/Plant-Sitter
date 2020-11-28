@@ -80,8 +80,8 @@ class App extends React.Component {
             <Route exact path="/signup" render={() => <Signup updateUser={this.updateLoggedInUser}/>} />
             <Route exact path='/login' render={() => <Login updateUser={this.updateLoggedInUser} user={this.state.loggedInUser}/>}/>
             <Route exact path="/annonce" render = {() => <AnnonceList queryAddress = {this.state.query.queryAddress} queryMoving = {this.state.query.queryMoving}/>} />
+            <Route exact path="/annonce/new" component={AddAnnonce} />
             <Route exact path="/annonce/:id" component = {AnnonceDetails} />
-            <Route exact path="/annonce/new" render={() => <AddAnnonce />} />
             <ProtectedRoute exact path="/article" user={this.state.loggedInUser} component={ArticlesList} />
             <Route exact path="/article/new" component={AddArticle} />
             <Route exact path="/article/:id" render= {(props) => <ArticleDetails {...props}  user={this.state.loggedInUser}/>} />

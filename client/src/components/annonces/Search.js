@@ -18,8 +18,8 @@ class Search extends React.Component {
         console.log('queryAddress:  ', this.state.queryAddress)
         console.log('queryMoving:  ', this.state.queryMoving)
         event.preventDefault();
-        this.props.updateQueryAddress(this.state.queryAddress)
-        this.props.updateQueryMoving(this.state.queryMoving)
+        this.props.updateQueryAddress && this.props.updateQueryAddress(this.state.queryAddress)
+        this.props.updateQueryMoving && this.props.updateQueryMoving(this.state.queryMoving)
         this.setState({redirect:true})
     }
 

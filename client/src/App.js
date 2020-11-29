@@ -16,7 +16,8 @@ import ArticlesList from './components/articles/ArticlesList';
 import ProtectedRoute from './components/auth/protected-routes'
 import AddArticle from './components/articles/AddArticle';
 import ProfileUser from './components/profileUser/ProfileUser';
-import ArticleDetails from './components/articles/ArticleDetails'
+import ArticleDetails from './components/articles/ArticleDetails';
+
 
 class App extends React.Component {
   state = { 

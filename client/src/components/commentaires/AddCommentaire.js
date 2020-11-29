@@ -1,23 +1,29 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import service from '../auth/auth-service'
-import {upload} from '../auth/auth-service'
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import service from '../auth/auth-service';
+import Rating from '../Rating';
+
 
 
 class AddCommentaire extends Component {
   state = { 
       content: "", 
-      number: 0 ,
+      //note: 0 , // J'ai mis les notes avec RATING (stars)
       redirect: false 
     }
+
+    
+  ratingChanged = (newRating) => {
+    console.log(newRating);
+  };
    
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const {type, description, moving, adress, imageUrl} = this.state
+    const {content} = this.state
     
-    service.post("/annonce", { type, description, moving, adress, imageUrl })
+    service.post("/profile", { content})
       .then( () => {
-        this.setState({type: "", description: "",moving: "", adress: "", imageUrl: "",redirect: true});
+        this.setState({content: "", redirect: true});
       })
       .catch( error => console.log(error) )
   }
@@ -28,62 +34,27 @@ class AddCommentaire extends Component {
     this.setState({[name]: value});
   }
 
-  handleUpload = (event) => {
-    let formData = new FormData();
-    formData.append('imageUrl', event.target.files[0]);
-
-    upload(formData)
-           .then(response => this.setState({imageUrl: response.secure_url}))
-           .catch(err => {
-            console.log('Error while uploading the file: ', err);
-          });
-  }
 
   render(){
     const { redirect } = this.state;
     if (redirect) {
-      return <Redirect to="/annonce" />;
+      return <Redirect to="/profile" />; // Un seul profile pour le user et le bénévole
     }
+
+    
+
     return(
       <div>
+            <p>
+              <label>Note:</label>
+              <Rating />
+            </p>
         <form onSubmit={this.handleFormSubmit}>
             <p>
-                <label>Type:
-                  <select name="type" value={this.state.type} onChange={e => this.handleChange(e)}>
-                    <option value="">Chosir une réponse</option>
-                    <option value= "offer">Je voudrais devenir un(e) bénévole</option>
-                    <option value="request">Je voudrais chercher un(e) bénévole</option>
-                  </select>
-                </label>
+                <label>Votre commentaire:</label>
+                <textarea name="content" value={this.state.content} onChange={ e => this.handleChange(e)} />  
             </p>
-         
-            <p>
-                <label>Description:</label>
-                <textarea name="description" value={this.state.description} onChange={ e => this.handleChange(e)} />  
-            </p>
-          
-            <p>
-                <label>Déplacement:</label>
-                <select name="moving" value={this.state.moving} onChange={e => this.handleChange(e)}>
-                  <option value="">Chosissez une réponse</option>
-                  <option value= "true">Oui</option>
-                  <option value="false">Non</option>
-                </select>
-            </p>
-          
-            <p>
-                <label>Votre Adresse:</label>
-                <textarea name="adress" value={this.state.adress} onChange={ e => this.handleChange(e)} />
-            </p>
-          
-            <p>
-            <label>
-                Photo:
-                <input type="file" onChange={this.handleUpload} />
-            </label>
-            </p>
-         
-          
+
           <input type="submit" value="Submit" />
         </form>
       </div>

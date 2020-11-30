@@ -2,6 +2,7 @@ import React from 'react';
 import service from '../auth/auth-service';
 import {upload} from '../auth/auth-service';
 import AddCommentaire from '../commentaires/AddCommentaire';
+import CommentairesList from '../commentaires/CommentairesList';
 
 class ProfileUser extends React.Component {
 
@@ -69,7 +70,7 @@ class ProfileUser extends React.Component {
                 <h3>Mon profil</h3>
                 <p>Salut {this.state.user.username} !</p>
                 <p>Je consulte mes messages</p> {/*en attendant que les messages soient créées*/}
-                <p>Je consulte mes commentaires</p> {/*en attendant que les commentaires soient créées*/}
+                <p>Je consulte mes commentaires : <CommentairesList/></p> {/*en attendant que les commentaires soient créées*/}
             </div>
             </div>
         )

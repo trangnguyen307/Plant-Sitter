@@ -139,9 +139,9 @@ authRoutes.put('/profile/:id', (req,res,next) => {
   User.findById(req.session.currentUser._id)
     .then (reponse => {
 
-      if (reponse.username !== 'admin') {
+      if (reponse.username !== req.session.currentUser.username) {
         res.status(403).json({
-          message: "Connectez-vous pour modifier ce profile!"
+          message: "Vous n'avez pas droit à modifier ce profile!"
         });
         return;
       }

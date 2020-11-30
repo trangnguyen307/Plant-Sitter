@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import './Homepage.css';
 import Search from './annonces/Search'
 

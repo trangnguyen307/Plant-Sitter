@@ -61,11 +61,11 @@ class AnnonceList extends Component {
             return (
               <div key={annonce._id}>
                 <Link to={`/annonce/${annonce._id}`}>
-                  <img  src={annonce.imageUrl} alt="" / >
+                  <img  src={annonce.imageUrl} style={{width: "300px"}} alt="" / >
                 </Link>
             
                 <p>{annonce.content}</p>
-                <p>Auteur: {annonce.author.username}</p>
+                <p>Auteur: {annonce.author.username}<span><Link to={`/profile/${annonce.author._id}`}>Voir Detail</Link></span></p>
                 <p>Adresse: {annonce.adress}</p>
               </div>
             )})

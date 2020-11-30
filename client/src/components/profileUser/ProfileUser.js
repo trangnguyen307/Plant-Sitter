@@ -1,4 +1,5 @@
 import React from 'react'; 
+import {Link} from 'react-router-dom'
 import service from '../auth/auth-service';
 import {upload} from '../auth/auth-service';
 import AddCommentaire from '../commentaires/AddCommentaire';
@@ -7,7 +8,8 @@ class ProfileUser extends React.Component {
 
     state = {
         user: {},
-        updateAvatar: ''
+        updateAvatar: '',
+        show: 'profile'
       }
 
       handleFormSubmit = (event) => {
@@ -57,23 +59,20 @@ class ProfileUser extends React.Component {
     render(){
         return(
             <div>
-            <AddCommentaire />
-            <div className="my-profile">
-                <div className="upload-photo">
-                    <form onSubmit={this.handleFormSubmit}>
-                      <label>
-                        Avatar :
-                        <img className="avatar" src={this.state.user.imageUrl || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />
-                        <input type="file" ref={ref=> this.fileInput = ref} name="imageUrl" onChange={this.handleUpload} />
-                      </label>
-                      <input type="submit" value="Submit"/>
-                    </form>
-                </div>
-                <h3>Mon profil</h3>
-                <p>Salut {this.state.user.username} !</p>
-                <p>Je consulte mes messages</p> {/*en attendant que les messages soient créées*/}
-                <p>Je consulte mes commentaires</p> {/*en attendant que les commentaires soient créées*/}
-            </div>
+              <h3>Mon profil</h3>
+              <p>Salut {this.state.user.username} !</p>
+              <div className="my-profile">
+                  <div className="upload-photo">
+                      <form onSubmit={this.handleFormSubmit}>
+                          <img className="avatar" alt="" style={{width:"200px"}} src={this.state.user.imageUrl || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />
+                          <p>
+                            <input type="file" ref={ref=> this.fileInput = ref} name="imageUrl" onChange={this.handleUpload} />
+                          </p>  
+                        <input type="submit" value="Télécharger"/>
+                      </form>
+                  </div>
+                  
+              </div>
             </div>
         )
     }

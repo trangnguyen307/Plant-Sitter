@@ -1,6 +1,7 @@
 import React from 'react'; 
 import service from '../auth/auth-service';
 import {upload} from '../auth/auth-service';
+import AddCommentaire from '../commentaires/AddCommentaire';
 
 class ProfileUser extends React.Component {
 
@@ -56,6 +57,7 @@ class ProfileUser extends React.Component {
     render(){
         return(
             <div>
+            <AddCommentaire />
             <div className="my-profile">
                 <div className="upload-photo">
                     <form onSubmit={this.handleFormSubmit}>

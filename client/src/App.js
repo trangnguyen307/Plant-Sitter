@@ -17,6 +17,7 @@ import ProtectedRoute from './components/auth/protected-routes'
 import AddArticle from './components/articles/AddArticle';
 import ProfileUser from './components/profileUser/ProfileUser';
 import ArticleDetails from './components/articles/ArticleDetails';
+import CommentairesList from './components/commentaires/CommentairesList';
 
 
 class App extends React.Component {
@@ -86,7 +87,7 @@ class App extends React.Component {
             <ProtectedRoute exact path="/article" user={this.state.loggedInUser} component={ArticlesList} />
             <Route exact path="/article/new" component={AddArticle} />
             <Route exact path="/article/:id" render= {(props) => <ArticleDetails {...props}  user={this.state.loggedInUser}/>} />
-            <Route exact path="/profile/:id" render={(props) => <ProfileUser {...props} updateUser={this.updateLoggedInUser}/>} />
+            <Route exact path="/profile/:id" render={(props) => <ProfileUser {...props} updateUser={this.updateLoggedInUser}/>} component={CommentairesList} />
           </Switch>
         <Footer />
         </div>

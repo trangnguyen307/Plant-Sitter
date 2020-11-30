@@ -76,7 +76,7 @@ const annonceRoutes = require('./routes/annonce-routes');
 app.use('/annonce', annonceRoutes);
 
 const commentaireRoutes = require('./routes/commentaire-routes');
-app.use('/commentaire', commentaireRoutes);
+app.use('/profile', commentaireRoutes);
 
 const messagesRoutes = require('./routes/messages-routes');
 app.use('/message', messagesRoutes );

@@ -15,6 +15,7 @@ import ProtectedRoute from './components/auth/protected-routes'
 import AddArticle from './components/articles/AddArticle';
 import ProfileUser from './components/profileUser/ProfileUser';
 import ArticleDetails from './components/articles/ArticleDetails'
+import { Router } from 'react-router-dom/cjs/react-router-dom.min';
 
 class App extends React.Component {
   state = { 

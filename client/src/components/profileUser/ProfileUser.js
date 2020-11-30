@@ -11,13 +11,16 @@ class ProfileUser extends React.Component {
 
       handleFormSubmit = (event) => {
         event.preventDefault();
-        // const imageUrl = this.state.user.imageUrl;
-        // service.post("/profile", { imageUrl })
-        //   .then( () => {
-        //     this.setState({imageUrl: ""});
-        //   })
-        //   .catch( error => console.log(error) )
-        this.props.updateUser(this.state.updateAvatar)
+        const params  = this.props.match.params;
+  
+        const imageUrl = this.state.updateAvatar
+        console.log('imageUrl', imageUrl)
+        service.put(`/auth/profile/${params.id}`, {imageUrl})
+               .then(response => {
+                 console.log('Le profil a été modifié');
+                 this.getUserProfile();
+                 this.fileInput.value = "";
+                })
       }
   
       getUserProfile = () => {
@@ -40,9 +43,10 @@ class ProfileUser extends React.Component {
       handleUpload = (event) => {
         let formData = new FormData();
         formData.append('imageUrl', event.target.files[0]);
+        console.log('file upload', event.target.files)
     
         upload(formData)
-               .then(response => this.setState({updateAvatar: response}))
+               .then(response => this.setState({updateAvatar: response.secure_url}))
                .catch(err => {
                 console.log('Error while uploading the file: ', err);
               });
@@ -50,7 +54,6 @@ class ProfileUser extends React.Component {
       }
 
     render(){
-      console.log('this.state.user profileuser:  ', this.state.user)
         return(
             <div>
             <div className="my-profile">
@@ -59,7 +62,7 @@ class ProfileUser extends React.Component {
                       <label>
                         Avatar :
                         <img className="avatar" src={this.state.user.imageUrl || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />
-                        <input type="file" name="image" onChange={this.handleUpload} />
+                        <input type="file" ref={ref=> this.fileInput = ref} name="imageUrl" onChange={this.handleUpload} />
                       </label>
                       <input type="submit" value="Submit"/>
                     </form>

@@ -2,3 +2,51 @@
     display: flex;
     /* flex-direction: row; */
 }
+
+
+/*
+
+#     #                                                  
+##   ## ######  ####   ####    ##    ####  ######  ####  
+# # # # #      #      #       #  #  #    # #      #      
+#  #  # #####   ####   ####  #    # #      #####   ####  
+#     # #           #      # ###### #  ### #           # 
+#     # #      #    # #    # #    # #    # #      #    # 
+#     # ######  ####   ####  #    #  ####  ######  ####  
+                                                         
+ #####                                      
+#     # ######  ####  ##### #  ####  #    # 
+#       #      #    #   #   # #    # ##   # 
+ #####  #####  #        #   # #    # # #  # 
+      # #      #        #   # #    # #  # # 
+#     # #      #    #   #   # #    # #   ## 
+ #####  ######  ####    #   #  ####  #    # 
+                                            */
+
+.messagesSection {
+    display: flex;
+    margin: 20px;
+    width: 500px;
+}
+.messagesSection .displayName {
+    width: 30%;
+}
+.messagesSection .displayMessages {
+    margin-left: 50px;
+    width: 70%;
+    background-color: rgb(223, 207, 207);
+}
+.messagesSection .send {
+    float: right;
+    margin-right: 20px;
+    background-color: green;
+    border-radius: 5px;
+    padding: 10px;
+}
+.messagesSection .receiver {
+    float: left;
+    margin-left: 20px;
+    background-color: honeydew;
+    border-radius: 5px;
+    padding: 10px;
+}

@@ -13,7 +13,6 @@ class ProfilePublic extends React.Component {
   
       getUserProfile = () => {
         const params  = this.props.match.params;
-        console.log('params ', params)
         service.get(`/auth/profile/${params.id}`)
           .then( responseFromApi =>{
             const theUser = responseFromApi.data;
@@ -29,8 +28,9 @@ class ProfilePublic extends React.Component {
       }
 
     render(){
-        // console.log('profilepublic', this.state.user.createdAt.toLocaleDateString())
         return(
+          
+            this.props.userInSession ? 
             <div id = "profilePublic">
               <div id="firstSection">
                   <img src={this.state.user.imageUrl} style={{width:"200px"}} alt='Avatar' />
@@ -48,7 +48,13 @@ class ProfilePublic extends React.Component {
                 <button onClick={ev => this.setState({showComment: true})}>Ecrire vos commentaires</button>
               }
               
-            </div>
+            </div> 
+          :
+          <div>
+            Connectez-vous pour consulter le profil !!!
+          </div>
+          
+            
         )
     }
 }

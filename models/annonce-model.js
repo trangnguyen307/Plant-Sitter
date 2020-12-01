@@ -6,7 +6,7 @@ const annonceSchema = new Schema({
   moving: Boolean,
   description: String,
   adress: String,
-  author: [{ type : Schema.Types.ObjectId, ref: 'User' }],
+  author: { type : Schema.Types.ObjectId, ref: 'User' },
   imageUrl: {
     type: String,
     default : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM-VfnDe5n-tVS6ZpnKfMekZoX0o_V2_o7gw&usqp=CAU'

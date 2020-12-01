@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from 'axios';
 import './Homepage.css';
+import Search from './annonces/Search'
 
 class Home extends React.Component {
     
@@ -12,6 +12,7 @@ class Home extends React.Component {
               <div className="presentation">
               <div className="phrase-accroche">
                 <h3>Le premier site de Plant-Sitter Français !</h3>
+                <Search />
               </div>
               </div>
               <div className="consignes">

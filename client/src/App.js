@@ -21,6 +21,7 @@ import ProfilePublic from './components/profileUser/ProfilePublic';
 import MessagesForm from './components/messages/MessagesForm'
 
 
+
 class App extends React.Component {
   state = { 
     loggedInUser: null
@@ -85,6 +86,7 @@ class App extends React.Component {
             </Route>
             <Route exact path="/profile/:id" render={(props) => <ProfilePublic {...props} userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser}/>} />
             <Route exact path="/send-messages/:id" render={(props) => <MessagesForm {...props} userInSession={this.state.loggedInUser} />}/>
+            {/* <Route exact path="/profile" render={(props) => <ProfileUser {...props} updateUser={this.updateLoggedInUser} fetchUser={this.fetchUser} user={this.state.loggedInUser} />} /> */}
           </Switch>
         <Footer />
         </div>

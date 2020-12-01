@@ -31,7 +31,7 @@ class Login extends Component {
     console.log('this.props.user: ', this.props.user)
     const { redirect } = this.state;
     if (this.props.user?._id) {
-      return <Redirect to= {`/profile/${this.props.user._id}`}/>;
+      return <Redirect to= {`/profile/`}/>;
     }
     return(
       <div>

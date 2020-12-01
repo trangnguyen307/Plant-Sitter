@@ -8,9 +8,7 @@ import Rating from '../Rating';
 class AddCommentaire extends Component {
   state = { 
       content: "", 
-      //note: 0 , // J'ai mis les notes avec RATING (stars)
-      redirect: false,
-      userId: ""
+      note: "" // J'ai mis les notes avec RATING (stars)
     }
 
     
@@ -20,11 +18,12 @@ class AddCommentaire extends Component {
    
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const {content} = this.state
+    const {content, note} = this.state
     
-    service.post("/profile", { content})
+    service.post("/commentaire", { content, note})
       .then( (response) => {
-        this.setState({content: "", redirect: true, userId: response.data._id});
+        this.setState({content: "", note: ""});
+        this.props.fetchUser();
       })
       .catch( error => console.log(error) )
   }
@@ -36,17 +35,14 @@ class AddCommentaire extends Component {
   }
 
   render(){
-    const { redirect, userId } = this.state;
-    if (redirect) {
-      return <Redirect to= {`/profile/${userId}`}/>;
-    }
+    
     return(
       <div>
+        <form onSubmit={this.handleFormSubmit}>
             <p>
               <label>Note:</label>
               <Rating />
             </p>
-        <form onSubmit={this.handleFormSubmit}>
             <p>
                 <label>Votre commentaire:</label>
                 <textarea name="content" value={this.state.content} onChange={ e => this.handleChange(e)} />  

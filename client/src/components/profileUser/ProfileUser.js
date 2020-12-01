@@ -22,10 +22,10 @@ class ProfileUser extends React.Component {
   };
 
   getUserProfile = () => {
-    const params = this.props.match.params;
-    console.log("params ", params);
+    const user = this.props.user;
+    console.log("user !!!", user);
     service
-      .get(`/auth/profile/${params.id}`)
+      .get(`/auth/profile/${user._id}`)
       .then((responseFromApi) => {
         const theUser = responseFromApi.data;
         this.setState({ user: theUser });

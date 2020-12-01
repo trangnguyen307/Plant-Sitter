@@ -9,7 +9,7 @@ class CommentairesList extends Component {
      }
 
     getAllCommentaires = () =>{
-        axios.get(`http://localhost:5000/profile/:id`)
+        axios.get(`http://localhost:5000/profile`)
         .then(responseFromApi => {
             this.setState({
                 listOfCommentaires: responseFromApi.data
@@ -22,8 +22,17 @@ class CommentairesList extends Component {
       this.getAllCommentaires();
     }
 
+    deleteCommentaire = (content) => {
+        const commentairesCopy = this.state.listOfCommentaires;
+        const commentaireIndex = commentairesCopy.findIndex(commentaire => commentaire.content === content);
+        commentairesCopy.splice(commentaireIndex, 1);
+        this.setState({
+            listOfCommentaires:commentairesCopy 
+        })
+      }
+
   render(){
-    
+    const { listOfCommentaires } = this.state;
     return(
       <div>
         <div style={{width: '60%', float:"left"}}>
@@ -33,6 +42,7 @@ class CommentairesList extends Component {
                 {/*<Link to={`/profile/${commentaire._id}`}>
                 </Link> */}
                 <p>{commentaire.content}</p>
+                <button onClick = {event => {this.deleteCommentaire(commentaire.content)}}>Supprimer le commentaire</button>
               </div>
             )})
           }

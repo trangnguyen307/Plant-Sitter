@@ -15,6 +15,7 @@ commentaireRoutes.post('/', (req, res, next) => {
       return;
     }
     const {content} = req.body;
+    console.log("server commentaires:" + content);
 
     Comment.create({
       content,
@@ -22,7 +23,8 @@ commentaireRoutes.post('/', (req, res, next) => {
       receiver: req.session.currentUser._id
       
     })
-      .then(response => {
+      .then(response => { 
+        console.log("MARCHE" + response);
         res.json(response)
       })
       .catch(err => {

@@ -9,7 +9,8 @@ class AddCommentaire extends Component {
   state = { 
       content: "", 
       //note: 0 , // J'ai mis les notes avec RATING (stars)
-      redirect: false 
+      redirect: false,
+      userId: ""
     }
 
     
@@ -22,8 +23,8 @@ class AddCommentaire extends Component {
     const {content} = this.state
     
     service.post("/profile", { content})
-      .then( () => {
-        this.setState({content: "", redirect: true});
+      .then( (response) => {
+        this.setState({content: "", redirect: true, userId: response.data._id});
       })
       .catch( error => console.log(error) )
   }
@@ -34,15 +35,11 @@ class AddCommentaire extends Component {
     this.setState({[name]: value});
   }
 
-
   render(){
-    const { redirect } = this.state;
+    const { redirect, userId } = this.state;
     if (redirect) {
-      return <Redirect to="/profile" />; // Un seul profile pour le user et le bénévole
+      return <Redirect to= {`/profile/${userId}`}/>;
     }
-
-    
-
     return(
       <div>
             <p>

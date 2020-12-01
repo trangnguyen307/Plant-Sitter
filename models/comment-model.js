@@ -3,8 +3,8 @@ const Schema   = mongoose.Schema;
 
 const commentSchema = new Schema({
   content: String,
-  sender: [{ type : Schema.Types.ObjectId, ref: 'User' }],
-  receiver: [{ type : Schema.Types.ObjectId, ref: 'User' }],
+  sender: { type : Schema.Types.ObjectId, ref: 'User' },
+  receiver: { type : Schema.Types.ObjectId, ref: 'User' },
   note: Number
 
 }, 

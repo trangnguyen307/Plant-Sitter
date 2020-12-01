@@ -14,17 +14,30 @@ messagesRoutes.post('/', (req, res, next) => {
       });
       return;
     }
-    const {message} = req.body;
+    const {messages, receiver, sender, annonce} = req.body;
 
-    Message.create({
-      message
-    })
-      .then(response => {
-        res.json(response)
-      })
-      .catch(err => {
-        res.json(err);
-      })
+    // Message.find({$and: [{sender}, {receiver},{annonce}]})
+    // .then (message => {
+    //   console.log(message)
+    //   if(message) {
+    //     Message.update({_id:message._id}, {$push : {messages:messages}})
+        
+    //   } else {
+        Message.create({
+          messages,
+          receiver,
+          sender,
+          annonce
+        })
+          .then(response => {
+            res.json(response)
+          })
+          .catch(err => {
+            res.json(err);
+          })
+      // }
+    // })
+    
 });
 
 /*GET afficher tous les messages */
@@ -34,6 +47,33 @@ messagesRoutes.get('/', (req, res, next) => {
     .populate('sender receiver')
     .then(allTheMessages => {
       res.json(allTheMessages);
+    })
+    .catch(err => {
+      res.json(err);
+    })
+})
+
+/*chercher messages par sender id ou receiver id*/
+messagesRoutes.get('/find/:id', (req, res, next) => {
+
+  if (!req.session.currentUser) {
+    res.status(401).json({
+      message: "Connectez-vous pour consulter un message !"
+    });
+    return;
+  }
+
+  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: "L'identifiant spécifié n'est pas valide"});
+    return;
+  }
+
+  const id = req.params.id;
+
+  Message.find({$or : [{sender: id},{receiver: id}] })
+    .populate('sender receiver annonce')
+    .then (messages => {
+      res.json(messages)
     })
     .catch(err => {
       res.json(err);

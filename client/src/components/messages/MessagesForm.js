@@ -6,7 +6,7 @@ import service from '../auth/auth-service'
 class MessagesForm extends Component {
   state = {
       annonce: {},
-      messages:'',
+      message:'',
       redirect: false
    }
 
@@ -32,14 +32,14 @@ class MessagesForm extends Component {
    
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const {messages} = this.state;
+    const {message} = this.state;
     const receiver = this.state.annonce.author._id;
     const sender = this.props.userInSession._id;
     const annonce = this.state.annonce._id
     
-    service.post("/message", {messages, receiver, sender,annonce})
+    service.post("/message", {message, receiver, sender,annonce})
       .then( () => {
-        this.setState({messages:'',redirect: true});
+        this.setState({message:'',redirect: true});
       })
       .catch( error => console.log(error) )
   }
@@ -67,7 +67,7 @@ class MessagesForm extends Component {
         <form onSubmit={this.handleFormSubmit}> 
             <p>
                 <label>Vos messages:</label>
-                <textarea name="messages" value={this.state.messages} onChange={ e => this.handleChange(e)} />  
+                <textarea name="message" value={this.state.message} onChange={ e => this.handleChange(e)} />  
             </p>
           <input type="submit" value="Submit" />
         </form>

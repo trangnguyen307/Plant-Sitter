@@ -18,7 +18,8 @@ import ArticleDetails from './components/articles/ArticleDetails';
 import MyMessages from './components/profileUser/Mymessages';
 import MyComments from './components/profileUser/MyComments';
 import ProfilePublic from './components/profileUser/ProfilePublic';
-import MessagesForm from './components/messages/MessagesForm'
+import MessagesForm from './components/messages/MessagesForm';
+import MessageDetail from './components/messages/MessageDetail'
 
 
 
@@ -79,6 +80,7 @@ class App extends React.Component {
                     <Route exact path="/profile/myProfile/:id/messages" render={(props) => <MyMessages {...props} userInSession={this.state.loggedInUser}/>} />
                     <Route exact path="/profile/myProfile/:id/comments" render={(props) => <MyComments {...props} userInSession={this.state.loggedInUser}/>} />
                     <Route exact path="/profile/myProfile/:id" render={(props) => <ProfileUser {...props} updateUser={this.updateLoggedInUser}/>} /> 
+                    <Route exact path="/profile/myProfile/:profileid/message/:messageid" render={(props) => <MessageDetail {...props} userInSession={this.state.loggedInUser} /> }/>
                   </Switch>
                 </div>
                 

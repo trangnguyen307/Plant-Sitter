@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import service from '../auth/auth-service';
 import './ProfileUser.css'
 class MyMessages extends React.Component {
@@ -44,22 +45,12 @@ class MyMessages extends React.Component {
                     return (
                     <div key={message._id} className="messagesSection">
                         <div className="displayName">
-                            {message.sender._id === this.props.userInSession._id ? message.receiver.username : message.sender.username}
+                            <Link to={`/profile/myProfile/${this.props.userInSession._id}/message/${message._id}`}>{message.sender._id === this.props.userInSession._id ? message.receiver.username : message.sender.username}</Link>
                         </div>
                         <div className="displayMessages">
                             <div >
                                 <p>Pour: {message.annonce.description}</p>
-                                {
-                                    message.sender._id === this.props.userInSession._id ? 
-                                    <p className="send">{message.messages[0]}</p> :
-                                    <p className="receiver">{message.messages[0]}</p>
-                                }
-                            </div>
-                            <div>
-                                <form>  
-                                    <textarea name="messages" value= {this.state.addMessage} placeholder="Ecrivez vous un message" onChange={ e => this.handleChange(e)} />  
-                                    <input type="submit" value="Submit" />
-                                </form>
+                                <p>{message.messagesBox[message.messagesBox.length-1].message}</p>
                             </div>
                         </div>
             

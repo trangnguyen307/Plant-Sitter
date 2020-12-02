@@ -14,17 +14,29 @@ messagesRoutes.post('/', (req, res, next) => {
       });
       return;
     }
-    const {messages, receiver, sender, annonce} = req.body;
+    const {message, receiver, sender, annonce} = req.body;
+    let messagesBox = [];
+    messagesBox.push({author : req.session.currentUser,message : message}); 
 
-    // Message.find({$and: [{sender}, {receiver},{annonce}]})
-    // .then (message => {
-    //   console.log(message)
-    //   if(message) {
-    //     Message.update({_id:message._id}, {$push : {messages:messages}})
+    Message.findOne({$and: [{sender:sender}, {receiver:receiver},{annonce:annonce}]})
+    .then (message => {
+      console.log(message)
+      if(message) {
+        Message.findOneAndUpdate({_id : message.id}, {$push: {messagesBox: { 
+          message:req.body.message,
+          author: req.session.currentUser
+        }}})
+          .populate('sender receiver annonce')
+          .then (message => {
+            res.json(message)
+          })
+          .catch(err => {
+            res.json(err);
+          })
         
-    //   } else {
+      } else {
         Message.create({
-          messages,
+          messagesBox,
           receiver,
           sender,
           annonce
@@ -35,8 +47,8 @@ messagesRoutes.post('/', (req, res, next) => {
           .catch(err => {
             res.json(err);
           })
-      // }
-    // })
+      }
+    })
     
 });
 
@@ -80,6 +92,32 @@ messagesRoutes.get('/find/:id', (req, res, next) => {
     })
 })
 
+/*Add messages */
+
+messagesRoutes.put('/add-message/:messageid', (req, res, next) => {
+
+  if (!req.session.currentUser) {
+    res.status(401).json({
+      message: "Connectez-vous pour envoyer un message !"
+    });
+    return;
+  }
+
+  const id = req.params.messageid;
+  console.log('req.body.addMessage',req.body.addMessage)
+  Message.findOneAndUpdate({_id : id}, {$push: {messagesBox: { 
+    message:req.body.addMessage,
+    author: req.body.author
+  }}})
+    .populate('sender receiver annonce')
+    .then (message => {
+      res.json(message)
+    })
+    .catch(err => {
+      res.json(err);
+    })
+})
+
 /* GET /messages/:id afficher le detail d'un message */
 
 messagesRoutes.get('/:id', (req, res, next) => {
@@ -99,7 +137,7 @@ messagesRoutes.get('/:id', (req, res, next) => {
   const id = req.params.id;
 
   Message.findOne({_id: id})
-    .populate('sender receiver')
+    .populate('sender receiver annonce')
     .then (message => {
       res.json(message)
     })

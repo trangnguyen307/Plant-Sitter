@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const messageSchema = new Schema({
-  messages: [String],
+  messagesBox: [{
+    message: {type: String},
+    author: { type : String }
+  }],
   sender: { type : Schema.Types.ObjectId, ref: 'User' },
   receiver: { type : Schema.Types.ObjectId, ref: 'User' },
   annonce: { type : Schema.Types.ObjectId, ref: 'Annonce' }

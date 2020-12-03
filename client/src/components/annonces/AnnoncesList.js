@@ -8,7 +8,9 @@ class AnnonceList extends Component {
     state = { 
       listOfAnnonces: [],
       queryAddress:'',
-      queryMoving: ''
+      queryMoving: '',
+      queryStartDate:'',
+      queryEndDate:''
 
      }
 
@@ -33,6 +35,12 @@ class AnnonceList extends Component {
     updateQueryMoving = (newValue) => {
       this.setState({queryMoving:newValue})
     }
+    updateQueryStartDate = (newValue) => {
+      this.setState({queryStartDate: newValue})
+    }
+    updateQueryEndDate = (newValue) => {
+      this.setState({queryEndDate: newValue})
+    }
 
   render(){
     let listOfAnnonncesFilter;
@@ -45,34 +53,42 @@ class AnnonceList extends Component {
       listOfAnnonncesFilter = this.state.listOfAnnonces.filter(annonce =>{
         const matchAddress = annonce.adress.toLowerCase().includes(this.state.queryAddress);
         return matchAddress
-      } )
+      })
+      if(this.state.queryMoving === "true" || this.state.queryMoving === "false") {
+        listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce => annonce.moving === this.state.queryMoving)
+      }
     }
     
     
                                                            
-    console.log('query:  ', this.state.queryAddress)
+    console.log('query:  ', this.state.queryAddress, this.state.queryMoving, this.state.queryEndDate, this.state.queryStartDate)
    
     return(
       <div>
-        <Search updateQueryAddress={this.updateQueryAddress} updateQueryMoving={this.updateQueryMoving} redirectToAnnonceList={this.redirectToAnnonceList}/>
+        <Search updateQueryAddress={this.updateQueryAddress} 
+                updateQueryMoving={this.updateQueryMoving} 
+                updateQueryStartDate={this.updateQueryStartDate}
+                updateQueryEndDate= {this.updateQueryEndDate}
+                redirectToAnnonceList={this.redirectToAnnonceList}
+        />
         <div style={{width: '60%', float:"left"}}>
-          { listOfAnnonncesFilter.map( annonce => {
-             console.log('author', annonce.author)
-            return (
+          { listOfAnnonncesFilter.map( annonce => (
               <div key={annonce._id}>
                 <Link to={`/annonce/${annonce._id}`}>
                   <img  src={annonce.imageUrl} style={{width: "300px"}} alt="" / >
                 </Link>
             
-                <p>{annonce.content}</p>
+                <p>{annonce.title}</p>
+                <p>Type: {annonce.type === "offer" ? "Offer" : "Chercher un(e) bénévol(e)"}</p>
+                <p>Période: De {annonce.startDate} A {annonce.endDate}</p>
+                <p>Adresse: {annonce.adress}</p>
                 <div>
                   <p>Auteur: {annonce.author.username}</p>
                   <Link to={`/profile/${annonce.author._id}`}>Voir Profil</Link>
                   <Link to={`/send-messages/${annonce._id}`}>Envoyer Messages</Link>
-                </div>
-                <p>Adresse: {annonce.adress}</p>
+                </div>  
               </div>
-            )})
+            ))
           }
         </div>
         <div>

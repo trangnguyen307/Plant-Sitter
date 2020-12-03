@@ -5,22 +5,21 @@ import {upload} from '../auth/auth-service'
 
 
 class AddAnnonce extends Component {
-  state = { type: "", description: "",moving: "", adress: "", imageUrl: "", redirect: false }
+  state = { type: "",title:"", description: "",moving: "", adress: "", imageUrl: "",startDate:"", endDate:"", redirect: false }
    
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const {type, description, moving, adress, imageUrl} = this.state
+    const {type,title, description, moving, adress, imageUrl,startDate,endDate} = this.state
     
-    service.post("/annonce", { type, description, moving, adress, imageUrl })
+    service.post("/annonce", { type, title, description, moving, adress, imageUrl, startDate, endDate })
       .then( () => {
-        this.setState({type: "", description: "",moving: "", adress: "", imageUrl: "",redirect: true});
+        this.setState({type: "",title:"", description: "",moving: "", adress: "", imageUrl: "",startDate:"", endDate: "", redirect: true});
       })
       .catch( error => console.log(error) )
   }
 
   handleChange = (event) => {  
     const {name, value} = event.target;
-    console.log('name',name, 'value', value)
     this.setState({[name]: value});
   }
 
@@ -36,6 +35,7 @@ class AddAnnonce extends Component {
   }
 
   render(){
+    console.log('date',typeof this.state.startDate, this.state.endDate)
     const { redirect } = this.state;
     if (redirect) {
       return <Redirect to="/annonce" />;
@@ -52,10 +52,18 @@ class AddAnnonce extends Component {
                   </select>
                 </label>
             </p>
-         
+            <p>
+                <label>Title:</label>
+                <textarea name="title" value={this.state.title} onChange={ e => this.handleChange(e)} />  
+            </p>
             <p>
                 <label>Description:</label>
                 <textarea name="description" value={this.state.description} onChange={ e => this.handleChange(e)} />  
+            </p>
+            <p>
+                <label>Date:</label>
+                <input type="date" name="startDate" value={this.state.startDate} onChange={ e => this.handleChange(e)} /> 
+                <input type="date" name="endDate" value={this.state.endDate} onChange={ e => this.handleChange(e)} />  
             </p>
           
             <p>

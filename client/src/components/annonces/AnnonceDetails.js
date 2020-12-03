@@ -27,22 +27,22 @@ class AnnonceDetails extends Component {
     }
 
     render () {
-      console.log('annonceDetails',this.state.annonce.author)
+      if (!this.state.annonce.author) {
+        return "Loading..."
+      }
       return (
         <div>
-          <img  src={this.state.annonce.picture} alt="" / >
+          <img  src={this.state.annonce.imageUrl} alt="" / >
 
           <div>
             <p>Type: {this.state.annonce.type}</p>
-            <p>Description: {this.state.annonce.content}</p>
+            <p>Description: {this.state.annonce.description}</p>
             <p>Adresse: {this.state.annonce.adress}</p>
-            <p>Période: </p>
+            <p>Période: De {this.state.annonce.startDate} A {this.state.annonce.endDate}</p>
             <p>Déplacement: {this.state.annonce.moving ? "Oui" : "Non"}</p>
             <div>
-              {/* <p>Créé par: {this.state.annonce.author.username}</p> */}
-              <Link to="/">Messages</Link>
-              <Link to="/">Modifier</Link>
-            
+              <p>Créé par: {this.state.annonce.author.username}</p>
+              <Link to={`/send-messages/${this.state.annonce._id}`}>Envoyer Messages</Link>
             </div>
           </div>
 

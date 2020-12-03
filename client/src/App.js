@@ -66,26 +66,11 @@ class App extends React.Component {
             <Route exact path="/annonce/:id" component = {AnnonceDetails} />
             <ProtectedRoute exact path="/article" user={this.state.loggedInUser} component={ArticlesList} />
             <Route exact path="/article/new" component={AddArticle} />
-            <Route exact path="/article/:id" render= {(props) => <ArticleDetails {...props}  user={this.state.loggedInUser}/>} />
-            <Route path="/profile/myProfile/:id" id="profile">
-              <div id = 'profile'>
-                <div id="menu">
-                  <p>Hello</p>
-                  {this.state.loggedInUser && <Link to={`/profile/myProfile/${this.state.loggedInUser._id}`}>Je consulte mon profile</Link>}
-                  {this.state.loggedInUser && <Link to={`/profile/myProfile/${this.state.loggedInUser._id}/messages`}>Je consulte mes messages</Link>}
-                  {this.state.loggedInUser && <Link to={`/profile/myProfile/${this.state.loggedInUser._id}/comments`}>Je consulte mes comments</Link>}
-                </div>
-                <div>
-                  <Switch>
-                    <Route exact path="/profile/myProfile/:id/messages" render={(props) => <MyMessages {...props} userInSession={this.state.loggedInUser}/>} />
-                    <Route exact path="/profile/myProfile/:id/comments" render={(props) => <MyComments {...props} userInSession={this.state.loggedInUser}/>} />
-                    <Route exact path="/profile/myProfile/:id" render={(props) => <ProfileUser {...props} updateUser={this.updateLoggedInUser}/>} /> 
-                    <Route exact path="/profile/myProfile/:profileid/message/:messageid" render={(props) => <MessageDetail {...props} userInSession={this.state.loggedInUser} /> }/>
-                  </Switch>
-                </div>
-                
-              </div> 
-            </Route>
+            <Route exact path="/article/:id" render= {(props) => <ArticleDetails {...props}  user={this.state.loggedInUser}/>} /> 
+            <Route exact path="/profile/myProfile/:id/messages" render={(props) => <MyMessages {...props} userInSession={this.state.loggedInUser}/>} />
+            <Route exact path="/profile/myProfile/:id/comments" render={(props) => <MyComments {...props} userInSession={this.state.loggedInUser}/>} />
+            <Route exact path="/profile/myProfile/:id" render={(props) => <ProfileUser {...props} userInSession={this.state.loggedInUser} />} /> 
+            <Route exact path="/profile/myProfile/:profileid/message/:messageid" render={(props) => <MessageDetail {...props} userInSession={this.state.loggedInUser} /> }/>
             <Route exact path="/profile/:id" render={(props) => <ProfilePublic {...props} userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser}/>} />
             <Route exact path="/send-messages/:id" render={(props) => <MessagesForm {...props} userInSession={this.state.loggedInUser} />}/>
             {/* <Route exact path="/profile" render={(props) => <ProfileUser {...props} updateUser={this.updateLoggedInUser} fetchUser={this.fetchUser} user={this.state.loggedInUser} />} /> */}

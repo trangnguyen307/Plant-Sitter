@@ -7,6 +7,8 @@ class Search extends React.Component {
     state = {
         queryAddress: '',
         queryMoving: '',
+        queryStartDate:'',
+        queryEndDate:'',
         redirect: false
     }
 
@@ -21,12 +23,20 @@ class Search extends React.Component {
         event.preventDefault();
         this.props.updateQueryAddress && this.props.updateQueryAddress(this.state.queryAddress)
         this.props.updateQueryMoving && this.props.updateQueryMoving(this.state.queryMoving)
-        this.setState({redirect:true})
+        this.props.updateQueryStartDate && this.props.updateQueryStartDate(this.state.queryStartDate)
+        this.props.updateQueryEndDate && this.props.updateQueryEndDate(this.state.queryEndDate)
+        if(this.props.homepage) 
+            this.setState({redirect:true});
     }
 
     render () {
         if(this.state.redirect) {
-            return <Redirect to={{ pathname:"/annonce", query:this.state.queryAddress  }} />
+            return <Redirect to={{ pathname:"/annonce", query: {
+                queryAddress:this.state.queryAddress, 
+                queryMoving: this.state.queryMoving ,
+                queryStartDate: this.state.queryStartDate,
+                queryEndDate: this.state.queryEndDate
+            } }} />
         }
         return (
             <div>
@@ -37,6 +47,14 @@ class Search extends React.Component {
                         <option value="true">Oui</option>
                         <option value="false">Non</option>
                     </select>
+                    <label>
+                        De:
+                        <input type = 'date' name='queryStartDate' value={this.state.queryStartDate} onChange={this.handleChange} />
+                    </label>
+                    <label>
+                        A:
+                        <input type = 'date' name='queryEndDate' value={this.state.queryEndDate} onChange={this.handleChange} />
+                    </label>
                     <button>Chercher</button>
                 </form>
             </div>

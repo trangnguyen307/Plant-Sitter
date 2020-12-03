@@ -17,7 +17,8 @@ import ProfileUser from './components/profileUser/ProfileUser';
 import ArticleDetails from './components/articles/ArticleDetails';
 import MyMessages from './components/profileUser/Mymessages';
 import MyComments from './components/profileUser/MyComments';
-import ProfilePublic from './components/profileUser/ProfilePublic'
+import ProfilePublic from './components/profileUser/ProfilePublic';
+import MessagesForm from './components/messages/MessagesForm'
 
 
 
@@ -59,7 +60,7 @@ class App extends React.Component {
             <Route exact path="/" component = {Home} />
             <Route exact path="/signup" render={() => <Signup updateUser={this.updateLoggedInUser}/>} />
             <Route exact path='/login' render={() => <Login updateUser={this.updateLoggedInUser} user={this.state.loggedInUser}/>}/>
-            <Route exact path="/annonce" component={AnnonceList} />
+            <Route exact path="/annonce" render = { (props) => <AnnonceList {...props} userInSession={this.state.loggedInUser}/>} />
             <Route exact path="/annonce/new" component={AddAnnonce} />
             <Route exact path="/annonce/:id" component = {AnnonceDetails} />
             <ProtectedRoute exact path="/article" user={this.state.loggedInUser} component={ArticlesList} />
@@ -75,15 +76,17 @@ class App extends React.Component {
                 </div>
                 <div>
                   <Switch>
-                    <Route exact path="/profile/myProfile/:id/messages" render={(props) => <MyMessages {...props} updateUser={this.updateLoggedInUser}/>} />
-                    <Route exact path="/profile/myProfile/:id/comments" render={(props) => <MyComments {...props} updateUser={this.updateLoggedInUser}/>} />
+                    <Route exact path="/profile/myProfile/:id/messages" render={(props) => <MyMessages {...props} userInSession={this.state.loggedInUser}/>} />
+                    <Route exact path="/profile/myProfile/:id/comments" render={(props) => <MyComments {...props} userInSession={this.state.loggedInUser}/>} />
                     <Route exact path="/profile/myProfile/:id" render={(props) => <ProfileUser {...props} updateUser={this.updateLoggedInUser}/>} /> 
                   </Switch>
                 </div>
                 
               </div> 
             </Route>
-            <Route exact path="/profile/:id" render={(props) => <ProfilePublic {...props} updateUser={this.updateLoggedInUser}/>} />
+            <Route exact path="/profile/:id" render={(props) => <ProfilePublic {...props} userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser}/>} />
+            <Route exact path="/send-messages/:id" render={(props) => <MessagesForm {...props} userInSession={this.state.loggedInUser} />}/>
+            {/* <Route exact path="/profile" render={(props) => <ProfileUser {...props} updateUser={this.updateLoggedInUser} fetchUser={this.fetchUser} user={this.state.loggedInUser} />} /> */}
           </Switch>
         <Footer />
         </div>

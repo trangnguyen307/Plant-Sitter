@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import service from '../auth/auth-service';
-import Rating from '../Rating';
+import HoverRating from '../Rating';
 
 
 
 class AddCommentaire extends Component {
-  state = { 
+ 
+    state = { 
       content: "", 
       note: "" // J'ai mis les notes avec RATING (stars)
     }
+
+  handleRating = (ratingValue) => { 
+      this.setState({note: ratingValue}); 
+  } 
 
     
   ratingChanged = (newRating) => {
@@ -23,7 +27,6 @@ class AddCommentaire extends Component {
     service.post("/commentaire", { content, note})
       .then( (response) => {
         this.setState({content: "", note: ""});
-        this.props.fetchUser();
       })
       .catch( error => console.log(error) )
   }
@@ -41,7 +44,7 @@ class AddCommentaire extends Component {
         <form onSubmit={this.handleFormSubmit}>
             <p>
               <label>Note:</label>
-              <Rating />
+              <HoverRating onSelectRating={this.handleRating}/>
             </p>
             <p>
                 <label>Votre commentaire:</label>

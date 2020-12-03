@@ -32,13 +32,27 @@ commentaireRoutes.post('/', (req, res, next) => {
       })
 });
 
-/*GET afficher tous les commentaires */
+/* GET chercher des commentaires par sender id ou receiver id*/
+commentaireRoutes.get('/find/:id', (req, res, next) => {
 
-commentaireRoutes.get('/', (req, res, next) => {
-  Comment.find()
+  if (!req.session.currentUser) {
+    res.status(401).json({
+      message: "Connectez-vous pour consulter un commentaire !"
+    });
+    return;
+  }
+
+  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: "L'identifiant spécifié n'est pas valide"});
+    return;
+  }
+
+  const id = req.params.id;
+
+  Comment.find({$or : [{sender: id},{receiver: id}] })
     .populate('sender receiver')
-    .then(allTheComments => {
-      res.json(allTheComments);
+    .then (commentaires => {
+      res.json(commentaires)
     })
     .catch(err => {
       res.json(err);

@@ -26,7 +26,7 @@ const navbar = (props) => {
             {props.userInSession ? (
               
               <div>
-                <Link to = {`/profile/${props.userInSession._id}`}> Welcome, {props.userInSession.username}</Link>
+                <Link to = {`/profile/myprofile/${props.userInSession._id}`}> Welcome, {props.userInSession.username}</Link>
                 <button onClick={(e) => {
                   logout().then(() => props.updateUser(null))
                 }}>Logout</button>

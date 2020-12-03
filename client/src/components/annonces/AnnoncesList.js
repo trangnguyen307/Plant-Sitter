@@ -36,7 +36,7 @@ class AnnonceList extends Component {
 
   render(){
     let listOfAnnonncesFilter;
-    if (this.props.location.query) {
+    if (this.props.location?.query) {
       listOfAnnonncesFilter = this.state.listOfAnnonces.filter(annonce =>{
         const matchAddress = annonce.adress.toLowerCase().includes(this.props.location.query);
         return matchAddress
@@ -65,14 +65,18 @@ class AnnonceList extends Component {
                 </Link>
             
                 <p>{annonce.content}</p>
-                <p>Auteur: {annonce.author.username}<span><Link to={`/profile/${annonce.author._id}`}>Voir Detail</Link></span></p>
+                <div>
+                  <p>Auteur: {annonce.author.username}</p>
+                  <Link to={`/profile/${annonce.author._id}`}>Voir Profil</Link>
+                  <Link to={`/send-messages/${annonce._id}`}>Envoyer Messages</Link>
+                </div>
                 <p>Adresse: {annonce.adress}</p>
               </div>
             )})
           }
         </div>
         <div>
-          <Link to="/annonce/new">Ajouter votre annonce</Link>
+          {this.props.userInSession && <Link to="/annonce/new">Ajouter votre annonce</Link>}
         </div>
     
       </div>

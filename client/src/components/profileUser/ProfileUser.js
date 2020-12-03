@@ -5,8 +5,6 @@ import AddCommentaire from "../commentaires/AddCommentaire";
 import CommentairesList from "../commentaires/CommentairesList";
 
 class ProfileUser extends React.Component {
-
-
     state = {
         user: {},
         updateAvatar: '',

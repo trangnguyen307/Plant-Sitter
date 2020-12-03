@@ -14,11 +14,12 @@ commentaireRoutes.post('/', (req, res, next) => {
       });
       return;
     }
-    const {content} = req.body;
+    const {content, note} = req.body;
     console.log("server commentaires:" + content);
 
     Comment.create({
       content,
+      note,
       sender: req.session.currentUser._id,
       receiver: req.session.currentUser._id
       

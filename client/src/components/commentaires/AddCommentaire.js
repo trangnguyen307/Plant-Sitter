@@ -15,10 +15,6 @@ class AddCommentaire extends Component {
       this.setState({note: ratingValue}); 
   } 
 
-    
-  ratingChanged = (newRating) => {
-    console.log(newRating);
-  };
    
   handleFormSubmit = (event) => {
     event.preventDefault();

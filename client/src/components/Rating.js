@@ -25,14 +25,14 @@ const useStyles = makeStyles({
 });
 
 
-export default function HoverRating() {
+export default function HoverRating(props) {
   const [value, setValue] = React.useState(2);
   const [hover, setHover] = React.useState(-1);
   const classes = useStyles();
 
-  const handleRateChange =() => { 
-    var stars = value; 
-    this.props.onSelectRating(stars);    
+  function handleRateChange () { 
+    console.log('stars:', value)
+    props.onSelectRating(value);    
   }
 
   return (
@@ -43,7 +43,7 @@ export default function HoverRating() {
         precision={0.5}
         onChange={(event, newValue) => {
           setValue(newValue);
-          handleRateChange()
+          handleRateChange();
         }}
         onChangeActive={(event, newHover) => {
           setHover(newHover);

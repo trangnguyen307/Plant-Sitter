@@ -18,16 +18,19 @@ router.post('/', (req, res, next) => {
       });
       return;
     }
-    const {type,moving,description,adress,imageUrl} = req.body;
+    const {type,moving,title,description,adress,imageUrl, startDate, endDate} = req.body;
     
 
     Annonce.create({
       type,
       moving,
       description,
+      title,
       adress,
       author: req.session.currentUser._id,
-      imageUrl
+      imageUrl,
+      startDate,
+      endDate
     })
       .then(response => {
         res.json(response)

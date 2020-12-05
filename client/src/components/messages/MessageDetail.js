@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import service from '../auth/auth-service'
-import { Link } from 'react-router-dom';
-import '../profileUser/ProfileUser.css'
+import {Redirect } from 'react-router-dom';
+import '../profileUser/ProfileUser.css';
+
+import MenuProfile from "../profileUser/MenuProfile";
+
 
 class MessageDetail extends Component {
 
@@ -49,18 +52,19 @@ class MessageDetail extends Component {
 
     render () {
      const {theMessage} = this.state
-     if (!theMessage._id) return <p>loading...</p>
+     if (!theMessage._id) return <p>Loading...</p>
 
-     console.log('good message', theMessage)
+     if(!this.props.userInSession) return <p> Vous devez s'identifier pour consulter vos messages  </p>
 
       return (
+        
         <div className="messagesSection">
-          
+          <MenuProfile userInSession={this.props.userInSession}/> 
           <div className="displayName">
             <div className="displayMessages">
                 <div >
                     <span>{theMessage.sender._id === this.props.userInSession._id ? theMessage.receiver.username : theMessage.sender.username }</span>
-                    <span>Pour: {theMessage.annonce.description}</span>
+                    {theMessage.annonce && <span>Pour: {theMessage.annonce.description}</span>}
                     {
                         theMessage.messagesBox.map(el => el.author === this.props.userInSession._id ? 
                         <p className="send" key= {el._id}>{el.message}</p> : 

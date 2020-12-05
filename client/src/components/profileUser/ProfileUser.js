@@ -1,6 +1,7 @@
 import React from "react";
 import service from "../auth/auth-service";
 import { upload } from "../auth/auth-service";
+import MenuProfile from "./MenuProfile";
 
 class ProfileUser extends React.Component {
     state = {
@@ -56,6 +57,7 @@ class ProfileUser extends React.Component {
     render(){
         return(
             <div>
+              <MenuProfile userInSession={this.props.userInSession}/>
               <h3>Mon profil</h3>
               <p>Salut {this.state.user.username} !</p>
               <div className="my-profile">

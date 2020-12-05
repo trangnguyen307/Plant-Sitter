@@ -12,7 +12,7 @@ class Home extends React.Component {
               <div className="presentation">
               <div className="phrase-accroche">
                 <h3>Le premier site de Plant-Sitter Français !</h3>
-                <Search />
+                <Search homepage={true}/>
               </div>
               </div>
               <div className="consignes">

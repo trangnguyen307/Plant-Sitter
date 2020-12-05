@@ -56,3 +56,15 @@
 .messagesSection .send, .receiver {
     position: relative;
 }
+
+.profile {
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+  }
+  
+#menu {
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+  }

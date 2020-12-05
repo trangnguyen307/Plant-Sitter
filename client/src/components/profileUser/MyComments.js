@@ -1,4 +1,5 @@
 import React from 'react';
+import MenuProfile from "./MenuProfile";
 import {Link} from 'react-router-dom'
 import service from '../auth/auth-service';
 import Rating from '@material-ui/lab/Rating';
@@ -49,8 +50,10 @@ class MyComments extends React.Component {
     }
 
     render () {
+        console.log('props userinsession',this.props.userInSession)
         return (
-            <div>
+            <div className='profile'>
+                <MenuProfile userInSession={this.props.userInSession}/>
                 { this.state.commentaires.map( commentaire => {
                     return (
                     <div key={commentaire._id} className="commentairesSection">

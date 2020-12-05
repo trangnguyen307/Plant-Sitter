@@ -19,9 +19,9 @@ commentaireRoutes.post('/', (req, res, next) => {
 
     Comment.create({
       content,
-      note,
       sender: req.session.currentUser._id,
-      receiver: req.session.currentUser._id
+      receiver: req.session.currentUser._id,
+      note
       
     })
       .then(response => { 

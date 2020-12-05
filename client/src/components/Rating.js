@@ -1,4 +1,5 @@
 import React from 'react';
+import useState from 'usestate';
 import { makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
@@ -44,12 +45,13 @@ export default function HoverRating(props) {
         onChange={(event, newValue) => {
           setValue(newValue);
           handleRateChange();
+          
         }}
         onChangeActive={(event, newHover) => {
           setHover(newHover);
+          handleRateChange();
         }}
       />
-      {value !== null && <Box ml={0}>{labels[hover !== -1 ? hover : value]}</Box>}
     </div>
   );
 }

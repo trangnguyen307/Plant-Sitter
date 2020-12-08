@@ -2,7 +2,7 @@ import React from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 import Geocode from "react-geocode";
-Geocode.setApiKey("AIzaSyAHKGKuwYMxmiDc0Q9dpjqVcPze82tb30M");
+Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
 Geocode.setLanguage("fr");
 Geocode.setRegion("fr");
 
@@ -46,10 +46,9 @@ class MapContainer extends React.Component {
   }
   
  render () {
-   console.log(this.state.locations)
   return (
     <LoadScript
-      googleMapsApiKey='AIzaSyAHKGKuwYMxmiDc0Q9dpjqVcPze82tb30M'>
+      googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
        <GoogleMap
          mapContainerStyle={this.state.mapStyles}
          zoom={13}

@@ -70,7 +70,8 @@ class AnnonceList extends Component {
                 updateQueryEndDate= {this.updateQueryEndDate}
                 redirectToAnnonceList={this.redirectToAnnonceList}
         />
-        <MapContainer annonces={this.state.listOfAnnonces} />
+        {this.state.listOfAnnonces.length !== 0 && <MapContainer annonces={this.state.listOfAnnonces} />}
+
         <div style={{width: '60%', float:"left"}}>
           { listOfAnnonncesFilter.map( annonce => (
               <div key={annonce._id}>

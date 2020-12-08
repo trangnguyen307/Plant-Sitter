@@ -7,49 +7,63 @@ Geocode.setLanguage("fr");
 Geocode.setRegion("fr");
 
 
-const MapContainer = (props) => {
-  
-  const mapStyles = {        
-    height: "100vh",
-    width: "100%"};
-  
-  const defaultCenter = {
-    lat: 48.856613, lng: 2.352222
-  }
-
-  let locations = [];
-  
-  props.annonces.map(annonce => Geocode.fromAddress(annonce.adress).then(
-    response => {
-      const { lat, lng } = response.results[0].geometry.location;
-      console.log(lat, lng);
-      locations.push({
-        name:annonce,
-        location: {
-          lat: lat,
-          lng:lng
-        }
-      })
+class MapContainer extends React.Component {
+  state ={
+    mapStyles : {        
+      height: "100vh",
+      width: "100%"
     },
-    error => {
-      console.error(error);
-    }
-  ))
-  console.log('location', locations)
-  return (
-     <LoadScript
-       googleMapsApiKey='AIzaSyAHKGKuwYMxmiDc0Q9dpjqVcPze82tb30M'>
-        <GoogleMap
-          mapContainerStyle={mapStyles}
-          zoom={13}
-          center={defaultCenter}
-        >
-          {
-            
-            locations.map(item => <Marker key={item.name.title} position={{lat:item.location.lat, lng:item.location.lng}} name={"mymarker"}/>)
+    defaultCenter : {
+      lat: 48.856613, lng: 2.352222
+    },
+    locations: []
+  }
+  
+  getLocations = (address) => {
+    let locations=this.state.locations;
+    console.log('get location',locations,'address',address)
+    address.map(item => Geocode.fromAddress(item.adress).then(
+      response => {
+        const { lat, lng } = response.results[0].geometry.location;
+        console.log(lat, lng);
+        locations.push({
+          name:item,
+          location: {
+            lat: lat,
+            lng:lng 
           }
-        </GoogleMap>
-     </LoadScript>
-  )
+        });
+        this.setState({locations:locations});
+      },
+      error => {
+        console.error(error);
+      }
+    ))
+  }
+  componentDidMount() {
+    console.log('connected')
+    this.getLocations(this.props.annonces)
+  }
+  
+ render () {
+   console.log(this.state.locations)
+  return (
+    <LoadScript
+      googleMapsApiKey='AIzaSyAHKGKuwYMxmiDc0Q9dpjqVcPze82tb30M'>
+       <GoogleMap
+         mapContainerStyle={this.state.mapStyles}
+         zoom={13}
+         center={this.state.defaultCenter}
+       >
+         {/* {locations.length >0 && <Marker position={{lat:locations[0].location.lat,lng: locations[0].location.lng}} />} */}
+         {
+           
+           this.state.locations.map(item => <Marker key={item.name._id} position={{lat:item.location.lat, lng:item.location.lng}} name={item.name.title}/>)
+         }
+       </GoogleMap>
+    </LoadScript>
+ )
+ }
+  
 }
 export default MapContainer;

@@ -56,7 +56,8 @@ class App extends React.Component {
     console.log('userinsession:', this.state.loggedInUser)
     return(
       <div className="App">
-          <Navbar userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser} />
+          <Navbar/>
+          {/*<Navbar userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser} /> */}
           <Switch>
             <Route exact path="/" component = {Home} />
             <Route exact path="/signup" render={() => <Signup updateUser={this.updateLoggedInUser}/>} />

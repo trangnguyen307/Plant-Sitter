@@ -5,7 +5,7 @@ import './Footer.css';
 const footer = () => {
   return (
        <div className="footer">
-           FOOTER
+           Trang N'Guyen & Claire Lacanal - © All Rights Reserved
        </div>
       )
 }

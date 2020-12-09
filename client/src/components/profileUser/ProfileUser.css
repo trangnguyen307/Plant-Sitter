@@ -3,6 +3,16 @@
     /* flex-direction: row; */
 }
 
+.container-profile {
+    height: 43.4em;
+}
+
+.container-image-profile {
+    background-color: red;
+}
+
+
+
 
 /*
 
@@ -67,4 +77,4 @@
     display: flex;
     flex-direction: column;
     margin-right: 50px;
-  }
+}

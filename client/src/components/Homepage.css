@@ -99,4 +99,13 @@ article {
     height: 300px;
 }
 
+.stars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: #f1c40f;
+    font-size: 1.8em;
+}
+
 

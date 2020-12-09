@@ -2,6 +2,7 @@ import React from 'react';
 import './Homepage.css';
 import Search from './annonces/Search'
 import Carousel from "react-bootstrap/Carousel";
+import {BsFillStarFill} from 'react-icons/bs';
 
 class Home extends React.Component {
     
@@ -97,17 +98,35 @@ class Home extends React.Component {
                 <h3>Des utilisateurs convaincus</h3>
                 <div class="container-avis">
                 <div className="avis">
-                  <img src="five-star-rating.png" alt="stars"/>
+                  <div className="stars">
+                    <BsFillStarFill/>
+                    <BsFillStarFill/>
+                    <BsFillStarFill/>
+                    <BsFillStarFill/>
+                    <BsFillStarFill/>
+                  </div>
                   <p>C'est exactement ce que j'attendais. Application très simple d'utilisation, je ne peux plus m'en passer ! Je suis rassurée de laisser mes plantes à des gens bienveillants et passionnés ! </p>
                   <p>Cécile</p>
                 </div>
                 <div className="avis">
-                  <img src="five-star-rating.png" alt="stars"/>
+                  <div className="stars">
+                    <BsFillStarFill/>
+                    <BsFillStarFill/>
+                    <BsFillStarFill/>
+                    <BsFillStarFill/>
+                    <BsFillStarFill/>
+                  </div>
                   <p>Cette appli m'a été recommandée par une collègue, alors que j'avais tenté à plusieurs reprises de trouver une solution pour la garde de mes plantes. Vous serez en contact avec des gens sympas, toujours prêts à aider. Je recommande vivement.</p> 
                   <p>Juliette</p>     
                 </div>
                 <div className="avis">
-                  <img src="five-star-rating.png" alt="stars"/>
+                  <div className="stars">
+                    <BsFillStarFill/>
+                    <BsFillStarFill/>
+                    <BsFillStarFill/>
+                    <BsFillStarFill/>
+                    <BsFillStarFill/>
+                  </div>
                   <p>Plant-Sitter est bien plus qu'une simple application. C'est juste incroyable. J'étais une personne très stressée à l'idée de quitter mes plantes pendant mes vacances. Je suis plus détendue maintenant. MERCI Plant-Sitter.</p>
                   <p>Elise</p>
                 </div>

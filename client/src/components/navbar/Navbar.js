@@ -10,20 +10,20 @@ import "bootstrap/dist/css/bootstrap.css";
 const navbar = (props) => {
   return (
     <div>
-      <Navbar className="nav" fixed="top">
+      <Navbar className="nav">
       <Navbar.Brand href="/">Plant-Sitter</Navbar.Brand>
         <Nav className= "mr-auto">
           <Nav.Item>
-            <Nav.Link to="/">A propos</Nav.Link>
+            <Nav.Link as={Link} to="/">A propos</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link as={Link} to="/annonce">Annonce</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link to="/article">Articles & Evènements</Nav.Link>
+            <Nav.Link as={Link} to="/article">Articles & Evènements</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link to="/">Contact</Nav.Link>
+            <Nav.Link as={Link} to="/">Contact</Nav.Link>
           </Nav.Item>
         </Nav>
     {props.userInSession ? (

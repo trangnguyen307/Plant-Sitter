@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AnnoncesList from './AnnoncesList.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Search from './Search';
@@ -64,13 +65,19 @@ class AnnonceList extends Component {
     
     return(
       <div>
-        <Search updateQueryAddress={this.updateQueryAddress} 
+        <div className="search-bar">
+          <Search updateQueryAddress={this.updateQueryAddress} 
                 updateQueryMoving={this.updateQueryMoving} 
                 updateQueryStartDate={this.updateQueryStartDate}
                 updateQueryEndDate= {this.updateQueryEndDate}
                 redirectToAnnonceList={this.redirectToAnnonceList}
-        />
-        {this.state.listOfAnnonces.length !== 0 && <MapContainer annonces={this.state.listOfAnnonces} />}
+          />
+        </div>
+
+        <div className="map-div">
+          {this.state.listOfAnnonces.length !== 0 && <MapContainer annonces={this.state.listOfAnnonces} className="map" />}
+        </div>
+        
 
         <div style={{width: '60%', float:"left"}}>
           { listOfAnnonncesFilter.map( annonce => (

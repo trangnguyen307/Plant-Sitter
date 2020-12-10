@@ -4,6 +4,7 @@ import Search from './annonces/Search'
 import Carousel from "react-bootstrap/Carousel";
 import {BsFillStarFill} from 'react-icons/bs';
 
+
 class Home extends React.Component {
     
     render () {
@@ -14,9 +15,14 @@ class Home extends React.Component {
                   <div className="search-barre">
                     <Search homepage={true}/>
                   </div>
-                  <div className="phrase-accroche">
-                    <h5>Partez l'esprit tranquille avec "Plant-Sitter"</h5>
-                    <p>Le premier site de garde de plantes en France</p>
+                  <div className="presentation-img">
+                    <div className="phrase-accroche">
+                      <h5>Partez l'esprit tranquille avec "Plant-Sitter"</h5>
+                      <p>Le premier site de garde de plantes en France</p>
+                    </div>
+                    <div className="image">
+                      <img src='../../photo1.png' alt="image couverture"/>
+                    </div>
                   </div>
               </div>
 
@@ -26,7 +32,7 @@ class Home extends React.Component {
               
                 <div className="pres-article">
                   <article>
-                    <img src={""} alt=""></img>
+                    <img src='../../photo2.png' alt="image1 consigne"/>
                   </article>
                   <div className="paragraphe">
                     <p>Trouvez un plant-sitter, près de chez vous, disponible pendant vos vacances</p>
@@ -35,7 +41,7 @@ class Home extends React.Component {
                   
                 <div className="pres-article">
                   <article>
-                    <img src={""} alt=""></img>
+                    <img src='../../photo3.png' alt="image2 consigne"/>
                   </article>
                   <div className="paragraphe">
                     <p>Si vous êtes mutuellement d'accords, cliquer sur la case "réserver" du plant-sitter</p>
@@ -44,7 +50,7 @@ class Home extends React.Component {
 
                 <div className="pres-article">
                   <article>
-                    <img src={""} alt=""></img>
+                    <img src='../../photo4.png' alt="image3 consigne"/>
                   </article>
                   <div className="paragraphe">
                     <p>Ramenez vos plantes chez le plant-sitter ou confiez-lui vos clés si vous avez choisi l'option "Déplacement"</p>

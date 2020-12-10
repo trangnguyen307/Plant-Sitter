@@ -23,10 +23,10 @@ class ArticlesList extends Component {
     }
 
   render(){
-      console.log('userInSession', this.props.loggedInUser)
+      // console.log('userInSession', this.props.loggedInUser)
     return(
-      <div>
-        {this.props.loggedInUser.username === "admin" && 
+      <div style={{marginTop:"100px"}}>
+        {this.props.user.username === "admin" && 
         <div>
             <Link to="/article/new">Ajouter une article</Link>
         </div>
@@ -36,13 +36,10 @@ class ArticlesList extends Component {
         <div>
           { this.state.listOfArticles.map( article => {
             return (
-              <div key={article._id}>
-                <Link to={`/article/${article._id}`}>
-                  <img  src={article.imageUrl} alt="" / >
-                </Link>
-            
+              <div key={article._id}> 
+                <img  src={article.imageUrl} alt="" / >
                 <h1>{article.title}</h1>
-                <p>{article.content}</p>
+                <Link to={`/article/${article._id}`}>Voir plus</Link>
               </div>
             )})
           }

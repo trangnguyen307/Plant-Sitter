@@ -41,7 +41,7 @@ class AddArticle extends Component {
     }
     console.log('connected')
     return(
-      <div>
+      <div style={{marginTop:"100px"}}>
         <form onSubmit={this.handleFormSubmit}>
             <p>
                 <label>Titre:</label>

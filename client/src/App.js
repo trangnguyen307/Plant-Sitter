@@ -56,7 +56,7 @@ class App extends React.Component {
     console.log('userinsession:', this.state.loggedInUser)
     return(
       <div className="App">
-          <Navbar/>
+          <Navbar userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser}/>
           {/*<Navbar userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser} /> */}
           <Switch>
             <Route exact path="/" component = {Home} />
@@ -65,7 +65,7 @@ class App extends React.Component {
             <Route exact path="/annonce" render = { (props) => <AnnonceList {...props} userInSession={this.state.loggedInUser}/>} />
             <Route exact path="/annonce/new" component={AddAnnonce} />
             <Route exact path="/annonce/:id" component = {AnnonceDetails} />
-            <ProtectedRoute exact path="/article" user={this.state.loggedInUser} component={ArticlesList} />
+            <Route exact path="/article" render = { (props) => <ArticlesList {...props} user={this.state.loggedInUser}/>} />
             <Route exact path="/article/new" component={AddArticle} />
             <Route exact path="/article/:id" render= {(props) => <ArticleDetails {...props}  user={this.state.loggedInUser}/>} /> 
             <Route exact path="/profile/myProfile/:id/messages" render={(props) => <MyMessages {...props} userInSession={this.state.loggedInUser}/>} />

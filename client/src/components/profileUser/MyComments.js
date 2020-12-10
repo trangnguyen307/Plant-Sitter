@@ -2,7 +2,6 @@ import React from 'react';
 import MenuProfile from "./MenuProfile";
 import {Link} from 'react-router-dom'
 import service from '../auth/auth-service';
-import HoverRating from '../Rating';
 import Rating from '@material-ui/lab/Rating';
 import './ProfileUser.css'
 

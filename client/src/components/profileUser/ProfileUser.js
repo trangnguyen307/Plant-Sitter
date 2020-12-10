@@ -56,8 +56,10 @@ class ProfileUser extends React.Component {
 
     render(){
         return(
-            <div>
+            <div className="page">
+              <div className="container-profile">
               <MenuProfile userInSession={this.props.userInSession}/>
+              <div className="container-image-profile">
               <h3>Mon profil</h3>
               <p>Salut {this.state.user.username} !</p>
               <div className="my-profile">
@@ -71,6 +73,8 @@ class ProfileUser extends React.Component {
                       </form>
                   </div>
                   
+              </div>
+              </div>
               </div>
             </div>
         )

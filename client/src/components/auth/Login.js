@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Login.css';
 import {login} from './auth-service';
 import { Link, Redirect } from 'react-router-dom';
 
@@ -34,19 +35,23 @@ class Login extends Component {
       return <Redirect to= {`/profile/myProfile/${this.props.user._id}`}/>;
     }
     return(
-      <div>
-        <form onSubmit={this.handleFormSubmit}>
+      <div className="page">
+        <div className="container">
+          <div className="form-login">
+          <form onSubmit={this.handleFormSubmit} className="form-login">
           <label>Nom:</label>
           <input type="text" name="username" value={this.state.username} onChange={e => this.handleChange(e)} />
           
           <label>Mot de passe:</label>
           <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
           
-          <input type="submit" value="Login" />
+          <button>Envoyer</button>
         </form>
-        <p>Tu n'as pas de compte? 
-          <Link to={"/signup"}>Me créer un compte</Link>
+        <p>Tu n'as pas encore de compte? 
+          <Link to={"/signup"}> Me créer un compte</Link>
         </p>
+          </div>
+        </div>
       </div>
     )
   }

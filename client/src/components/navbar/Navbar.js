@@ -3,15 +3,46 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import {logout} from '../auth/auth-service';
 import './Navbar.css';
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import "bootstrap/dist/css/bootstrap.css";
 
 const navbar = (props) => {
   return (
-    <nav className="nav-style">
-  
-       
-          
-        
-      
+    <div>
+    <Navbar className="nav" fixed="top">
+      <Navbar.Brand href="/">Plant-Sitter</Navbar.Brand>
+        <Nav className= "mr-auto">
+          <Nav.Item>
+            <Nav.Link href="/">A propos</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link to="/annonce">Annonce</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="/article">Articles & Evènements</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="/">Contact</Nav.Link>
+          </Nav.Item>
+        </Nav>
+    {props.userInSession ? (
+              <div>
+                <Link to = {`/profile/myprofile/${props.userInSession._id}`}> Welcome, {props.userInSession.username}</Link>
+                <button onClick={(e) => {
+                  logout().then(() => props.updateUser(null))
+                }}>Logout</button>
+              </div>
+            ) : (
+              <div className="compte">
+                <Redirect to="/" />
+                <Link to='/signup' style={{textDecoration: 'none'}}>Créer un compte</Link>
+                <Link to='/login' style={{textDecoration: 'none'}}>Me connecter</Link>
+            </div> 
+            )}
+  </Navbar>
+    
+    {/* <nav className="nav-style">
         <ul className="nav">
           <li className="nav-elements">
             <div className="nav-title">
@@ -41,8 +72,8 @@ const navbar = (props) => {
              
           </li>
         </ul>
-     
-    </nav>
+    </nav> */}
+    </div>
   )
 }
 

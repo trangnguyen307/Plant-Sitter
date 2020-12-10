@@ -47,7 +47,7 @@ class Home extends React.Component {
                     <img src={""} alt=""></img>
                   </article>
                   <div className="paragraphe">
-                    <p>Ramenez vos plantes chez le plant-sitter ou confiez-lui vos clés si vous avez choisi l'option "à domicile"</p>
+                    <p>Ramenez vos plantes chez le plant-sitter ou confiez-lui vos clés si vous avez choisi l'option "Déplacement"</p>
                   </div>
                 </div>
               

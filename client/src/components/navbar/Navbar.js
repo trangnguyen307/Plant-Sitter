@@ -10,20 +10,20 @@ import "bootstrap/dist/css/bootstrap.css";
 const navbar = (props) => {
   return (
     <div>
-    <Navbar className="nav" fixed="top">
+      <Navbar className="nav" fixed="top">
       <Navbar.Brand href="/">Plant-Sitter</Navbar.Brand>
         <Nav className= "mr-auto">
           <Nav.Item>
-            <Nav.Link href="/">A propos</Nav.Link>
+            <Nav.Link to="/">A propos</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link to="/annonce">Annonce</Nav.Link>
+            <Nav.Link as={Link} to="/annonce">Annonce</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="/article">Articles & Evènements</Nav.Link>
+            <Nav.Link to="/article">Articles & Evènements</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="/">Contact</Nav.Link>
+            <Nav.Link to="/">Contact</Nav.Link>
           </Nav.Item>
         </Nav>
     {props.userInSession ? (
@@ -40,39 +40,8 @@ const navbar = (props) => {
                 <Link to='/login' style={{textDecoration: 'none'}}>Me connecter</Link>
             </div> 
             )}
-  </Navbar>
+  </Navbar>  
     
-    {/* <nav className="nav-style">
-        <ul className="nav">
-          <li className="nav-elements">
-            <div className="nav-title">
-              <Link to='/' style={{textDecoration: 'none'}}>PLANT-SITTER</Link>
-            </div>
-            <div className="nav-el">
-              <Link to='/' style={{textDecoration: 'none'}}>A propos</Link>
-              <Link to='/annonce' style={{textDecoration: 'none'}}>Annonce</Link>
-              <Link to='/article' style={{textDecoration: 'none'}}>Articles & Evènements</Link> 
-              <Link to='/' style={{textDecoration: 'none'}}>Contact</Link>
-            </div>
-            {props.userInSession ? (
-              
-              <div>
-                <Link to = {`/profile/myprofile/${props.userInSession._id}`}> Welcome, {props.userInSession.username}</Link>
-                <button onClick={(e) => {
-                  logout().then(() => props.updateUser(null))
-                }}>Logout</button>
-              </div>
-            ) : (
-              <div className="compte">
-                <Redirect to="/" />
-                <Link to='/signup' style={{textDecoration: 'none'}}>Créer un compte </Link>
-                <Link to='/login' style={{textDecoration: 'none'}}>Me connecter</Link>
-            </div> 
-            )}
-             
-          </li>
-        </ul>
-    </nav> */}
     </div>
   )
 }

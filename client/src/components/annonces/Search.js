@@ -43,16 +43,16 @@ class Search extends React.Component {
                 <form onSubmit = {this.handleFormSubmit}>
                     <input name = 'queryAddress' type ="text" placeholder="Adresse" value={this.state.queryAddress} onChange={this.handleChange} />
                     <select name="queryMoving" value= {this.state.queryMoving} onChange={this.handleChange}>
-                        <option value="">--Déplacement--</option>
+                        <option value="">Déplacement</option>
                         <option value="true">Oui</option>
                         <option value="false">Non</option>
                     </select>
                     <label>
-                        De:
+                        Du:
                         <input type = 'date' name='queryStartDate' value={this.state.queryStartDate} onChange={this.handleChange} />
                     </label>
                     <label>
-                        A:
+                        Au:
                         <input type = 'date' name='queryEndDate' value={this.state.queryEndDate} onChange={this.handleChange} />
                     </label>
                     <button>Chercher</button>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Search from './Search';
+import MapContainer from './MapContainer';
 
 
 class AnnonceList extends Component {
@@ -11,7 +12,6 @@ class AnnonceList extends Component {
       queryMoving: '',
       queryStartDate:'',
       queryEndDate:''
-
      }
 
     getAllAnnonces = () =>{
@@ -23,6 +23,7 @@ class AnnonceList extends Component {
         })
         .catch(err => console.log('Error while fetching projects', err))
     }
+
 
     componentDidMount() {
       this.getAllAnnonces();
@@ -43,26 +44,24 @@ class AnnonceList extends Component {
     }
 
   render(){
-    let listOfAnnonncesFilter;
+    let listOfAnnonncesFilter = [...this.state.listOfAnnonces];
     if (this.props.location?.query) {
-      listOfAnnonncesFilter = this.state.listOfAnnonces.filter(annonce =>{
+      listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce =>{
         const matchAddress = annonce.adress.toLowerCase().includes(this.props.location.query);
         return matchAddress
       } )
     } else {
-      listOfAnnonncesFilter = this.state.listOfAnnonces.filter(annonce =>{
-        const matchAddress = annonce.adress.toLowerCase().includes(this.state.queryAddress);
-        return matchAddress
-      })
+      if(this.state.queryAddress) listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce =>annonce.adress.toLowerCase().includes(this.state.queryAddress)  )
       if(this.state.queryMoving === "true" || this.state.queryMoving === "false") {
         listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce => annonce.moving === this.state.queryMoving)
       }
+      
     }
     
     
-                                                           
+    console.log('list of Annonce', listOfAnnonncesFilter)                                                       
     console.log('query:  ', this.state.queryAddress, this.state.queryMoving, this.state.queryEndDate, this.state.queryStartDate)
-   
+    
     return(
       <div>
         <Search updateQueryAddress={this.updateQueryAddress} 
@@ -71,6 +70,8 @@ class AnnonceList extends Component {
                 updateQueryEndDate= {this.updateQueryEndDate}
                 redirectToAnnonceList={this.redirectToAnnonceList}
         />
+        {this.state.listOfAnnonces.length !== 0 && <MapContainer annonces={this.state.listOfAnnonces} />}
+
         <div style={{width: '60%', float:"left"}}>
           { listOfAnnonncesFilter.map( annonce => (
               <div key={annonce._id}>
@@ -94,6 +95,8 @@ class AnnonceList extends Component {
         <div>
           {this.props.userInSession && <Link to="/annonce/new">Ajouter votre annonce</Link>}
         </div>
+
+          
     
       </div>
     )

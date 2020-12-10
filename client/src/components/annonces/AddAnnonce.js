@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import service from '../auth/auth-service'
-import {upload} from '../auth/auth-service'
+import React, { Component } from 'react';
+import './AddAnnonce.css';
+import { Redirect } from 'react-router-dom';
+import service from '../auth/auth-service';
+import {upload} from '../auth/auth-service';
 
 
 class AddAnnonce extends Component {
@@ -41,19 +42,21 @@ class AddAnnonce extends Component {
       return <Redirect to="/annonce" />;
     }
     return(
-      <div>
-        <form onSubmit={this.handleFormSubmit}>
+      <div className="background">
+        <div className="page">
+          <div className="container-annonce">
+          <h2>Poste ton annonce</h2>
+          <form onSubmit={this.handleFormSubmit} className="form-annonce">
             <p>
-                <label>Type:
+                <label>Type:</label>
                   <select name="type" value={this.state.type} onChange={e => this.handleChange(e)}>
-                    <option value="">Chosir une réponse</option>
-                    <option value= "offer">Je voudrais devenir un(e) bénévole</option>
-                    <option value="request">Je voudrais chercher un(e) bénévole</option>
+                    <option value="">Choisir une réponse</option>
+                    <option value= "offer">Je voudrais devenir un(e) plant-sitter</option>
+                    <option value="request">Je cherche un(e) plant-sitter</option>
                   </select>
-                </label>
             </p>
             <p>
-                <label>Title:</label>
+                <label>Titre:</label>
                 <textarea name="title" value={this.state.title} onChange={ e => this.handleChange(e)} />  
             </p>
             <p>
@@ -61,8 +64,9 @@ class AddAnnonce extends Component {
                 <textarea name="description" value={this.state.description} onChange={ e => this.handleChange(e)} />  
             </p>
             <p>
-                <label>Date:</label>
+                <label>Du:</label>
                 <input type="date" name="startDate" value={this.state.startDate} onChange={ e => this.handleChange(e)} /> 
+                <label>Au:</label>
                 <input type="date" name="endDate" value={this.state.endDate} onChange={ e => this.handleChange(e)} />  
             </p>
           
@@ -81,15 +85,18 @@ class AddAnnonce extends Component {
             </p>
           
             <p>
-            <label>
-                Photo:
+            <label> Photo: </label>
                 <input type="file" onChange={this.handleUpload} />
-            </label>
             </p>
          
-          
-          <input type="submit" value="Submit" />
+            <p>
+            <input type="submit" className="submit" value="Soumettre" />
+            </p>
         </form>
+         </div>
+        
+        </div>
+        
       </div>
     )
   }

@@ -58,21 +58,20 @@ class ProfileUser extends React.Component {
         return(
             <div className="page">
               <div className="container-profile">
-              <MenuProfile userInSession={this.props.userInSession}/>
               <div className="container-image-profile">
-              <h3>Mon profil</h3>
-              <p>Salut {this.state.user.username} !</p>
               <div className="my-profile">
+              <h3>Bonjour {this.state.user.username} !</h3>
                   <div className="upload-photo">
-                      <form onSubmit={this.handleFormSubmit}>
+                      <form onSubmit={this.handleFormSubmit} className="form-profile">
                           <img className="avatar" alt="" style={{width:"200px"}} src={this.state.user.imageUrl || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />
                           <p>
                             <input type="file" ref={ref=> this.fileInput = ref} name="imageUrl" onChange={this.handleUpload} />
                           </p>  
-                        <input type="submit" value="Télécharger"/>
+                        <input type="submit" value="Télécharger" className="button"/>
                       </form>
                   </div>
-                  
+                  <h5>Mon profil</h5>
+                  <MenuProfile userInSession={this.props.userInSession}/>
               </div>
               </div>
               </div>

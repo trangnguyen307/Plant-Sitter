@@ -53,23 +53,28 @@ class MyComments extends React.Component {
         console.log('props userinsession',this.props.userInSession)
         return (
             <div className='profile'>
-                <MenuProfile userInSession={this.props.userInSession}/>
-                { this.state.commentaires.map( commentaire => {
-                    return (
-                    <div key={commentaire._id} className="commentairesSection">
-                        <div className="displayName">
-                            <Link to={`/profile/myProfile/${this.props.userInSession._id}/commentaire/${commentaire._id}`}>{commentaire.sender._id === this.props.userInSession._id ? commentaire.receiver.username : commentaire.sender.username}</Link>
-                        </div>
-                        <div className="displayCommentaires">
-                            <div>
-                                <Rating value={commentaire.note}/>
-                                <p>{commentaire.content}</p>
+                <div>
+                    <MenuProfile userInSession={this.props.userInSession}/>
+                </div>
+                <div>
+                    { this.state.commentaires.map( commentaire => {
+                        return (
+                        <div key={commentaire._id} className="commentairesSection">
+                            <div className="displayName">
+                                <Link to={`/profile/myProfile/${this.props.userInSession._id}/commentaire/${commentaire._id}`}>{commentaire.sender._id === this.props.userInSession._id ? commentaire.receiver.username : commentaire.sender.username}</Link>
                             </div>
+                            <div className="displayCommentaires">
+                                <div>
+                                    <Rating value={commentaire.note}/>
+                                    <p>{commentaire.content}</p>
+                                </div>
+                            </div>
+                
                         </div>
-            
-                    </div>
-                    )})
-                }
+                        )})
+                    }
+                </div>
+               
             </div>
         )
     }

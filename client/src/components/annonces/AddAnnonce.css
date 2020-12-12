@@ -1,5 +1,8 @@
+#annonce{
+    background-color: #FAF3DD;
+}
 
-.container-annonce {
+.section-annonce {
     width: 1200px;
     margin-left: auto;
     margin-right: auto;

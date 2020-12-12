@@ -9,7 +9,7 @@ class CommentairesList extends Component {
      }
 
     getAllCommentaires = () =>{
-        axios.get(`http://localhost:5000/commentaire`)
+        axios.get(`${process.env.REACT_APP_APIURL || ""}/commentaire`)
         .then(responseFromApi => {
             this.setState({
                 listOfCommentaires: responseFromApi.data
@@ -29,7 +29,7 @@ class CommentairesList extends Component {
         this.setState({
             listOfCommentaires:commentairesCopy 
         })
-        axios.delete(`http://localhost:5000/commentaire/${commentaireToDelete._id}`)
+        axios.delete(`${process.env.REACT_APP_APIURL || ""}/commentaire/${commentaireToDelete._id}`)
       }
 
   render(){

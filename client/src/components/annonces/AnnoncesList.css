@@ -7,7 +7,36 @@
     margin-top: 3em;
 }
 
-.map {
-    width: 100px;
-    height: 100px;
+.annonces {
+    display: flex;
+    margin: 20px;
+    background-color: rgb(245, 236, 224);
+    border-radius: 10px;
+    padding: 10px;
+}
+.annonces img {
+    width: 280px;
+    margin-right: 20px;
+    /* padding: 10px; */
+}
+.annonces a {
+    color: #4A7C59;
+    margin-right: 10px;
+    font-weight: 700;
+}
+.annonces .title {
+    font-weight: bold;
+    font-size: 18px;
+}
+.annonces .label {
+    font-weight: bold;
+}
+.map-div {
+    margin: 20px auto;
+    
+}
+@media (max-width:768px) {
+    .map-div {
+        display: none;
+    }
 }

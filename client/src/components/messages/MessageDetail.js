@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import service from '../auth/auth-service'
-import {Redirect } from 'react-router-dom';
+import service from '../auth/auth-service';
 import '../profileUser/ProfileUser.css';
 
 import MenuProfile from "../profileUser/MenuProfile";
@@ -57,30 +56,41 @@ class MessageDetail extends Component {
      if(!this.props.userInSession) return <p> Vous devez s'identifier pour consulter vos messages  </p>
 
       return (
-        
-        <div className="messagesSection">
-          <MenuProfile userInSession={this.props.userInSession}/> 
-          <div className="displayName">
-            <div className="displayMessages">
-                <div >
-                    <span>{theMessage.sender._id === this.props.userInSession._id ? theMessage.receiver.username : theMessage.sender.username }</span>
-                    {theMessage.annonce && <span>Pour: {theMessage.annonce.description}</span>}
-                    {
-                        theMessage.messagesBox.map(el => el.author === this.props.userInSession._id ? 
-                        <p className="send" key= {el._id}>{el.message}</p> : 
-                        <p className="receiver" key= {el._id}>{el.message}</p>)    
-                    }
-                </div>
-                <div>
-                    <form onSubmit={e => this.handleFormSubmit(e)}>  
-                        <textarea name="addMessage" value= {this.state.addMessage} placeholder="Ecrivez vous un message" onChange={ e => this.handleChange(e)} />  
-                        <input type="submit" value="Submit" />
-                    </form>
-                </div>
+        <div className="container">
+          <div className="profile messages-detail-section row">
+            <div className="menu col-lg-3">
+              <MenuProfile userInSession={this.props.userInSession}/> 
             </div>
+           
+            <div className="messages col-lg-7">
+                <div className="row">
+                  <div className="left-part col-lg-3">
+                      <span>{theMessage.sender._id === this.props.userInSession._id ? theMessage.receiver.username : theMessage.sender.username }</span>  
+                  </div>
+                  <div className="right-part col-lg-8">
+                    <div>
+                      {theMessage.annonce && <span>Pour: {theMessage.annonce.title}</span>}
+                      {
+                          theMessage.messagesBox.map(el => el.author === this.props.userInSession._id ? 
+                          <p className="send" key= {el._id}>{el.message}</p> : 
+                          <p className="receiver" key= {el._id}>{el.message}</p>)    
+                      }
+                    </div>
+
+                    <div>
+                      <form onSubmit={e => this.handleFormSubmit(e)}>  
+                          <input name="addMessage" value= {this.state.addMessage} placeholder="Ecrivez vous un message" onChange={ e => this.handleChange(e)} />  
+                          <button>Envoyer</button>
+                      </form>
+                    </div>
+                      
+                  </div>
+                </div> 
             </div> 
-  
+    
+          </div>
         </div>
+        
       )
     }
 }

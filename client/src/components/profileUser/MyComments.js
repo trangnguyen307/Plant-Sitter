@@ -52,30 +52,33 @@ class MyComments extends React.Component {
     render () {
         console.log('props userinsession',this.props.userInSession)
         return (
-            <div className='profile'>
-                <div>
-                    <MenuProfile userInSession={this.props.userInSession}/>
-                </div>
-                <div>
-                    { this.state.commentaires.map( commentaire => {
-                        return (
-                        <div key={commentaire._id} className="commentairesSection">
-                            <div className="displayName">
-                                <Link to={`/profile/myProfile/${this.props.userInSession._id}/commentaire/${commentaire._id}`}>{commentaire.sender._id === this.props.userInSession._id ? commentaire.receiver.username : commentaire.sender.username}</Link>
-                            </div>
-                            <div className="displayCommentaires">
-                                <div>
-                                    <Rating value={commentaire.note}/>
-                                    <p>{commentaire.content}</p>
+            <div className="container">
+                <div className='profile row'>
+                    <div className="menu col-lg-3">
+                        <MenuProfile userInSession={this.props.userInSession}/>
+                    </div>
+                    <div className="my-comments col-lg-6">
+                        { this.state.commentaires.map( commentaire => {
+                            return (
+                            <div key={commentaire._id} className="commentairesSection">
+                                <div className="displayName">
+                                    <Link to={`/profile/myProfile/${this.props.userInSession._id}/commentaire/${commentaire._id}`}>{commentaire.sender._id === this.props.userInSession._id ? commentaire.receiver.username : commentaire.sender.username}</Link>
                                 </div>
+                                <div className="displayCommentaires">
+                                    <div>
+                                        <Rating value={commentaire.note}/>
+                                        <p>{commentaire.content}</p>
+                                    </div>
+                                </div>
+                    
                             </div>
+                            )})
+                        }
+                    </div>
                 
-                        </div>
-                        )})
-                    }
                 </div>
-               
             </div>
+            
         )
     }
 }

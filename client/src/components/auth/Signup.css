@@ -1,12 +1,12 @@
 .page {
     background-color: #FAF3DD;
 }
-.container {
+/* .container {
     height: 43.4em;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+} */
 
 .form-signup {
     background-color:#C8D5B9;

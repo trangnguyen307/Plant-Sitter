@@ -84,4 +84,14 @@ app.use('/article', articleRoutes );
 const fileUploadRoutes = require ('./routes/file-upload-routes');
 app.use('/', fileUploadRoutes)
 
+// Serve static files from client/build folder
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+// For any other routes: serve client/build/index.html SPA
+app.use((req, res, next) => {
+  res.sendFile(`${__dirname}/client/build/index.html`, err => {
+    if (err) next(err)
+  })
+});
+
 module.exports = app;

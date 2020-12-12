@@ -16,7 +16,7 @@ class AnnonceList extends Component {
      }
 
     getAllAnnonces = () =>{
-        axios.get(`http://localhost:5000/annonce`)
+        axios.get(`${process.env.REACT_APP_APIURL || ""}/annonce`)
         .then(responseFromApi => {
             this.setState({
             listOfAnnonces: responseFromApi.data

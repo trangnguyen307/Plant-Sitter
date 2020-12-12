@@ -42,9 +42,9 @@ class AddAnnonce extends Component {
       return <Redirect to="/annonce" />;
     }
     return(
-      <div className="background">
-        <div className="page">
-          <div className="container-annonce">
+      <div className="background-annonce">
+        <div id="annonce">
+          <div className="section-annonce">
           <h2>Poste ton annonce</h2>
           <form onSubmit={this.handleFormSubmit} className="form-annonce">
             <p>

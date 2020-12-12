@@ -35,8 +35,8 @@ class Login extends Component {
       return <Redirect to= {`/profile/myProfile/${this.props.user._id}`}/>;
     }
     return(
-      <div className="page">
-        <div className="container">
+      <div id="login">
+        <div className="section-login">
           <div className="form-login">
           <form onSubmit={this.handleFormSubmit} className="form-login">
           <label>Nom:</label>

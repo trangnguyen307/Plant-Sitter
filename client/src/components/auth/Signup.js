@@ -44,8 +44,8 @@ class Signup extends Component {
 
   render() {
     return (
-      <div className="page">
-      <div className="container">
+      <div id="signup">
+      <div className="section-signup">
         <div className="form-signup">
         {/* HERE */}
           <form onSubmit={this.handleFormSubmit} className="form-signup">
@@ -58,7 +58,7 @@ class Signup extends Component {
             <label>Mot de passe:</label>
             <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
           
-            <button>Envoyer</button>
+            <button className="button-signup">Envoyer</button>
           </form>
   
           <p>Tu as déjà un compte? 

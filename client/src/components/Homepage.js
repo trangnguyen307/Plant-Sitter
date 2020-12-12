@@ -102,7 +102,7 @@ class Home extends React.Component {
               {/* SECTION AVIS*/}
               <div className="section-avis">
                 <h3>Des utilisateurs convaincus</h3>
-                <div class="container-avis">
+                <div className="container-avis">
                 <div className="avis">
                   <div className="stars">
                     <BsFillStarFill/>

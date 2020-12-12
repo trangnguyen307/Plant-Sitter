@@ -97,27 +97,24 @@ articleRouter.put('/:id', (req,res,next) => {
     return;
   }
 
-  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
-    res.status(400).json({ message: "L'identifiant spécifié n'est pas valide"});
-    return;
-  }
-
   const id = req.params.id;
 
   //vérifier si admin ou pas
   User.findById(req.session.currentUser._id)
     .then (reponse => {
-
-      if (reponse.username !== 'admin') {
-        res.status(403).json({
-          message: "Connectez-vous pour modifier cet article!"
-        });
-        return;
+      if(!req.body.likes) {
+        if (reponse.username !== 'admin') {
+          res.status(403).json({
+            message: "Connectez-vous pour modifier cet article!"
+          });
+          return;
+        }
       }
+      
 
       Article.findByIdAndUpdate(id,req.body)
       .then (article => {
-        res.json({ message: `L'article ${req.params.id} a été modifié` })
+        res.json(article)
       })
       .catch(err => {
         res.json(err);

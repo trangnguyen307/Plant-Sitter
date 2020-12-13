@@ -195,8 +195,157 @@ article img {
     
 }
 
+/*TABLETTE MAX 768PX*/
+@media (max-width: 768px)  {
 
+    .presentation {
+        height: 70vh;
+    }
 
+    form input {
+        width: 10em;
+    }
+
+    .phrase-accroche {
+        margin-left: 2em;
+        font-size: 12px;
+    }
+
+    .presentation-img {
+        width: 45em;
+    }
+
+    .image img {
+        width: 250px;
+        height: 250px;   
+    }
+
+    .carousel-caption h3 {
+        font-size: 20px;
+    }
+
+    .carousel-caption p {
+        font-size: 14px;
+    }
+
+    .section-avis {
+        height: 23em;
+        
+    }
+
+    .section-avis h3 {
+        font-size: 20px;
+        
+    }
+
+    .avis {
+        width: 200px;
+        height: 250px;
+    }
+
+    .avis p {
+        font-size: 12px;
+    }
+
+    .stars {
+        font-size: 0.8em;
+    }
+
+}
+
+/*TABLETTE MAX 576PX*/
+@media (max-width: 576px)  {
+
+    .presentation {
+        height: 90vh;
+    }
+
+    .search-barre {
+        height: 10em;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 9em;
+        margin-top: 10em;   
+    }
+
+    .presentation-img {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 13em;
+    }
+
+    .phrase-accroche h5 {
+        font-size:15px;
+        margin-right: 10em;
+    }
+
+    .image img {
+        width: 200px;
+        height: 200px;
+        margin-right: 10em;
+    }
+
+    .consignes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 40em;
+    }
+
+    .pres-article {
+        width: 100px;
+        height: 100px;
+    }
+
+    article img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .paragraphe p {
+        font-size: 10px;
+        width: 200px;
+    }
+
+    .carousel-caption h3 {
+        font-size: 16px;
+    }
+
+    .carousel-caption p {
+        font-size: 12px;
+    }
+
+    .section-avis {
+        height: 33em; 
+    }
+
+    .container-avis {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .section-avis h3 {
+        font-size: 16px;
+        margin: 0em;
+        
+    }
+
+    .avis {
+        width: 300px;
+        height: 150px;
+    }
+
+}
 
 
 

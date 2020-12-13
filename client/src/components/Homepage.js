@@ -61,7 +61,7 @@ class Home extends React.Component {
 
               {/* SECTION CAROUSSEL articles*/}
               
-              <Carousel>
+              <Carousel className="carousel">
                 <Carousel.Item className="carousel-item">
                     <img
                     className="d-block w-100"

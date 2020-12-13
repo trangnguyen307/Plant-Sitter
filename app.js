@@ -13,7 +13,7 @@ const session       = require('express-session');
 
 
 mongoose
-  .connect('mongodb://localhost/project3', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -65,9 +65,6 @@ app.use(cors({
 }));
 
 // ROUTES MIDDLEWARE STARTS HERE:
-
-const index = require('./routes/index');
-app.use('/', index);
 
 const authRoutes = require('./routes/auth-routes');
 app.use('/auth', authRoutes);

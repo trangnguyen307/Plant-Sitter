@@ -1,117 +1,80 @@
-#profilePublic #firstSection {
-    display: flex;
-    /* flex-direction: row; */
-}
-
-.container-profile {
-    height: 43.4em;
-}
-
-.my-profile {
-    background-color: #C8D5B9;
-    border-radius: 0.2em;
-    width: 30em;
-    height: 38em;
-    padding: 3em;
-}
-
-.my-profile h3 {
-    color: #4A7C59;
-}
-
-.my-profile h5 {
-    color: #4A7C59;
-}
-
-.container-image-profile {
-    margin: 0em 0em 0em 3em;
-    padding: 3em;
-}
-
-.avatar {
-    width: 200px;
-    height: 250px;
-}
-
-.button {
-    width: 10em;
-    height: 2em;
-    border-radius: 0.2em;
-    background-color: #4A7C59;
-    border: 1px solid  #4A7C59;
-}
 
 
 
-
-
-
-/*
-
-#     #                                                  
-##   ## ######  ####   ####    ##    ####  ######  ####  
-# # # # #      #      #       #  #  #    # #      #      
-#  #  # #####   ####   ####  #    # #      #####   ####  
-#     # #           #      # ###### #  ### #           # 
-#     # #      #    # #    # #    # #    # #      #    # 
-#     # ######  ####   ####  #    #  ####  ######  ####  
-                                                         
- #####                                      
-#     # ######  ####  ##### #  ####  #    # 
-#       #      #    #   #   # #    # ##   # 
- #####  #####  #        #   # #    # # #  # 
-      # #      #        #   # #    # #  # # 
-#     # #      #    #   #   # #    # #   ## 
- #####  ######  ####    #   #  ####  #    # 
-                                            */
-
-.messagesSection {
-    display: flex;
-    margin: 20px;
-    width: 500px;
-}
-.messagesSection .displayName {
-    width: 30%;
-}
-.messagesSection .displayMessages {
-    margin-left: 50px;
-    width: 500px;
-    background-color: rgb(223, 207, 207);
+#menuProfile {
     display: flex;
     flex-direction: column;
+    
+    padding-top: 50px;
+    padding-left: 20px;
+   
 }
-.messagesSection .send {
-    margin-left: 45%;
-    background-color: green;
-    border-radius: 5px;
-    padding: 10px;
-    width: 50%;
-}
-.messagesSection .receiver {
-    /* float: left; */
-    margin-right: 45%;
-    background-color: honeydew;
-    border-radius: 5px;
-    padding: 10px;
-    width: 50%;
-}
-.messagesSection .send, .receiver {
-    position: relative;
-}
-
 .profile {
-    margin: 0px auto;
+    height: calc(100vh - 11em);
+    
+}
+.profile .menu {
+    height: calc(100vh - 11em -30px);
+    margin: 15px auto;
+    background-color: #4A7C59;
+}
+.profile .menu a {
+   color: #000;
+}
+.profile .my-profile {
+    background-color: #4A7C59;
+    height: calc(100vh - 11em -30px);
+    margin: 15px auto;
+}
+.profile .my-messages {
+    background-color: #4A7C59;
+    height: calc(100vh - 11em -30px);
+    margin: 15px auto;
+}
+.profile .my-messages .messagesSection {
     display: flex;
-    flex-direction: row;
-  }
-  
-#menu {
-    display: flex;
-    flex-direction: column;
-    margin-right: 50px;
+}
+.profile .my-messages .displayName {
+    width: 150px;
 }
 
-#menu a {
-    color: black;
-    font-weight: 700;
+.messages-detail-section .messages {
+    background-color:  #4A7C59;
+    height: calc(100vh - 11em -30px);
+    margin: 15px auto;
+    padding-top: 20px;
+}
+.messages-detail-section .messages .send {
+    background-color: rgb(224, 207, 207);
+    padding: 5px;
+    border-radius: 10px;
+    width: 45%;
+    text-align: end;
+    margin-left: auto;
+}
+.messages-detail-section .messages .receiver {
+    background-color: rgb(224, 207, 207);
+    padding: 5px;
+    border-radius: 10px;
+    width: 45%;
+    
+}
+.messages-detail-section .messages form {
+    margin-bottom: 0px;
+}
+.messages-detail-section .messages input {
+    width: 70%;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+}
+.messages-detail-section .messages button{
+    margin: 0px;
+}
+
+.profile .my-comments {
+    background-color:  #4A7C59;
+    height: calc(100vh - 11em -30px);
+    margin: 15px auto;
+    padding-top: 20px;
 }

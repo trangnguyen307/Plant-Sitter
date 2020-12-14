@@ -31,7 +31,6 @@ h5 {
     justify-content: space-evenly;
 }
 
-
 .image img {
     width: 500px;
     height: 500px;
@@ -64,7 +63,6 @@ h5 {
     text-align: center;
 }
 
-
 .paragraphe p {
     margin-top: 1em;
 }
@@ -79,10 +77,6 @@ article img {
     background-color: #8FC0A9;
     width: 600px;
     height: 500px;
-}
-
-.avis img {
-    width: 150px;
 }
 
 .avis p {
@@ -125,5 +119,259 @@ article img {
     color: #f1c40f;
     font-size: 1.8em;
 }
+
+/*TABLETTE MAX 900PX*/
+@media (max-width: 900px)  {
+
+    .presentation {
+        height: 90vh;
+    }
+
+    .search-barre {
+        height: 8em;
+    }
+
+    .phrase-accroche {
+        margin-left: 3em;
+    }
+
+    .presentation-img {
+        width: 55em;
+    }
+
+    .image img {
+        width: 450px;
+        height: 450px;
+        
+    }
+
+    .consignes {
+        height: 24em;
+    }
+
+    article img {
+        width: 200px;
+        height: 200px;
+        border-radius:50%;
+    }
+
+    .pres-article {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 5em;
+        
+    }
+
+    .paragraphe p {
+        font-size: 12px;
+    }
+
+    .carousel-item {
+        height: 400px;
+    }
+
+    .section-avis {
+        height: 25em;
+        
+    }
+
+    .container-avis {
+        margin-top:1em;
+    }
+
+    .avis {
+        width: 250px;
+        height: 300px;
+    }
+
+    .avis p {
+        font-size: 14px;
+    }
+
+    .stars {
+        font-size: 1em;
+    }
+
+    
+}
+
+/*TABLETTE MAX 768PX*/
+@media (max-width: 768px)  {
+
+    .presentation {
+        height: 70vh;
+    }
+
+    form input {
+        width: 10em;
+    }
+
+    .phrase-accroche {
+        margin-left: 2em;
+        font-size: 12px;
+    }
+
+    .presentation-img {
+        width: 45em;
+    }
+
+    .image img {
+        width: 250px;
+        height: 250px;   
+    }
+
+    .carousel-caption h3 {
+        font-size: 20px;
+    }
+
+    .carousel-caption p {
+        font-size: 14px;
+    }
+
+    .section-avis {
+        height: 23em;
+        
+    }
+
+    .section-avis h3 {
+        font-size: 20px;
+        
+    }
+
+    .avis {
+        width: 200px;
+        height: 250px;
+    }
+
+    .avis p {
+        font-size: 12px;
+    }
+
+    .stars {
+        font-size: 0.8em;
+    }
+
+}
+
+/*TABLETTE MAX 576PX*/
+@media (max-width: 576px)  {
+
+    .presentation {
+        height: 90vh;
+    }
+
+    .search-barre {
+        height: 10em;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 9em;
+        margin-top: 10em;   
+    }
+
+    .presentation-img {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 13em;
+    }
+
+    .phrase-accroche h5 {
+        font-size:15px;
+        margin-right: 10em;
+    }
+
+    .image img {
+        width: 200px;
+        height: 200px;
+        margin-right: 10em;
+    }
+
+    .consignes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 40em;
+    }
+
+    .pres-article {
+        width: 100px;
+        height: 100px;
+    }
+
+    article img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .paragraphe p {
+        font-size: 10px;
+        width: 200px;
+    }
+
+    .carousel-caption h3 {
+        font-size: 16px;
+    }
+
+    .carousel-caption p {
+        font-size: 12px;
+    }
+
+    .section-avis {
+        height: 33em; 
+    }
+
+    .container-avis {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .section-avis h3 {
+        font-size: 16px;
+        margin: 0em;
+        
+    }
+
+    .avis {
+        width: 300px;
+        height: 150px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -41,7 +41,6 @@ const navbar = (props) => {
             </div> 
             )}
   </Navbar>  
-    
     </div>
   )
 }

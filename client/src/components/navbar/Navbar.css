@@ -1,10 +1,17 @@
 
 .nav {
     background-color: #8FC0A9;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     font-size: 16px;
     height: 5em;
 }
 
+.compte {
+    font-size: 16px;
+}
 
 .compte a {
     color: #222f3e;
@@ -16,6 +23,46 @@
     color: #222f3e;
     font-weight: 700;
 }
+
+
+/*TABLETTE MAX 900PX*/
+@media (max-width: 900px)  {
+    .nav {
+        font-size: 10px; 
+    }
+
+    .compte {
+        font-size: 10px;
+        margin-right: 1em;
+    }
+}
+
+/*TABLETTE MAX 768PX*/
+@media (max-width: 768px) {
+    .compte {
+        margin-right: 1em;
+    }
+}
+
+/*TABLETTE MAX 576PX*/
+@media (max-width: 768px) {
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 10px;
+        height: 10em;
+    }
+
+    .compte {
+        margin-right: 1em;
+    }
+}
+
+
+
 
 
 

@@ -4,6 +4,7 @@ const Schema   = mongoose.Schema;
 const articleSchema = new Schema({
   title: String,
   content: String,
+  intro: String,
   imageUrl: String,
   commentaire: [{ type : Schema.Types.ObjectId, ref: 'Comment' }],
   likes: [{ type : Schema.Types.ObjectId, ref: 'User' }]

@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import service from '../auth/auth-service'
-import {upload} from '../auth/auth-service'
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import service from '../auth/auth-service';
+import {upload} from '../auth/auth-service';
+import '../annonces/AddAnnonce.css';
 
 
 class AddArticle extends Component {
@@ -39,34 +40,41 @@ class AddArticle extends Component {
     if (redirect) {
       return <Redirect to="/article" />;
     }
-    console.log('connected')
+    
     return(
-      <div style={{marginTop:"100px"}}>
-        <form onSubmit={this.handleFormSubmit}>
-            <p>
-                <label>Titre:</label>
-                <textarea name="title" value={this.state.title} onChange={ e => this.handleChange(e)} />  
-            </p>
-            <p>
-                <label>Introduction:</label>
-                <textarea name="intro" value={this.state.intro} onChange={ e => this.handleChange(e)} />  
-            </p>
-         
-            <p>
-                <label>Contenu:</label>
-                <textarea name="content" value={this.state.content} onChange={ e => this.handleChange(e)} />  
-            </p>
-          
-            <p>
-            <label>
-                Photo:
-                <input type="file" onChange={e => this.handleUpload(e)} />
-            </label>
-            </p>
-         
-          
-          <input type="submit" value="Submit" />
-        </form>
+      <div className="container-fluid">
+        <div className="row justify-content-center">
+          <div className="section-annonce col-lg-6 col-md-8 col-12">
+            <h2>Nouvel Article</h2>
+            <form onSubmit={this.handleFormSubmit}>
+                <p>
+                    <label>Titre:</label>
+                    <textarea name="title" value={this.state.title} onChange={ e => this.handleChange(e)} />  
+                </p>
+                <p>
+                    <label>Introduction:</label>
+                    <textarea name="intro" value={this.state.intro} onChange={ e => this.handleChange(e)} />  
+                </p>
+            
+                <p>
+                    <label>Contenu:</label>
+                    <textarea name="content" value={this.state.content} onChange={ e => this.handleChange(e)} />  
+                </p>
+              
+                <p>
+                <label>
+                    Photo:
+                    <input type="file" onChange={e => this.handleUpload(e)} />
+                </label>
+                </p>
+            
+                <p>
+                  <button>Soumettre</button>
+                </p>
+              
+            </form>
+          </div>
+        </div>
       </div>
     )
   }

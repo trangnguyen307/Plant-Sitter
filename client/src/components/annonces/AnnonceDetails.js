@@ -40,15 +40,14 @@ class AnnonceDetails extends Component {
           
             <div className="col-lg-7">
               <h3>{this.state.annonce.title}</h3>
+              <div className="divider"></div>
               <p><span>Type:</span> {this.state.annonce.type}</p>
               <p><span>Description:</span> {this.state.annonce.description}</p>
               <p><span>Adresse:</span> {this.state.annonce.adress}</p>
               <p><span>Période:</span> Du {this.state.annonce.startDate} Au {this.state.annonce.endDate}</p>
               <p><span>Déplacement:</span> {this.state.annonce.moving ? "Oui" : "Non"}</p>
-              <div className="author">
-                <p>Créé par: {this.state.annonce.author.username}</p>
-                <Link to={`/send-messages/${this.state.annonce._id}`}>Envoyer Messages</Link>
-              </div>
+              <p><span>Créé par:</span> {this.state.annonce.author.username}</p>
+              <Link to={`/send-messages/${this.state.annonce._id}`}>Envoyer Messages</Link>
               <Link to='/annonce'>Retourner</Link>
             </div>
 

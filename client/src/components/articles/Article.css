@@ -45,9 +45,10 @@ ARTICLE DETAIL */
     background-color: rgb(245, 236, 224);
     border-radius: 10px;
 }
-#article-detail .article {
-    margin: 20px auto;
-}
+
+#article-detail > .article > div {
+    margin:20px auto;
+} 
 #article-detail img {
     height: 300px;
     width: 100%;

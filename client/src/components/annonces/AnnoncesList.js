@@ -78,13 +78,13 @@ class AnnonceList extends Component {
           <div className="col-lg-6 col-md-11  annonce-list">
             { listOfAnnonncesFilter.map( annonce => (
                 <div key={annonce._id} className="annonces row">
-                  <div className="col-xs-12">
+                  <div className="col-xs-12 col-md-5 col-lg-5">
                     <Link to={`/annonce/${annonce._id}`}>
                       <img  src={annonce.imageUrl} alt="" / >
                     </Link>
                   </div>
               
-                  <div className="col-xs-12">
+                  <div className="col-xs-12 col-md-7 col-lg-7">
                     <p className="title">{annonce.title}</p>
                     <p><span className="label">Type:</span> {annonce.type === "offer" ? "Offer" : "Chercher un(e) bénévol(e)"}</p>
                     <p><span className="label">Période:</span> De {annonce.startDate} A {annonce.endDate}</p>

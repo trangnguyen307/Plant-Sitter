@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import service from '../auth/auth-service'
 import { Link } from 'react-router-dom';
+import './AnnoncesList.css'
 
 class AnnonceDetails extends Component {
 
@@ -28,25 +29,31 @@ class AnnonceDetails extends Component {
 
     render () {
       if (!this.state.annonce.author) {
-        return "Loading..."
+        return <p>Vous devez connecter afin de consulter cette annonce. Merci !</p>
       }
       return (
-        <div>
-          <img  src={this.state.annonce.imageUrl} alt="" / >
-
-          <div>
-            <p>Type: {this.state.annonce.type}</p>
-            <p>Description: {this.state.annonce.description}</p>
-            <p>Adresse: {this.state.annonce.adress}</p>
-            <p>Période: De {this.state.annonce.startDate} A {this.state.annonce.endDate}</p>
-            <p>Déplacement: {this.state.annonce.moving ? "Oui" : "Non"}</p>
-            <div>
-              <p>Créé par: {this.state.annonce.author.username}</p>
-              <Link to={`/send-messages/${this.state.annonce._id}`}>Envoyer Messages</Link>
+        <div className="container">
+          <div className="row annonce-detail">
+            <div className="col-lg-5">
+              <img  src={this.state.annonce.imageUrl} alt="" / >
             </div>
-          </div>
+          
+            <div className="col-lg-7">
+              <h3>{this.state.annonce.title}</h3>
+              <p><span>Type:</span> {this.state.annonce.type}</p>
+              <p><span>Description:</span> {this.state.annonce.description}</p>
+              <p><span>Adresse:</span> {this.state.annonce.adress}</p>
+              <p><span>Période:</span> Du {this.state.annonce.startDate} Au {this.state.annonce.endDate}</p>
+              <p><span>Déplacement:</span> {this.state.annonce.moving ? "Oui" : "Non"}</p>
+              <div className="author">
+                <p>Créé par: {this.state.annonce.author.username}</p>
+                <Link to={`/send-messages/${this.state.annonce._id}`}>Envoyer Messages</Link>
+              </div>
+              <Link to='/annonce'>Retourner</Link>
+            </div>
 
-          <Link to='/annonce'>Retourner</Link>
+          
+          </div>
         </div>
       )
     }

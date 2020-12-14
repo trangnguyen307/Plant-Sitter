@@ -45,13 +45,23 @@
 }
 
 /*TABLETTE MAX 576PX*/
-@media (max-width: 576px)  {
+@media (max-width: 768px) {
+
     .nav {
-        height: 20em;
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 10px;
+        height: 10em;
+    }
+
+    .compte {
+        margin-right: 1em;
     }
 }
+
+
 
 
 

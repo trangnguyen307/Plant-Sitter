@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import service from '../auth/auth-service';
 import { Link } from 'react-router-dom';
+import './Article.css';
 
 
 class ArticlesList extends Component {
@@ -25,26 +26,31 @@ class ArticlesList extends Component {
   render(){
       // console.log('userInSession', this.props.loggedInUser)
     return(
-      <div style={{marginTop:"100px"}}>
+      <div id="article-list" className="container-fluid">
         {this.props.user.username === "admin" && 
-        <div>
+        <div className="row add-button">
             <Link to="/article/new">Ajouter une article</Link>
         </div>
         }
         
-
-        <div>
-          { this.state.listOfArticles.map( article => {
-            return (
-              <div key={article._id}> 
-                <img  src={article.imageUrl} alt="" / >
-                <h1>{article.title}</h1>
-                <Link to={`/article/${article._id}`}>Voir plus</Link>
+        <div className="row justify-content-center">
+        <div className="col-lg-10 col-xs-12">
+          { this.state.listOfArticles.map( article => 
+             (
+              <div className="row justify-content-center article">
+                <div key={article._id} className="col-lg-5"> 
+                  <img  src={article.imageUrl} alt="" / >
+                </div>
+                <div className="col-lg-7">
+                  <h1>{article.title}</h1>
+                  <p>{article.intro}</p>
+                  <Link to={`/article/${article._id}`}>Voir plus</Link>
+                </div>
               </div>
-            )})
+            ))
           }
+          </div>
         </div>
-        
     
       </div>
     )

@@ -73,18 +73,18 @@ class AnnonceList extends Component {
                 redirectToAnnonceList={this.redirectToAnnonceList}
           />
         </div>
-        <div className="row annonce-list">
+        <div className="row justify-content-center annonce-list">
 
-          <div className="col-lg-6 col-md-12 annonce-list">
+          <div className="col-lg-6 col-md-11  annonce-list">
             { listOfAnnonncesFilter.map( annonce => (
-                <div key={annonce._id} className="annonces">
-                  <div>
+                <div key={annonce._id} className="annonces row">
+                  <div className="col-xs-12">
                     <Link to={`/annonce/${annonce._id}`}>
                       <img  src={annonce.imageUrl} alt="" / >
                     </Link>
                   </div>
               
-                  <div>
+                  <div className="col-xs-12">
                     <p className="title">{annonce.title}</p>
                     <p><span className="label">Type:</span> {annonce.type === "offer" ? "Offer" : "Chercher un(e) bénévol(e)"}</p>
                     <p><span className="label">Période:</span> De {annonce.startDate} A {annonce.endDate}</p>

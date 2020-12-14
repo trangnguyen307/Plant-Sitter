@@ -5,15 +5,15 @@ import {upload} from '../auth/auth-service'
 
 
 class AddArticle extends Component {
-  state = { title: "", content: "", imageUrl: "", redirect: false }
+  state = { title: "",intro:"", content: "", imageUrl: "", redirect: false }
    
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const {title, content,imageUrl} = this.state
+    const {title,intro, content,imageUrl} = this.state
 
-    service.post("/article", { title, content,imageUrl })
+    service.post("/article", { title, intro, content,imageUrl })
       .then( () => {
-        this.setState({title: "", content: "",imageUrl: "", redirect: true});
+        this.setState({title: "",intro:"", content: "",imageUrl: "", redirect: true});
       })
       .catch( error => console.log(error) )
   }
@@ -46,6 +46,10 @@ class AddArticle extends Component {
             <p>
                 <label>Titre:</label>
                 <textarea name="title" value={this.state.title} onChange={ e => this.handleChange(e)} />  
+            </p>
+            <p>
+                <label>Introduction:</label>
+                <textarea name="intro" value={this.state.intro} onChange={ e => this.handleChange(e)} />  
             </p>
          
             <p>

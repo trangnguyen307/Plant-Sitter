@@ -65,7 +65,7 @@ class ProfileUser extends React.Component {
               <div className="my-profile col-lg-6">
                 <h3>Bonjour {this.state.user.username} !</h3>
                   <form onSubmit={this.handleFormSubmit} className="form-profile">
-                    <img className="avatar" alt="" style={{width:"200px"}} src={this.state.user.imageUrl || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />
+                    <img className="avatar" alt="" src={this.state.user.imageUrl || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />
                     <p>
                       <input type="file" ref={ref=> this.fileInput = ref} name="imageUrl" onChange={this.handleUpload} />
                     </p>  

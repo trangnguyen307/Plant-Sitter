@@ -26,6 +26,11 @@
     height: calc(100vh - 11em -30px);
     margin: 15px auto;
 }
+.profile .my-profile img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
 .profile .my-messages {
     background-color: #4A7C59;
     height: calc(100vh - 11em -30px);

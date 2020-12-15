@@ -56,7 +56,7 @@ class MessageDetail extends Component {
      if(!this.props.userInSession) return <p> Vous devez s'identifier pour consulter vos messages  </p>
 
       return (
-        <div className="container">
+        <div className="grand-section container-fluid">
           <div className="profile messages-detail-section row">
             <div className="menu col-lg-3">
               <MenuProfile userInSession={this.props.userInSession}/> 

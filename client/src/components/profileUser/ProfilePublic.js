@@ -1,6 +1,5 @@
 import React from 'react'; 
-import './ProfileUser.css'
-import {Link} from 'react-router-dom'
+import './ProfileUser.css';
 import service from '../auth/auth-service';
 import AddCommentaire from '../commentaires/AddCommentaire';
 
@@ -31,8 +30,9 @@ class ProfilePublic extends React.Component {
         return(
           
             this.props.userInSession ? 
-            <div id = "profilePublic">
-              <div id="firstSection">
+            <div id = "profilePublic" className="container-fluid">
+              <div  className="row">
+                <div id="firstSection" className="col-lg-6">
                   <img src={this.state.user.imageUrl} style={{width:"200px"}} alt='Avatar' />
                   <div>
                       <p><span>Username: </span>{this.state.user.username}</p>
@@ -40,20 +40,25 @@ class ProfilePublic extends React.Component {
                       <p><span>Membre depuis: </span>{this.state.user.createdAt}</p>
                       <p><span>Note: </span></p>
                   </div>
+                </div>
+                  
               </div>
-              {
-                this.state.showComment ?
-                <AddCommentaire />
-                :
-                <button onClick={ev => this.setState({showComment: true})}>Ecrire vos commentaires</button>
-              }
+              <div className="row">
+                {
+                  this.state.showComment ?
+                  <AddCommentaire />
+                  :
+                  <button onClick={ev => this.setState({showComment: true})}>Ecrire vos commentaires</button>
+                }
+              </div>
+              
               
             </div> 
           :
           <div>
             Connectez-vous pour consulter le profil !!!
           </div>
-          
+            
             
         )
     }

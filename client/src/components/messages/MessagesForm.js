@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import service from '../auth/auth-service'
+import './MessagesForm.css'
 
 
 class MessagesForm extends Component {
@@ -56,21 +57,21 @@ class MessagesForm extends Component {
     if (redirect) {
       return <Redirect to="/annonce" />;
     }
-    console.log('alo', this.state.annonce)
+   
     return(
-      <div>
+      <div id="message-form" className="container-fluid">
         {/* <div>
             <p>A: {this.state.annonce?.author.username}</p>
             <p>Pour:{this.state.annonce?.description}</p>
         </div> */}
-    
-        <form onSubmit={this.handleFormSubmit}> 
-            <p>
-                <label>Vos messages:</label>
-                <textarea name="message" value={this.state.message} onChange={ e => this.handleChange(e)} />  
-            </p>
-          <input type="submit" value="Submit" />
-        </form>
+        <div className="row justify-content-center">
+          <form onSubmit={this.handleFormSubmit} className="col-lg-6 col-md-7 col-xs-10 col-10 "> 
+            <label>Vos messages</label>
+            <textarea name="message" value={this.state.message} onChange={ e => this.handleChange(e)} />  
+            <button>Soumettre</button>
+          </form>
+        </div>
+        
       </div>
     )
   }

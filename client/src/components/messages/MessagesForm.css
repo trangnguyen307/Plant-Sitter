@@ -1,0 +1,21 @@
+#message-form {
+    height: calc(100vh - 100px);
+    background-image: url('../../images/background-profile.jpg');
+    background-size: cover;
+    margin: auto;
+}
+#message-form form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-top: 50px;
+}
+#message-form form label {
+    font-weight: bold;
+    font-size: 30px;
+}
+#message-form form textarea {
+    width: 100%;
+    height: 200px;
+}

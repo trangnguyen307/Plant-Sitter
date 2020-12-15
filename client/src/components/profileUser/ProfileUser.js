@@ -56,7 +56,7 @@ class ProfileUser extends React.Component {
 
     render(){
         return(
-          <div className="container">
+          <div className="grand-section container-fluid">
             <div className="profile row">
               <div className="menu col-lg-3">
                 <MenuProfile userInSession={this.props.userInSession}/>

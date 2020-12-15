@@ -11,7 +11,7 @@ const navbar = (props) => {
   return (
     <div >
       <Navbar id="navbar" className="nav" expand="lg">
-      <Navbar.Brand href="/">Plant-Sitter</Navbar.Brand>
+      <Navbar.Brand id="brand" href="/">Plant-Sitter</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className= "mr-auto">
@@ -30,7 +30,7 @@ const navbar = (props) => {
         </Nav>
 
         {props.userInSession ? (
-              <div>
+              <div className="welcome">
                 <Link to = {`/profile/myprofile/${props.userInSession._id}`}> Welcome, {props.userInSession.username}</Link>
                 <button onClick={(e) => {
                   logout().then(() => props.updateUser(null))

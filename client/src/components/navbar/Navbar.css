@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+* {
+    font-family: 'Lato', sans-serif;
+}
 #navbar {
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
 .nav {
     background-color: #4A7C59;
     display: flex;
@@ -20,14 +25,35 @@
 }
 
 .compte a {
-    color: #222f3e;
+    color: #fff;
     font-weight: 700;
     margin-left: 1em;
 }
-
+#navbar a {
+    color: rgba(255, 255, 255, 0.883);
+    font-size: 16px;
+}
+#navbar a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+#navbar button {
+    color:rgba(255, 255, 255, 0.883)
+}
+#navbar button:hover {
+    color: #fff;
+}
 .compte a:hover {
     color: #222f3e;
     font-weight: 700;
+}
+.welcome a {
+    text-decoration: none;
+    color: white;
+}
+#navbar #brand {
+    font-size: 30px;
+    -webkit-text-stroke: 1px #4A7C59;
 }
 
 /*TABLETTE MAX 900PX*/

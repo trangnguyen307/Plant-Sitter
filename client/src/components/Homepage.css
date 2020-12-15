@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 .presentation {
     background-image: url('../images/background-image.jpg');
     background-size: cover;
@@ -14,7 +14,7 @@
 
 h5 {
     font-size: 30px !important;
-    font-weight: 900;
+    font-weight: bold !important;
     text-transform: uppercase;
 }
 
@@ -242,9 +242,6 @@ article img {
         height: 90vh;
     }
 
-    .search-barre {
-        /* height: 10em; */
-    }
 
     /* form {
         display: flex;

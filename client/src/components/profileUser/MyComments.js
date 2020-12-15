@@ -52,7 +52,7 @@ class MyComments extends React.Component {
     render () {
         console.log('props userinsession',this.props.userInSession)
         return (
-            <div className="container">
+            <div className="grand-section container-fluid">
                 <div className='profile row'>
                     <div className="menu col-lg-3">
                         <MenuProfile userInSession={this.props.userInSession}/>

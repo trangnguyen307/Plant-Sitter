@@ -65,13 +65,21 @@ class AnnonceList extends Component {
     
     return(
       <div className="container-fluid">
-        <div className="search-bar">
-          <Search updateQueryAddress={this.updateQueryAddress} 
-                updateQueryMoving={this.updateQueryMoving} 
-                updateQueryStartDate={this.updateQueryStartDate}
-                updateQueryEndDate= {this.updateQueryEndDate}
-                redirectToAnnonceList={this.redirectToAnnonceList}
-          />
+        <div className="row justify-content-center search-bar">
+          <div className="col-lg-8 col-md-10 col-xs-12">
+            <Search updateQueryAddress={this.updateQueryAddress} 
+                  updateQueryMoving={this.updateQueryMoving} 
+                  updateQueryStartDate={this.updateQueryStartDate}
+                  updateQueryEndDate= {this.updateQueryEndDate}
+                  redirectToAnnonceList={this.redirectToAnnonceList}
+            />
+          </div>
+          {this.props.userInSession &&
+            <div className="col-lg-2 col-md-2 col-xs-8 col-10 new-annonce">
+              <Link to="/annonce/new">Ajouter votre annonce</Link>
+            </div>
+          } 
+          
         </div>
         <div className="row justify-content-center annonce-list">
 
@@ -106,9 +114,7 @@ class AnnonceList extends Component {
 
         </div>
         
-        <div>
-          {this.props.userInSession && <Link to="/annonce/new">Ajouter votre annonce</Link>}
-        </div>
+        
 
           
     

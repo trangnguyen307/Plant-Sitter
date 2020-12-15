@@ -9,10 +9,12 @@ import "bootstrap/dist/css/bootstrap.css";
 
 const navbar = (props) => {
   return (
-    <div>
-      <Navbar className="nav">
+    <div >
+      <Navbar id="navbar" className="nav" expand="lg">
       <Navbar.Brand href="/">Plant-Sitter</Navbar.Brand>
-        <Nav className= "mr-auto">
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+      <Nav className= "mr-auto">
           <Nav.Item>
             <Nav.Link as={Link} to="/">A propos</Nav.Link>
           </Nav.Item>
@@ -26,7 +28,8 @@ const navbar = (props) => {
             <Nav.Link as={Link} to="/">Contact</Nav.Link>
           </Nav.Item>
         </Nav>
-    {props.userInSession ? (
+
+        {props.userInSession ? (
               <div>
                 <Link to = {`/profile/myprofile/${props.userInSession._id}`}> Welcome, {props.userInSession.username}</Link>
                 <button onClick={(e) => {
@@ -39,7 +42,11 @@ const navbar = (props) => {
                 <Link to='/signup' style={{textDecoration: 'none'}}>Créer un compte</Link>
                 <Link to='/login' style={{textDecoration: 'none'}}>Me connecter</Link>
             </div> 
-            )}
+        )}
+
+      </Navbar.Collapse>
+        
+        
   </Navbar>  
     </div>
   )

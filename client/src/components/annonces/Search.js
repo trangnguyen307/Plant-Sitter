@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-// import {Link, Redirect} from 'react-router-dom'
+import './Search.css';
+import { FaSearch  } from "react-icons/fa"
 
 
 class Search extends React.Component {
@@ -39,23 +40,33 @@ class Search extends React.Component {
             } }} />
         }
         return (
-            <div>
-                <form onSubmit = {this.handleFormSubmit}>
-                    <input name = 'queryAddress' type ="text" placeholder="Adresse" value={this.state.queryAddress} onChange={this.handleChange} />
-                    <select name="queryMoving" value= {this.state.queryMoving} onChange={this.handleChange}>
-                        <option value="">Déplacement</option>
-                        <option value="true">Oui</option>
-                        <option value="false">Non</option>
-                    </select>
-                    <label>
-                        Du:
+            <div id="search">
+                <form onSubmit = {this.handleFormSubmit} className="row justify-content-center">
+                    <p className="col-lg-2 col-md-2 col-xs-8 col-8">
+                        <label> Adresse</label>
+                        <input name = 'queryAddress' type ="text" placeholder="Adresse" value={this.state.queryAddress} onChange={this.handleChange} />
+                    </p>
+                    <p className="col-lg-2 col-md-2 col-xs-0 no-display">
+                        <label>Déplacement</label>
+                        <select name="queryMoving" value= {this.state.queryMoving} onChange={this.handleChange}>
+                            <option value="">Choisir une réponse</option>
+                            <option value="true">Oui</option>
+                            <option value="false">Non</option>
+                        </select>
+                    </p>
+                    <p className="col-lg-3 col-md-3 col-xs-0 no-display">
+                        <label>A partir du </label>
                         <input type = 'date' name='queryStartDate' value={this.state.queryStartDate} onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Au:
+                    </p>
+                    <p className="col-lg-3 col-md-3 col-xs-0 no-display">
+                        <label>Jusqu'au</label>
                         <input type = 'date' name='queryEndDate' value={this.state.queryEndDate} onChange={this.handleChange} />
-                    </label>
-                    <button>Chercher</button>
+                    </p>
+                   
+                        
+                    <button className="col-lg-1 col-md-1 col-xs-2 col-2 button-search"><FaSearch /></button>
+                   
+                    
                 </form>
             </div>
         )

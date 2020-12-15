@@ -1,41 +1,23 @@
 
 .presentation {
-    background-color: #FAF3DD;
-    height: 100vh;
-    padding: 0em;
-}
-
-.search-barre {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 10em;
+    background-image: url('../images/background-image.jpg');
+    background-size: cover;
+    height: calc(100vh - 5em);
+    padding-top: 8%;
 }
 
 .phrase-accroche {
-    margin-left: 10em;
-    padding: 0px;
+    margin-left: 30px;
+    margin-top: 9%;
+    font-size: 25px;
 }
 
 h5 {
-    font-weight: 700;
-
+    font-size: 30px !important;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
-.presentation-img {
-    width: 70em;
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.image img {
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-}
 
 .consignes {
     background-color: #4A7C59;
@@ -261,17 +243,17 @@ article img {
     }
 
     .search-barre {
-        height: 10em;
+        /* height: 10em; */
     }
 
-    form {
+    /* form {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         width: 9em;
         margin-top: 10em;   
-    }
+    } */
 
     .presentation-img {
         display: flex;

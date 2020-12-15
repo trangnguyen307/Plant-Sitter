@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Home from './components/Homepage';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
@@ -11,7 +11,6 @@ import AnnonceList from './components/annonces/AnnoncesList'
 import AnnonceDetails from './components/annonces/AnnonceDetails'
 import AddAnnonce from './components/annonces/AddAnnonce'
 import ArticlesList from './components/articles/ArticlesList';
-import ProtectedRoute from './components/auth/protected-routes'
 import AddArticle from './components/articles/AddArticle';
 import ProfileUser from './components/profileUser/ProfileUser';
 import ArticleDetails from './components/articles/ArticleDetails';

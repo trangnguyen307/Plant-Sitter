@@ -11,20 +11,21 @@ class Home extends React.Component {
         return (
             <div>
             {/* SECTION RECHERCHE*/}
-              <div className="presentation">
-                  <div className="search-barre">
-                    <Search homepage={true}/>
-                  </div>
-                  <div className="presentation-img">
-                    <div className="phrase-accroche">
-                      <h5>Partez l'esprit tranquille avec "Plant-Sitter"</h5>
-                      <p>Le premier site de garde de plantes en France</p>
-                    </div>
-                    <div className="image">
-                      <img src='../../photo1.png' alt="image couverture"/>
+                <div className="presentation ">
+                  <div className="row justify-content-center">
+                    <div className="search-barre col-lg-6">
+                      <Search homepage={true}/>
                     </div>
                   </div>
-              </div>
+                  
+                  
+                  <div className="phrase-accroche">
+                    <h5>Partez l'esprit tranquille avec "Plant-Sitter"</h5>
+                    <p>Le premier site de garde de plantes en France</p>
+                   </div>
+            
+                  
+                </div>
 
               {/* SECTION CONSIGNE*/}
 

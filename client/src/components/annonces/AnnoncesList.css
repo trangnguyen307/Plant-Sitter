@@ -75,9 +75,10 @@
     margin: 30px auto;
     background-color: rgb(245, 236, 224);
     border-radius: 10px;
+    min-height: calc(100vh - 11em);
 }
 .annonce-detail > div {
-    margin: 20px auto;
+    margin: auto;
 }
 .annonce-detail img {
     height: 500px;
@@ -100,4 +101,12 @@
     background-color: #4a7c59b7;
     text-decoration: none;
     font-size: 17px;
+}
+.annonce-detail .map-div {
+    height: 500px;
+}
+@media (max-width:768px) {
+    .annonce-detail .map-div {
+        display: none;
+    }
 }

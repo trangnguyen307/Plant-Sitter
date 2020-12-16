@@ -115,9 +115,26 @@
 #profilePublic {
     background-image: url(../../images/background-profile.jpg);
     background-size: cover;
-    padding: 50px 20px;
-    flex: 1;
+    padding: 50px 50px;
+    min-height: calc(100vh - 11em);
 }
 #profilePublic #firstSection {
     display: flex;
+    margin-bottom: 20px;
+}
+#profilePublic #firstSection img {
+    margin-right: 20px;
+}
+#profilePublic #firstSection span {
+    font-weight: bold;
+}
+#profilePublic .button-publicProfile {
+    width: auto;
+    height: auto;
+    padding: 10px;
+    color: rgba(255, 255, 255, 0.856);
+}
+#profilePublic .button-publicProfile:hover {
+    color: #fff;
+    background-color: #4a7c59c5;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import service from '../auth/auth-service';
 import HoverRating from '../Rating';
+import './Commentaires.css'
 
 
 
@@ -42,12 +43,12 @@ class AddCommentaire extends Component {
               <label>Note:</label>
               <HoverRating onSelectRating={this.handleRating}/>
             </p>
-            <p>
+            <p id="add-commentaire">
                 <label>Votre commentaire:</label>
                 <textarea name="content" value={this.state.content} onChange={ e => this.handleChange(e)} />  
             </p>
 
-          <input type="submit" value="Submit" />
+            <button>Soumettre</button>
         </form>
       </div>
     )

@@ -41,7 +41,6 @@ class MapContainer extends React.Component {
     ))
   }
   componentDidMount() {
-    console.log('connected')
     this.getLocations(this.props.annonces)
   }
   

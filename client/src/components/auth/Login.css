@@ -33,8 +33,12 @@ button {
     border-radius: 0.2em;
     background-color: #4A7C59;
     border: 1px solid  #4A7C59;
+    color: rgba(255, 255, 255, 0.808);
 }
-
+button:hover {
+    color: #fff;
+    background-color: #4a7c59d2;
+}
 input {
     margin-bottom: 1em;
     border-radius: 0.2em;

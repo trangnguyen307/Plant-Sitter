@@ -24,10 +24,9 @@ class ArticlesList extends Component {
     }
 
   render(){
-      // console.log('userInSession', this.props.loggedInUser)
     return(
       <div id="article-list" className="container-fluid">
-        {this.props.user.username === "admin" && 
+        {this.props.userInSession && this.props.userInSession.username === "admin" && 
         <div className="row add-button">
             <Link to="/article/new">Ajouter une article</Link>
         </div>

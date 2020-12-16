@@ -12,6 +12,3 @@ html, body {
   display: flex;
   flex-direction: column;
 }
-.App .main-section {
-  flex: 1;
-}

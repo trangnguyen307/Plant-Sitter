@@ -56,26 +56,25 @@ class ProfileUser extends React.Component {
 
     render(){
         return(
-            <div className="page">
-              <div className="container-profile">
-              <div className="container-image-profile">
-              <div className="my-profile">
-              <h3>Bonjour {this.state.user.username} !</h3>
-                  <div className="upload-photo">
-                      <form onSubmit={this.handleFormSubmit} className="form-profile">
-                          <img className="avatar" alt="" style={{width:"200px"}} src={this.state.user.imageUrl || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />
-                          <p>
-                            <input type="file" ref={ref=> this.fileInput = ref} name="imageUrl" onChange={this.handleUpload} />
-                          </p>  
-                        <input type="submit" value="Télécharger" className="button"/>
-                      </form>
-                  </div>
-                  <h5>Mon profil</h5>
-                  <MenuProfile userInSession={this.props.userInSession}/>
+          <div className="grand-section container-fluid">
+            <div className="profile row">
+              <div className="menu col-lg-3">
+                <MenuProfile userInSession={this.props.userInSession}/>
               </div>
-              </div>
-              </div>
+
+              <div className="my-profile col-lg-6">
+                <h3>Bonjour {this.state.user.username} !</h3>
+                  <form onSubmit={this.handleFormSubmit} className="form-profile">
+                    <img className="avatar" alt="" src={this.state.user.imageUrl || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />
+                    <p>
+                      <input type="file" ref={ref=> this.fileInput = ref} name="imageUrl" onChange={this.handleUpload} />
+                    </p>  
+                    <input type="submit" value="Télécharger" className="button"/>
+                  </form>
+              </div> 
+
             </div>
+          </div> 
         )
     }
 }

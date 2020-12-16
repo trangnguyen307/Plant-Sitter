@@ -1,6 +1,5 @@
 import React from 'react'; 
-import './ProfileUser.css'
-import {Link} from 'react-router-dom'
+import './ProfileUser.css';
 import service from '../auth/auth-service';
 import AddCommentaire from '../commentaires/AddCommentaire';
 
@@ -32,28 +31,35 @@ class ProfilePublic extends React.Component {
           
             this.props.userInSession ? 
             <div id = "profilePublic">
-              <div id="firstSection">
-                  <img src={this.state.user.imageUrl} style={{width:"200px"}} alt='Avatar' />
-                  <div>
-                      <p><span>Username: </span>{this.state.user.username}</p>
-                      <p><span>Adresse: </span>{this.state.user.adress ? this.state.user.adress : "None"}</p>
-                      <p><span>Membre depuis: </span>{this.state.user.createdAt}</p>
-                      <p><span>Note: </span></p>
+              <div className="container-fluid profilePublic-content-section">
+                <div  className="row ">
+                  <div id="firstSection">
+                    <img src={this.state.user.imageUrl} style={{width:"200px"}} alt='Avatar' />
+                    <div>
+                        <p><span>Username: </span>{this.state.user.username}</p>
+                        <p><span>Adresse: </span>{this.state.user.adress ? this.state.user.adress : "None"}</p>
+                        <p><span>Membre depuis: </span>{this.state.user.createdAt}</p>
+                        <p><span>Note: </span></p>
+                    </div>
                   </div>
+                    
+                </div>
+                <div id="firstSection" className="row">
+                  {
+                    this.state.showComment ?
+                    <AddCommentaire />
+                    :
+                    <button className="button-publicProfile" onClick={ev => this.setState({showComment: true})}>Ecrire vos commentaires</button>
+                  }
+                </div>
               </div>
-              {
-                this.state.showComment ?
-                <AddCommentaire />
-                :
-                <button onClick={ev => this.setState({showComment: true})}>Ecrire vos commentaires</button>
-              }
               
             </div> 
           :
           <div>
             Connectez-vous pour consulter le profil !!!
           </div>
-          
+            
             
         )
     }

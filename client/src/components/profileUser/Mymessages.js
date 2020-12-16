@@ -45,28 +45,32 @@ class MyMessages extends React.Component {
             return "Vous devez s'identifier afin de consulter vos messages !!"
         }
         return (
-            <div className="profile">
-                <MenuProfile userInSession={this.props.userInSession}/>
-                <div>
-                    { this.state.messages.map( message => {
-                        return (
-                        <div key={message._id} className="messagesSection">
-                            <div className="displayName">
-                                <Link to={`/profile/myProfile/${this.props.userInSession._id}/message/${message._id}`}>{message.sender._id === this.props.userInSession._id ? message.receiver.username : message.sender.username}</Link>
-                            </div>
-                            <div className="displayMessages">
-                                <div >
+            <div className="grand-section container-fluid">
+                <div className="profile row">   
+                    <div className="menu col-lg-3">
+                        <MenuProfile userInSession={this.props.userInSession}/>
+                    </div>
+                    
+                    <div className="my-messages col-lg-6">
+                        { this.state.messages.map( message => {
+                            return (
+                            <div key={message._id} className="messagesSection">
+                                <div className="displayName">
+                                    <Link to={`/profile/myProfile/${this.props.userInSession._id}/message/${message._id}`}>{message.sender._id === this.props.userInSession._id ? message.receiver.username : message.sender.username}</Link>
+                                </div>
+                                <div className="displayMessages">
                                     {message.annonce ? <p>Pour: {message.annonce.title}</p> : <p>Pour: Annonce supprimée</p>}
                                     <p>{message.messagesBox[message.messagesBox.length-1].message}</p>
                                 </div>
+                    
                             </div>
-                
-                        </div>
-                        )})
-                    }
-                </div>
+                            )})
+                        }
+                    </div>
                 
             </div>
+            </div>
+            
         )
     }
 }

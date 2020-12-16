@@ -31,10 +31,11 @@ articleRouter.post('/', (req, res, next) => {
         return;
       }
 
-      const {title,content,imageUrl} = req.body;
+      const {title,intro,content,imageUrl} = req.body;
 
       Article.create({
         title,
+        intro,
         content,
         imageUrl
       })

@@ -1,44 +1,52 @@
-#annonce{
-    background-color: #FAF3DD;
-}
+
 
 .section-annonce {
-    width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
     display:flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 3em;
+    margin: 30px auto;
 }
 
-.form-annonce {
+.section-annonce form {
     background-color: #C8D5B9;
     border-radius: 0.2em;
-    width: 40em;
 }
 
-.form-annonce p {
+.section-annonce p {
     display:flex;
     flex-direction: column;
     align-items:center;
     color: #4A7C59;    
 }
 
-h2 {
+.section-annonce h2 {
     color: #4A7C59; 
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-.form-annonce .submit {
-    margin-top:1em;
-    width: 6em;
-    height: 2em;
-    border-radius: 0.2em;
-    background-color: #4A7C59;
-    border: 1px solid  #4A7C59;
-} 
-
-label {
+.section-annonce label {
     font-weight: 700;
+}
+.section-annonce input, .section-annonce select  {
+    height: 35px;
+    width: 80%;
+    border: 1px solid #000;
+    padding: auto 5px;
+}
+.section-annonce textarea {
+    height: 60px;
+    width: 80%;
+    border: 1px solid #000;
+}
+.section-annonce input[type="file"] {
+    border: none;
+    text-align: center;
+}
+.section-annonce button {
+    color: #fff !important;
+}
+
+.section-annonce button:hover {
+    font-size: 17px;
+    background-color: #4a7c59b2;
 }

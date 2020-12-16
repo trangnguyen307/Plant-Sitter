@@ -64,44 +64,57 @@ class AnnonceList extends Component {
     console.log('query:  ', this.state.queryAddress, this.state.queryMoving, this.state.queryEndDate, this.state.queryStartDate)
     
     return(
-      <div>
-        <div className="search-bar">
-          <Search updateQueryAddress={this.updateQueryAddress} 
-                updateQueryMoving={this.updateQueryMoving} 
-                updateQueryStartDate={this.updateQueryStartDate}
-                updateQueryEndDate= {this.updateQueryEndDate}
-                redirectToAnnonceList={this.redirectToAnnonceList}
-          />
+      <div className="container-fluid">
+        <div className="row justify-content-center search-bar">
+          <div className="col-lg-8 col-md-10 col-xs-12">
+            <Search updateQueryAddress={this.updateQueryAddress} 
+                  updateQueryMoving={this.updateQueryMoving} 
+                  updateQueryStartDate={this.updateQueryStartDate}
+                  updateQueryEndDate= {this.updateQueryEndDate}
+                  redirectToAnnonceList={this.redirectToAnnonceList}
+            />
+          </div>
+          {this.props.userInSession &&
+            <div className="col-lg-2 col-md-2 col-xs-8 col-10 new-annonce">
+              <Link to="/annonce/new">Ajouter votre annonce</Link>
+            </div>
+          } 
+          
         </div>
+        <div className="row justify-content-center annonce-list">
 
-        <div className="map-div">
-          {this.state.listOfAnnonces.length !== 0 && <MapContainer annonces={this.state.listOfAnnonces} className="map" />}
+          <div className="col-lg-6 col-md-11  annonce-list">
+            { listOfAnnonncesFilter.map( annonce => (
+                <div key={annonce._id} className="annonces row">
+                  <div className="col-xs-12 col-md-5 col-lg-5">
+                    <Link to={`/annonce/${annonce._id}`}>
+                      <img  src={annonce.imageUrl} alt="" / >
+                    </Link>
+                  </div>
+              
+                  <div className="col-xs-12 col-md-7 col-lg-7">
+                    <p className="title">{annonce.title}</p>
+                    <p><span className="label">Type:</span> {annonce.type === "offer" ? "Offer" : "Chercher un(e) bénévol(e)"}</p>
+                    <p><span className="label">Période:</span> De {annonce.startDate} A {annonce.endDate}</p>
+                    <p><span className="label">Adresse:</span> {annonce.adress}</p>
+                    <div>
+                      <p><span className="label">Auteur:</span> {annonce.author.username}</p>
+                      <Link to={`/profile/${annonce.author._id}`}>Voir Profil</Link>
+                      <Link to={`/send-messages/${annonce._id}`}>Envoyer Messages</Link>
+                    </div>  
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+
+          <div className="col-lg-6 map-div">
+            {this.state.listOfAnnonces.length !== 0 && <MapContainer annonces={this.state.listOfAnnonces} className="map" />}
+          </div>
+
         </div>
         
-
-        <div style={{width: '60%', float:"left"}}>
-          { listOfAnnonncesFilter.map( annonce => (
-              <div key={annonce._id}>
-                <Link to={`/annonce/${annonce._id}`}>
-                  <img  src={annonce.imageUrl} style={{width: "300px"}} alt="" / >
-                </Link>
-            
-                <p>{annonce.title}</p>
-                <p>Type: {annonce.type === "offer" ? "Offer" : "Chercher un(e) bénévol(e)"}</p>
-                <p>Période: De {annonce.startDate} A {annonce.endDate}</p>
-                <p>Adresse: {annonce.adress}</p>
-                <div>
-                  <p>Auteur: {annonce.author.username}</p>
-                  <Link to={`/profile/${annonce.author._id}`}>Voir Profil</Link>
-                  <Link to={`/send-messages/${annonce._id}`}>Envoyer Messages</Link>
-                </div>  
-              </div>
-            ))
-          }
-        </div>
-        <div>
-          {this.props.userInSession && <Link to="/annonce/new">Ajouter votre annonce</Link>}
-        </div>
+        
 
           
     

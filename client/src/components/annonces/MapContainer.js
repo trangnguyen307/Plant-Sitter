@@ -10,7 +10,7 @@ Geocode.setRegion("fr");
 class MapContainer extends React.Component {
   state ={
     mapStyles : {        
-      height: "100vh",
+      height: "100%",
       width: "100%"
     },
     defaultCenter : {
@@ -41,7 +41,6 @@ class MapContainer extends React.Component {
     ))
   }
   componentDidMount() {
-    console.log('connected')
     this.getLocations(this.props.annonces)
   }
   

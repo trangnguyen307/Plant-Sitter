@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Home from './components/Homepage';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
@@ -11,7 +11,6 @@ import AnnonceList from './components/annonces/AnnoncesList'
 import AnnonceDetails from './components/annonces/AnnonceDetails'
 import AddAnnonce from './components/annonces/AddAnnonce'
 import ArticlesList from './components/articles/ArticlesList';
-import ProtectedRoute from './components/auth/protected-routes'
 import AddArticle from './components/articles/AddArticle';
 import ProfileUser from './components/profileUser/ProfileUser';
 import ArticleDetails from './components/articles/ArticleDetails';
@@ -57,15 +56,15 @@ class App extends React.Component {
     return(
       <div className="App">
           <Navbar userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser}/>
-          {/*<Navbar userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser} /> */}
-          <Switch>
+      
+          <Switch >
             <Route exact path="/" component = {Home} />
             <Route exact path="/signup" render={() => <Signup updateUser={this.updateLoggedInUser}/>} />
             <Route exact path='/login' render={() => <Login updateUser={this.updateLoggedInUser} user={this.state.loggedInUser}/>}/>
             <Route exact path="/annonce" render = { (props) => <AnnonceList {...props} userInSession={this.state.loggedInUser}/>} />
             <Route exact path="/annonce/new" component={AddAnnonce} />
             <Route exact path="/annonce/:id" component = {AnnonceDetails} />
-            <Route exact path="/article" render = { (props) => <ArticlesList {...props} user={this.state.loggedInUser}/>} />
+            <Route exact path="/article" render = { (props) => <ArticlesList {...props} userInSession={this.state.loggedInUser}/>} />
             <Route exact path="/article/new" component={AddArticle} />
             <Route exact path="/article/:id" render= {(props) => <ArticleDetails {...props}  user={this.state.loggedInUser}/>} /> 
             <Route exact path="/profile/myProfile/:id/messages" render={(props) => <MyMessages {...props} userInSession={this.state.loggedInUser}/>} />

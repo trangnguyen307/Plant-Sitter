@@ -1,21 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+* {
+    font-family: 'Lato', sans-serif;
+}
+#navbar {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
 .nav {
-    background-color: #8FC0A9;
+    background-color: #4A7C59;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     font-size: 16px;
-    height: 5em;
+    padding-top: 20px;
 }
-
+.navbar-collapse {
+    background-color:  #4A7C59;
+    text-align: end;
+}
+.compte {
+    font-size: 16px;
+}
 
 .compte a {
-    color: #222f3e;
+    color: #fff;
     font-weight: 700;
-    margin: 1em;
+    margin-left: 1em;
 }
-
+#navbar a {
+    color: rgba(255, 255, 255, 0.883);
+    font-size: 16px;
+}
+#navbar a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+#navbar button {
+    color:rgba(255, 255, 255, 0.883)
+}
+#navbar button:hover {
+    color: #fff;
+}
 .compte a:hover {
     color: #222f3e;
     font-weight: 700;
 }
+.welcome a {
+    text-decoration: none;
+    color: white;
+}
+#navbar #brand {
+    font-size: 30px;
+    -webkit-text-stroke: 1px #4A7C59;
+}
+
+/*TABLETTE MAX 900PX*/
+/* @media (max-width: 900px)  {
+    .nav {
+        font-size: 10px; 
+    }
+
+    .compte {
+        font-size: 10px;
+        margin-right: 1em;
+    }
+} */
+
+/*TABLETTE MAX 768PX*/
+/* @media (max-width: 768px) {
+    .compte {
+        margin-right: 1em;
+    }
+} */
+
+/*TABLETTE MAX 576PX*/
+/* @media (max-width: 768px) {
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 10px;
+        height: 10em;
+    }
+
+    .compte {
+        margin-right: 1em;
+    }
+} */
+
+
+
 
 
 

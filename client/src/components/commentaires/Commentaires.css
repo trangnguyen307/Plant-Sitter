@@ -1,0 +1,8 @@
+#add-commentaire {
+    display: flex;
+    flex-direction: column;  
+}
+#add-commentaire textarea {
+    width: 500px;
+    height: 100px;
+}

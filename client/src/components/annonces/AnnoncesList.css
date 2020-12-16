@@ -1,13 +1,112 @@
-.search-bar {
-    background-color: yellow;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin-top: 3em;
+.divider {
+    height: 1px;
+    background-color: #4a7c59c5;
+    margin: 20px auto;
 }
 
-.map {
-    width: 100px;
-    height: 100px;
+
+/*ANNONCE LIST */
+
+
+.search-bar {
+    margin-top: 20px;
+}
+.search-bar .new-annonce {
+    /* background-color: rgba(216, 212, 212, 0.63);
+    border-radius: 40px; */
+    text-align: center;
+    font-size: 18px;
+    height: 85px;
+    padding-top: 20px;
+}
+.search-bar div {
+    margin:10px;
+}
+.search-bar .new-annonce a {
+    color: #4A7C59;
+    font-weight: 700;
+    text-align-last: center;
+}
+.search-bar .new-annonce a:hover {
+    text-decoration: none;
+    font-size: 20px;
+    color:  #4a7c59bb;
+}
+.annonces {
+    display: flex;
+    margin: 20px;
+    background-color: rgb(245, 236, 224);
+    border-radius: 10px;
+    padding: 10px;
+}
+.annonces img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-right: 20px;
+    /* padding: 10px; */
+}
+.annonces a {
+    color: #4A7C59;
+    margin-right: 10px;
+    font-weight: 700;
+}
+.annonces .title {
+    font-weight: bold;
+    font-size: 18px;
+}
+.annonces .label {
+    font-weight: bold;
+}
+.map-div {
+    margin: 20px auto;
+    
+}
+@media (max-width:768px) {
+    .map-div {
+        display: none;
+    }
+}
+
+
+/*ANNONCE DETAIL*/
+
+.annonce-detail {
+    margin: 30px auto;
+    background-color: rgb(245, 236, 224);
+    border-radius: 10px;
+    min-height: calc(100vh - 11em);
+}
+.annonce-detail > div {
+    margin: auto;
+}
+.annonce-detail img {
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+}
+.annonce-detail span {
+    font-weight: bold;
+}
+.annonce-detail a {
+    color: #fff;
+    background-color: #4A7C59;
+    margin-right: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    line-height: 30px;
+}
+.annonce-detail a:hover {
+    color: #fff;
+    background-color: #4a7c59b7;
+    text-decoration: none;
+    font-size: 17px;
+}
+.annonce-detail .map-div {
+    height: 500px;
+}
+@media (max-width:768px) {
+    .annonce-detail .map-div {
+        display: none;
+    }
 }

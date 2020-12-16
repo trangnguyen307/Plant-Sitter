@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import service from '../auth/auth-service'
 import { Link } from 'react-router-dom';
-
+import './Article.css';
 
 class AnnonceDetails extends Component {
 
@@ -63,26 +63,31 @@ class AnnonceDetails extends Component {
     render () {
       console.log('user articledetail:', this.props.user)
       return (
-        <div style={{marginTop:"50px"}}>
-          <img  src={this.state.article.imageUrl} alt="" / >
-
-          <div>    
-            <h1>{this.state.article.title}</h1>
-            <p>{this.state.article.content}</p>
-
-            <button onClick={this.addLike}>👍</button>  <span>{this.state.likeArray.length}</span>
-            {this.props.user.username === "admin" && (
-                <div>
-                    {/* <Link to="/">Modifier</Link> */}
-                    <button onClick={() => this.deleteArticle()}>Supprimer</button>
-                </div>
-            )}
+        <div id="article-detail" className="container">
+          <div className="row justify-content-center article">
+            <div className="col-lg-11 col-md-11 col-xs-12">
+              <img  src={this.state.article.imageUrl} alt="" / >
+            </div>
             
-            
-           
+          </div>
+          <div className="row justify-content-center article">
+            <div className="col-lg-11 col-md-11 col-xs-12"> 
+              <div className="title">
+                <h1>{this.state.article.title}</h1>
+                <span>{this.state.likeArray.length} 👍</span>
+              </div>   
+              
+              <p>{this.state.article.intro}</p>
+
+              <p>{this.state.article.content}</p>
+
+              <button onClick={this.addLike}>👍 J'aime</button>  
+              {this.props.user.username === "admin" && <button onClick={() => this.deleteArticle()}>Supprimer</button>}  
+              <Link className="button-article" to='/article'>Retourner</Link>  
+            </div>
           </div>
 
-          <Link to='/article'>Retourner</Link>
+          
         </div>
       )
     }

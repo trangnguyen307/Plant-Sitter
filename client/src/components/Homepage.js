@@ -45,7 +45,7 @@ class Home extends React.Component {
                     <img src='../../photo3.png' alt="image2 consigne"/>
                   </article>
                   <div className="paragraphe">
-                    <p>Si vous êtes mutuellement d'accords, cliquer sur la case "réserver" du plant-sitter</p>
+                    <p>Faites connaissance et échangez via notre service de messagerie </p>
                   </div>
                 </div>
 

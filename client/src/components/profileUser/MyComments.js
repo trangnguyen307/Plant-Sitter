@@ -15,7 +15,7 @@ class MyComments extends React.Component {
     getCommentaires = () => {
         const { params } = this.props.match;
         service.get(`/commentaire/find/${params.id}`)
-        .then(responseFromApi => { 
+        .then(responseFromApi => {
             console.log('response Data', responseFromApi.data)
             this.setState({
                 commentaires: responseFromApi.data
@@ -51,6 +51,7 @@ class MyComments extends React.Component {
 
     render () {
         console.log('props userinsession',this.props.userInSession)
+        if(!this.props.userInSession) return <p> Vous devez s'identifier pour consulter vos commentaires  </p>
         return (
             <div className="grand-section container-fluid">
                 <div className='profile row'>
@@ -62,7 +63,7 @@ class MyComments extends React.Component {
                             return (
                             <div key={commentaire._id} className="commentairesSection">
                                 <div className="displayName">
-                                    <Link to={`/profile/myProfile/${this.props.userInSession._id}/commentaire/${commentaire._id}`}>{commentaire.sender._id === this.props.userInSession._id ? commentaire.receiver.username : commentaire.sender.username}</Link>
+                                    <p>{commentaire.sender._id === this.props.userInSession._id ? "Envoyé à " + commentaire.receiver.username : commentaire.sender.username}</p>
                                 </div>
                                 <div className="displayCommentaires">
                                     <div>

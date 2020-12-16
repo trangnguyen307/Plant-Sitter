@@ -47,7 +47,7 @@ class ProfilePublic extends React.Component {
                 <div id="firstSection" className="row">
                   {
                     this.state.showComment ?
-                    <AddCommentaire />
+                    <AddCommentaire receiverId={this.state.user._id}/>
                     :
                     <button className="button-publicProfile" onClick={ev => this.setState({showComment: true})}>Ecrire vos commentaires</button>
                   }

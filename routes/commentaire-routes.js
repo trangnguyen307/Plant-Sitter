@@ -14,13 +14,13 @@ commentaireRoutes.post('/', (req, res, next) => {
       });
       return;
     }
-    const {content, note} = req.body;
-    console.log("server commentaires:" + content);
+    const {content, receiverId, note} = req.body;
+    console.log("server commentaires:" + content + " pour receiver " + receiverId);
 
     Comment.create({
       content,
       sender: req.session.currentUser._id,
-      receiver: req.session.currentUser._id,
+      receiver: receiverId,
       note
       
     })
@@ -37,6 +37,7 @@ commentaireRoutes.post('/', (req, res, next) => {
 commentaireRoutes.get('/find/:id', (req, res, next) => {
 
   if (!req.session.currentUser) {
+    console.log("non connecte")
     res.status(401).json({
       message: "Connectez-vous pour consulter un commentaire !"
     });
@@ -44,15 +45,18 @@ commentaireRoutes.get('/find/:id', (req, res, next) => {
   }
 
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    console.log("utilisateur non valide")
     res.status(400).json({ message: "L'identifiant spécifié n'est pas valide"});
     return;
   }
 
   const id = req.params.id;
+  console.log("commentaires pour id " + id)
 
   Comment.find({$or : [{sender: id},{receiver: id}] })
     .populate('sender receiver')
     .then (commentaires => {
+      console.log('commentaire', commentaires)
       res.json(commentaires)
     })
     .catch(err => {

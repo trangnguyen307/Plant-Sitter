@@ -138,3 +138,9 @@
     color: #fff;
     background-color: #4a7c59c5;
 }
+
+.displayName {
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+}

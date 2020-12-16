@@ -8,8 +8,9 @@ import './Commentaires.css'
 class AddCommentaire extends Component {
  
     state = { 
-      content: "", 
-      note: "" // J'ai mis les notes avec RATING (stars)
+      content: "",
+      note: "2", // J'ai mis les notes avec RATING (stars)
+      commentDone: false
     }
 
   handleRating = (ratingValue) => { 
@@ -20,10 +21,11 @@ class AddCommentaire extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     const {content, note} = this.state
+    const receiverId = this.props.receiverId
     
-    service.post("/commentaire", { content, note})
+    service.post("/commentaire", {content, receiverId, note})
       .then( (response) => {
-        this.setState({content: "", note: ""});
+        this.setState({content: "", note: "", commentDone:true});
       })
       .catch( error => console.log(error) )
   }
@@ -35,7 +37,8 @@ class AddCommentaire extends Component {
   }
 
   render(){
-    
+    if (this.state.commentDone) 
+      return (<p className="merci-comment">Merci pour votre commentaire !</p>)
     return(
       <div>
         <form onSubmit={this.handleFormSubmit}>

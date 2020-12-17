@@ -9,7 +9,7 @@ class MenuProfile extends React.Component {
                 {/*<p>Hello</p>*/}
                 {this.props.userInSession && <Link to={`/profile/myProfile/${this.props.userInSession._id}`}>Je consulte mon profile</Link>}
                 {this.props.userInSession && <Link to={`/profile/myProfile/${this.props.userInSession._id}/messages`}>Je consulte mes messages</Link>}
-                {this.props.userInSession && <Link to={`/profile/myProfile/${this.props.userInSession._id}/comments`}>Je consulte mes comments</Link>} 
+                {this.props.userInSession && <Link to={`/profile/myProfile/${this.props.userInSession._id}/comments`}>Je consulte mes commentaires</Link>} 
             </div>
         )
     }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Signup.css';
 import {signup} from './auth-service'
-import { Link } from 'react-router-dom'; // HERE
+import { Link, Redirect } from 'react-router-dom'; // HERE
 
 
 class Signup extends Component {
@@ -10,6 +10,7 @@ class Signup extends Component {
       username: '' ,
       email: '',
       password: '',
+      redirect: false
     }
 
    
@@ -27,6 +28,7 @@ class Signup extends Component {
             username: "",
             email: "", 
             password: "",
+            redirect: true
         });
         this.props.updateUser(response)
       })
@@ -43,6 +45,9 @@ class Signup extends Component {
   // handleChange() and handleSubmit() will be added here
 
   render() {
+    if(this.state.redirect) {
+      return <Redirect to="/" />
+    }
     return (
       <div id="signup">
       <div className="section-signup">
@@ -62,7 +67,7 @@ class Signup extends Component {
           </form>
   
           <p>Tu as déjà un compte? 
-            <Link to={"/"}> Me connecter</Link>
+            <Link to={"/login"}> Me connecter</Link>
           </p>
       </div>
       </div>

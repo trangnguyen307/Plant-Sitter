@@ -1,8 +1,9 @@
 #signup{
-    background-color: #FAF3DD;
+    background-image: url('../../images/background-profile.jpg');
+    background-size: cover;
 }
 .section-signup {
-    height: 43.4em;
+    min-height: calc(100vh - 11em);
     display: flex;
     flex-direction: column;
     align-items: center;

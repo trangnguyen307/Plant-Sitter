@@ -47,21 +47,21 @@ class AnnonceList extends Component {
   render(){
     let listOfAnnonncesFilter = [...this.state.listOfAnnonces];
     if (this.props.location?.query) {
-      listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce =>{
-        const matchAddress = annonce.adress.toLowerCase().includes(this.props.location.query);
-        return matchAddress
-      } )
+      this.props.location && console.log(this.props.location.query)
+      listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce =>annonce.adress.toLowerCase().includes(this.props.location.query))
     } else {
       if(this.state.queryAddress) listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce =>annonce.adress.toLowerCase().includes(this.state.queryAddress)  )
+      console.log('list of Annonce after query address', listOfAnnonncesFilter)  
       if(this.state.queryMoving === "true" || this.state.queryMoving === "false") {
-        listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce => annonce.moving === this.state.queryMoving)
+        let isTrueSet = (this.state.queryMoving === "true")
+        listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce => annonce.moving === isTrueSet)
       }
       
     }
     
     
     console.log('list of Annonce', listOfAnnonncesFilter)                                                       
-    console.log('query:  ', this.state.queryAddress, this.state.queryMoving, this.state.queryEndDate, this.state.queryStartDate)
+    console.log('query:  ', this.state.queryAddress, typeof this.state.queryMoving, this.state.queryEndDate, this.state.queryStartDate)
     
     return(
       <div className="container-fluid">

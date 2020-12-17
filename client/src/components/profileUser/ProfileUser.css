@@ -3,7 +3,7 @@
 .grand-section {
     background-image: url('../../images/background-profile.jpg');
     background-size: cover;
-    /* height: calc(100vh - 11em); */
+    min-height: calc(100vh - 11em);
 }
 #menuProfile {
     display: flex;
@@ -20,7 +20,7 @@
     text-decoration: none;
 }
 .profile {
-    height: calc(100vh - 11em);
+    min-height: calc(100vh - 11em);
     
     
 }
@@ -52,6 +52,9 @@
 }
 .profile .my-messages .messagesSection {
     display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.418);
+    color: rgba(255, 255, 255, 0.863);
+    padding-top: 10px;
 }
 .profile .my-messages .messagesSection a {
     color: rgba(255, 255, 255, 0.87);
@@ -64,10 +67,12 @@
 .profile .my-messages .displayName {
     width: 150px;
 }
-
+.messages-detail-section{
+    min-height: calc(100vh - 11em);
+}
 .messages-detail-section .messages {
     background-color:  #4A7C59;
-    height: calc(100vh - 11em -30px);
+    /* min-height: calc(100vh - 11em); */
     margin: 15px auto;
     padding: 20px;
     border-radius: 10px;
@@ -106,6 +111,7 @@
 
 .profile .my-comments {
     background-color:  #4A7C59;
+    border-radius: 10px;
     height: calc(100vh - 11em -30px);
     margin: 15px auto;
     padding-top: 20px;

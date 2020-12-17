@@ -47,8 +47,8 @@ class AnnonceList extends Component {
   render(){
     let listOfAnnonncesFilter = [...this.state.listOfAnnonces];
     if (this.props.location?.query) {
-      this.props.location && console.log(this.props.location.query)
-      listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce =>annonce.adress.toLowerCase().includes(this.props.location.query))
+      this.props.location && console.log('this.props.location.query',this.props.location.query)
+      listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce =>annonce.adress.toLowerCase().includes(this.props.location.query.queryAddress))
     } else {
       if(this.state.queryAddress) listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce =>annonce.adress.toLowerCase().includes(this.state.queryAddress)  )
       console.log('list of Annonce after query address', listOfAnnonncesFilter)  

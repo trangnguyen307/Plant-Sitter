@@ -49,7 +49,7 @@ class Search extends React.Component {
                     <p className="col-lg-2 col-md-2 col-xs-0 no-display">
                         <label>Déplacement</label>
                         <select name="queryMoving" value= {this.state.queryMoving} onChange={this.handleChange}>
-                            <option value="">Choisir une réponse</option>
+                            <option value="">--Choisir--</option>
                             <option value="true">Oui</option>
                             <option value="false">Non</option>
                         </select>

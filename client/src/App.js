@@ -43,6 +43,7 @@ class App extends React.Component {
 
   // HERE
   componentDidMount() {
+    console.log('process.en = ', process.env)
     this.fetchUser();
   }
 

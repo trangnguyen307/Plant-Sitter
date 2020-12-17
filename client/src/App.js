@@ -18,7 +18,8 @@ import MyMessages from './components/profileUser/Mymessages';
 import MyComments from './components/profileUser/MyComments';
 import ProfilePublic from './components/profileUser/ProfilePublic';
 import MessagesForm from './components/messages/MessagesForm';
-import MessageDetail from './components/messages/MessageDetail'
+import MessageDetail from './components/messages/MessageDetail';
+import About from './components/About';
 
 
 
@@ -59,6 +60,7 @@ class App extends React.Component {
       
           <Switch >
             <Route exact path="/" component = {Home} />
+            <Route exact path="/about" component = {About} />
             <Route exact path="/signup" render={() => <Signup updateUser={this.updateLoggedInUser}/>} />
             <Route exact path='/login' render={() => <Login updateUser={this.updateLoggedInUser} user={this.state.loggedInUser}/>}/>
             <Route exact path="/annonce" render = { (props) => <AnnonceList {...props} userInSession={this.state.loggedInUser}/>} />

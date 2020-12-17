@@ -54,11 +54,17 @@ article img {
     height: 250px;
     border-radius:50%;
 }
-
+.carousel-item img {
+    object-fit: cover;
+}
+.carousel-caption p, .carousel-caption h3 {
+    color: black;
+}
 .carousel-item {
     background-color: #8FC0A9;
     width: 600px;
     height: 500px;
+    color: #000;
 }
 
 .avis p {

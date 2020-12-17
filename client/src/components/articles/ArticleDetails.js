@@ -82,7 +82,7 @@ class AnnonceDetails extends Component {
               <p>{this.state.article.content}</p>
 
               <button onClick={this.addLike}>👍 J'aime</button>  
-              {this.props.user.username === "admin" && <button onClick={() => this.deleteArticle()}>Supprimer</button>}  
+              {this.props.user?.username === "admin" && <button onClick={() => this.deleteArticle()}>Supprimer</button>}  
               <Link className="button-article" to='/article'>Retourner</Link>  
             </div>
           </div>

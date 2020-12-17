@@ -65,7 +65,7 @@
     text-decoration: none;
 }
 .profile .my-messages .displayName {
-    width: 150px;
+    /* width: 150px; */
 }
 .messages-detail-section{
     min-height: calc(100vh - 11em);

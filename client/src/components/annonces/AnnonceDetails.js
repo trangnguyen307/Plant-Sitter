@@ -27,6 +27,16 @@ class AnnonceDetails extends Component {
     componentDidMount(){
       this.getSingleAnnonce();
     }
+    deleteAnnonce = () => {
+      const { params } = this.props.match;
+      service.delete(`/annonce/${params.id}`)
+        .then(() =>{
+            this.props.history.push('/annonce'); // !!!         
+        })
+        .catch((err) => {
+            console.log('Error while deleting annonce', err)
+        })
+    }
 
     render () {
       if (!this.state.annonce.author) {
@@ -51,6 +61,7 @@ class AnnonceDetails extends Component {
                   <p><span>Déplacement:</span> {this.state.annonce.moving ? "Oui" : "Non"}</p>
                   <p><span>Créé par:</span> {this.state.annonce.author.username}</p>
                   <Link to={`/send-messages/${this.state.annonce._id}`}>Envoyer Messages</Link>
+                  {this.props.userInSession?._id === this.state.annonce.author._id && <p className="deleteButton" onClick={() => this.deleteAnnonce()}>Supprimer</p>}
                   <Link to='/annonce'>Retourner</Link>
                 </div>
               </div>

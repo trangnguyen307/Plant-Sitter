@@ -1,11 +1,30 @@
 import React from 'react';
 import './Homepage.css';
+import {Link} from 'react-router-dom'
 import Search from './annonces/Search'
 import Carousel from "react-bootstrap/Carousel";
 import {BsFillStarFill} from 'react-icons/bs';
+import service from './auth/auth-service';
 
 
 class Home extends React.Component {
+
+    state = {
+      listOfArticles: []
+
+    }
+    getAllArticles = () =>{
+      service.get(`/article`)
+      .then(responseFromApi => {
+          this.setState({
+              listOfArticles: responseFromApi.data
+          })
+      })
+      .catch(err => console.log('Error while fetching projects', err))
+    }
+    componentDidMount () {
+      this.getAllArticles();
+    }
     
     render () {
         return (
@@ -13,7 +32,7 @@ class Home extends React.Component {
             {/* SECTION RECHERCHE*/}
                 <div className="presentation ">
                   <div className="row justify-content-center">
-                    <div className="search-barre col-lg-6">
+                    <div className="search-barre col-lg-7">
                       <Search homepage={true}/>
                     </div>
                   </div>
@@ -33,7 +52,7 @@ class Home extends React.Component {
               
                 <div className="pres-article">
                   <article>
-                    <img src='../../photo2.png' alt="image1 consigne"/>
+                    <img src={'../../photo2.png'} alt="image1 consigne"/>
                   </article>
                   <div className="paragraphe">
                     <p>Trouvez un plant-sitter, près de chez vous, disponible pendant vos vacances</p>
@@ -64,38 +83,44 @@ class Home extends React.Component {
               
               <Carousel className="carousel">
                 <Carousel.Item className="carousel-item">
+                  <Link to={`/article/${this.state.listOfArticles[0]?._id}`}>
                     <img
                     className="d-block w-100"
-                    src="holder.js/800x400?text=First slide&bg=373940"
-                    alt="First slide"
+                    src={this.state.listOfArticles[0]?.imageUrl}
+                    alt="Loading"
                     />
+                  </Link>
                   <Carousel.Caption className="carousel-caption">
-                    <h3>Comment entretenir ses plantes d'intérieur ?</h3>
-                    <p>Un article pour vous apprendre à prendre soin de vos plantes !</p>
+                    <h3>{this.state.listOfArticles[0]?.title}</h3>
+                    <p>{this.state.listOfArticles[0]?.intro}</p>
                   </Carousel.Caption>
                 </Carousel.Item>
 
                 <Carousel.Item className="carousel-item">
+                  <Link to={`/article/${this.state.listOfArticles[1]?._id}`}>
                     <img
                     className="d-block w-100"
-                    src="holder.js/800x400?text=Second slide&bg=282c34"
-                    alt="Third slide"
+                    src={this.state.listOfArticles[1]?.imageUrl}
+                    alt="Loading"
                     />
+                  </Link>
                   <Carousel.Caption className="carousel-caption">
-                    <h3>Un article utile pour repérer les maladies de vos plantes</h3>
-                    <p>Ne passer pas à côté des maladies de vos plantes</p>
+                    <h3>{this.state.listOfArticles[1]?.title}</h3>
+                    <p>{this.state.listOfArticles[1]?.intro}</p>
                   </Carousel.Caption>
                 </Carousel.Item>
 
                 <Carousel.Item className="carousel-item">
+                  <Link to={`/article/${this.state.listOfArticles[2]?._id}`}>
                   <img
                   className="d-block w-100"
-                  src="holder.js/800x400?text=Third slide&bg=20232a"
-                  alt="Third slide"
+                  src={this.state.listOfArticles[2]?.imageUrl}
+                  alt="Loading"
                   />
+                  </Link>
                   <Carousel.Caption className="carousel-caption">
-                  <h3>15 façons d'intégrer les plantes dans sa déco</h3>
-                  <p>En manque d'inspiration ? Retrouvez nos idées originales</p>
+                  <h3>{this.state.listOfArticles[2]?.title}</h3>
+                  <p>{this.state.listOfArticles[2]?.intro}</p>
                   </Carousel.Caption>
                 </Carousel.Item>
               </Carousel>

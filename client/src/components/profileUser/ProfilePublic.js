@@ -56,8 +56,8 @@ class ProfilePublic extends React.Component {
               
             </div> 
           :
-          <div>
-            Connectez-vous pour consulter le profil !!!
+          <div className="error">
+            <p>Connectez-vous pour consulter le profil !!!</p>
           </div>
             
             

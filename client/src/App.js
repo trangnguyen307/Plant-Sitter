@@ -64,7 +64,7 @@ class App extends React.Component {
             <Route exact path='/login' render={() => <Login updateUser={this.updateLoggedInUser} user={this.state.loggedInUser}/>}/>
             <Route exact path="/annonce" render = { (props) => <AnnonceList {...props} userInSession={this.state.loggedInUser}/>} />
             <Route exact path="/annonce/new" component={AddAnnonce} />
-            <Route exact path="/annonce/:id" component = {AnnonceDetails} />
+            <Route exact path="/annonce/:id" render = { (props) => <AnnonceDetails {...props} userInSession={this.state.loggedInUser}/>}/>
             <Route exact path="/article" render = { (props) => <ArticlesList {...props} userInSession={this.state.loggedInUser}/>} />
             <Route exact path="/article/new" component={AddArticle} />
             <Route exact path="/article/:id" render= {(props) => <ArticleDetails {...props}  user={this.state.loggedInUser}/>} /> 

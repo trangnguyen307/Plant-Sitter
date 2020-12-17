@@ -7,7 +7,9 @@
 
 /*ANNONCE LIST */
 
-
+.annonce-list-section {
+    min-height: calc(100vh - 11em);
+}
 .search-bar {
     margin-top: 20px;
 }
@@ -104,6 +106,22 @@
 }
 .annonce-detail .map-div {
     height: 500px;
+}
+.annonce-detail .deleteButton {
+    display: inline-block;
+    color: #fff;
+    background-color: #4A7C59;
+    margin-right: 10px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    line-height: 30px;
+    width: 100px;
+}
+.annonce-detail .deleteButton:hover {
+    color: #fff;
+    background-color: #4a7c59b7;
+    text-decoration: none;
+    font-size: 17px;
 }
 @media (max-width:768px) {
     .annonce-detail .map-div {

@@ -70,7 +70,7 @@ class AnnonceList extends Component {
     console.log('query:  ', this.state.queryAddress, typeof this.state.queryMoving, this.state.queryEndDate, this.state.queryStartDate)
     
     return(
-      <div className="container-fluid">
+      <div className="container-fluid annonce-list-section">
         <div className="row justify-content-center search-bar">
           <div className="col-lg-8 col-md-10 col-xs-12">
             <Search updateQueryAddress={this.updateQueryAddress} 
@@ -101,7 +101,7 @@ class AnnonceList extends Component {
                   <div className="col-xs-12 col-md-7 col-lg-7">
                     <p className="title">{annonce.title}</p>
                     <p><span className="label">Type:</span> {annonce.type === "offer" ? "Offer" : "Chercher un(e) bénévol(e)"}</p>
-                    <p><span className="label">Période:</span> De {annonce.startDate} A {annonce.endDate}</p>
+                    <p><span className="label">Période:</span> <span className="label">Du</span> {annonce.startDate} <span className="label">Au</span> {annonce.endDate}</p>
                     <p><span className="label">Adresse:</span> {annonce.adress}</p>
                     <div>
                       <p><span className="label">Auteur:</span> {annonce.author.username}</p>

@@ -54,11 +54,11 @@ class MyMessages extends React.Component {
                     <div className="my-messages col-lg-6">
                         { this.state.messages.map( message => {
                             return (
-                            <div key={message._id} className="messagesSection">
-                                <div className="displayName">
+                            <div key={message._id} className="messagesSection row justify-content-center">
+                                <div className="displayName col-lg-2">
                                     <Link to={`/profile/myProfile/${this.props.userInSession._id}/message/${message._id}`}>{message.sender._id === this.props.userInSession._id ? message.receiver.username : message.sender.username}</Link>
                                 </div>
-                                <div className="displayMessages">
+                                <div className="displayMessages col-lg-8">
                                     {message.annonce ? <p>Pour: {message.annonce.title}</p> : <p>Pour: Annonce supprimée</p>}
                                     <p>{message.messagesBox[message.messagesBox.length-1].message}</p>
                                 </div>

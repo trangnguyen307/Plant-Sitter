@@ -43,7 +43,6 @@ class App extends React.Component {
 
   // HERE
   componentDidMount() {
-    console.log('process.en = ', process.env)
     this.fetchUser();
   }
 
@@ -54,7 +53,6 @@ class App extends React.Component {
   }
 
   render () {
-    console.log('userinsession:', this.state.loggedInUser)
     return(
       <div className="App">
           <Navbar userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser}/>
@@ -76,7 +74,6 @@ class App extends React.Component {
             <Route exact path="/profile/myProfile/:profileid/message/:messageid" render={(props) => <MessageDetail {...props} userInSession={this.state.loggedInUser} /> }/>
             <Route exact path="/profile/:id" render={(props) => <ProfilePublic {...props} userInSession={this.state.loggedInUser} updateUser={this.updateLoggedInUser}/>} />
             <Route exact path="/send-messages/:id" render={(props) => <MessagesForm {...props} userInSession={this.state.loggedInUser} />}/>
-            {/* <Route exact path="/profile" render={(props) => <ProfileUser {...props} updateUser={this.updateLoggedInUser} fetchUser={this.fetchUser} user={this.state.loggedInUser} />} /> */}
           </Switch>
         <Footer />
         </div>

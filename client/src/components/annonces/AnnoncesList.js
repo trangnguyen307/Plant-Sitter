@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AnnoncesList from './AnnoncesList.css';
+import './AnnoncesList.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Search from './Search';
@@ -25,9 +25,17 @@ class AnnonceList extends Component {
         .catch(err => console.log('Error while fetching projects', err))
     }
 
-
+    setValueDefault = () => {
+      if (this.props.location?.query) {this.setState({
+        queryAddress:this.props.location.query.queryAddress,
+        queryMoving:this.props.location.query.queryMoving,
+        queryStartDate:this.props.location.query.queryStartDate,
+        queryEndDate:this.props.location.query.queryEndDate
+      })}
+    }
     componentDidMount() {
       this.getAllAnnonces();
+      this.setValueDefault();
     }
 
     updateQueryAddress = (newValue) => {
@@ -46,19 +54,17 @@ class AnnonceList extends Component {
 
   render(){
     let listOfAnnonncesFilter = [...this.state.listOfAnnonces];
-    if (this.props.location?.query) {
-      this.props.location && console.log('this.props.location.query',this.props.location.query)
-      listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce =>annonce.adress.toLowerCase().includes(this.props.location.query.queryAddress))
-    } else {
-      if(this.state.queryAddress) listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce =>annonce.adress.toLowerCase().includes(this.state.queryAddress)  )
-      console.log('list of Annonce after query address', listOfAnnonncesFilter)  
+      if(this.state.queryAddress) listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce =>annonce.adress.toLowerCase().includes(this.state.queryAddress.toLowerCase())  )
       if(this.state.queryMoving === "true" || this.state.queryMoving === "false") {
         let isTrueSet = (this.state.queryMoving === "true")
         listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce => annonce.moving === isTrueSet)
       }
-      
-    }
-    
+      if(this.state.queryStartDate) {
+        listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce => annonce.startDate <= this.state.queryStartDate && annonce.endDate >= this.state.queryStartDate)
+      }
+      if(this.state.queryEndDate) {
+        listOfAnnonncesFilter = listOfAnnonncesFilter.filter(annonce => annonce.endDate >= this.state.queryEndDate)
+      }
     
     console.log('list of Annonce', listOfAnnonncesFilter)                                                       
     console.log('query:  ', this.state.queryAddress, typeof this.state.queryMoving, this.state.queryEndDate, this.state.queryStartDate)

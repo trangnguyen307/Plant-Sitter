@@ -40,7 +40,11 @@ class AnnonceDetails extends Component {
 
     render () {
       if (!this.state.annonce.author) {
-        return <p>Vous devez connecter afin de consulter cette annonce. Merci !</p>
+        return (
+          <div className="error">
+              <p>Vous devez connecter afin de consulter cette annonce. Merci !</p>
+          </div>
+        )
       }
       return (
         <div className="container-fluid">
@@ -54,7 +58,7 @@ class AnnonceDetails extends Component {
                 <div className="col-lg-7 col-md-10 col-xs-12 col-12">
                   <h3>{this.state.annonce.title}</h3>
                   <div className="divider"></div>
-                  <p><span>Type:</span> {this.state.annonce.type}</p>
+                  <p><span>Type:</span>{this.state.annonce.type === "offer" ? "Je suis plant-sitter" : "Chercher un(e) bénévol(e)"}</p>
                   <p><span>Description:</span> {this.state.annonce.description}</p>
                   <p><span>Adresse:</span> {this.state.annonce.adress}</p>
                   <p><span>Période:</span> Du {this.state.annonce.startDate} Au {this.state.annonce.endDate}</p>

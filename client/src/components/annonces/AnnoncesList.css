@@ -128,3 +128,16 @@
         display: none;
     }
 }
+
+/*MAPS*/
+
+.info-window-map img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+.info-window-map .title{
+    max-width: 200px;
+    font-size: 18px;
+    font-weight: bold;
+}

@@ -45,7 +45,6 @@
 }
 .profile .my-messages {
     background-color: #4A7C59;
-    height: calc(100vh - 11em -30px);
     margin: 15px auto;
     border-radius: 10px;
     padding: 20px;

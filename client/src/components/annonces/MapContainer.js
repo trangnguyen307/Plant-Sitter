@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import './AnnoncesList.css'
 
@@ -76,7 +77,7 @@ class MapContainer extends React.Component {
             >
               <div className="info-window-map">
                 <img src={this.state.selected.name.imageUrl} alt='' />
-                <p className="title">{this.state.selected.name.title}</p>
+                <Link to={`/annonce/${this.state.selected.name._id}`} className="title">{this.state.selected.name.title}</Link>
                 <p>{this.state.selected.name.adress}</p>
               </div>
             </InfoWindow>

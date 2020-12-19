@@ -137,7 +137,14 @@
     object-fit: cover;
 }
 .info-window-map .title{
+    display: block;
     max-width: 200px;
     font-size: 18px;
     font-weight: bold;
+    color:black
+}
+
+.info-window-map .title:hover {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.726);
 }

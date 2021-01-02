@@ -7,9 +7,6 @@ For the final project at the Ironhack bootcamp, we created a single-page web app
 
 This application is hosted on **Heroku**.
 
-<br/>
-<br/>
-
 ## Demo 🖥
 
 <a href="https://plant-sitter.herokuapp.com/">**Try it!**</a>

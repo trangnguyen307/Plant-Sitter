@@ -1,11 +1,18 @@
 
-## Project FullStack React &amp; NodeJS
+<h1 align="center">
+	<img
+		width="700"
+		alt="Plant-Sitter"
+		src="https://github.com/trangnguyen307/project3-plant-sitting/blob/master/client/public/thumbnail.png">
+</h1>
+
+## Full-Stack React Project
 
 <br/>
 
-For the final project at the Ironhack bootcamp, we created a single-page web application named "Plant-Sitter" using the MERN stack (MongoDB, Express, React &amp; Node.js). Our Plant-Sitter website is a concrete, easy-to-use application that allows you to go on vacation with peace of mind: your plants will be well looked after by the plant-sitters near you.
+For the final project at the <a href="https://www.ironhack.com"> **Ironhack**</a> bootcamp, we created a **single-page web application** named "**Plant-Sitter**" using the **MERN stack (MongoDB, Express, React &amp; Node.js)**. Our Plant-Sitter website is a concrete, easy-to-use application that allows you to go on vacation with peace of mind: your plants will be well looked after by the plant-sitters near you.
 
-This application is hosted on **Heroku**.
+This application (back & front) is hosted on **Heroku**.
 
 ## Demo 🖥
 
@@ -33,12 +40,11 @@ Frontend :
 Backend :
 
 - NodeJS
-- Cors
-- Dotenv
 - Express
 - Mongoose
+- Cors
+- Dotenv
 - Bcryptjs
 
 ### Contact 📡
-
 Find me on <a href="https://www.linkedin.com/in/trangnguyen307/">My Linkedin</a>

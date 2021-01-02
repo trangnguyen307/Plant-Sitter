@@ -18,8 +18,6 @@ Login : demo@plantsitter.com
 Password : demo2020
 ```
 
-<br/>
-
 ## Stack 💪
 
 Frontend :
@@ -40,9 +38,6 @@ Backend :
 - Express
 - Mongoose
 - Bcryptjs
-
-<br/>
-<br/>
 
 ### Contact 📡
 

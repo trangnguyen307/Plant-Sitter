@@ -50,4 +50,5 @@ Backend :
 - Bcryptjs
 
 ### Contact 📡
-Find me on <a href="https://www.linkedin.com/in/trangnguyen307/">My Linkedin</a>
+Find Julie on <a href="https://www.linkedin.com/in/trangnguyen307/">Linkedin of Julie</a>
+Find Claire on <a href="https://www.linkedin.com/in/claire-lacanal/">Linkedin of Claire</a>

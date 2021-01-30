@@ -24,7 +24,7 @@ This application (back & front) is hosted on **Heroku**.
 You can test the website, either by creating a new account or by using these credentials
 
 ```
-Login : demo@plantsitter.com
+Login : Demo
 Password : demo2020
 ```
 
